@@ -1,0 +1,233 @@
+<!-- Status Bar for Steel Surface Inspection -->
+<div class="d-flex" style="background-color: #fff; align-items: center;">
+
+    <!-- Back Button -->
+    <div class = "stopbtnpiston" >
+        <button (click)="goback()" title="Click to go back" 
+        style = "border-color: transparent; background-color: transparent; color:#0f0c3d;">
+            <mat-icon style="font-size: 30px;">keyboard_arrow_left</mat-icon>
+        </button>
+    </div>
+
+    <div class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xxl-5">
+        <div style="font-size:21px;"><b>Steel Surface Anomaly Detection​ &nbsp; <span
+                    style="font-size:22px;cursor:pointer;"><i class="fa fa-info-circle" aria-hidden="true"
+                        (click)="info_pop()"></i></span></b></div>
+    </div>
+    <!--Search Bar-->
+    <div class="col-2 col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xxl-2"
+        style="padding-top:5px; font-size:17px;padding-left: 0px;float:right;display: flex; justify-content: flex-end">
+        Enter Serial #</div>
+    <div class="col-2 col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xxl-2"
+        style="margin-right: 20px;padding-left: 0px;padding-right: 0px;">
+        <div class="input-group rounded" style="height: 35px;">
+            <input type="search" class="form-control rounded" (focusin)="sch_box_focus()" (focusout)="sch_box_nfocus()"
+                placeholder="SN_" aria-label="Search" aria-describedby="search-addon" style="height: 35px;"
+                id="sch_label" />
+            <span class="input-group-text border-0">
+                <i class="fa fa-search" data-toggle="modal" id="popsch_disp" data-target="#popupModal3"
+                    (click)="openpopup()"></i>
+            </span>
+
+            <div class="modal fade" id="popupModal3" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" id="popupSearchdlg3" style="max-width: 1050px;margin: 2rem;
+              margin-top: 30%;margin-left: 19%;" [style.display]='pop_disp'>
+                    <div class="modal-content">
+                        <div class="modal-header"
+                            style="background-color: #212445; padding-top: 0px;padding-bottom: 0px;color:#ffffff;">
+                            <h3 class="modal-title" id="popupTitle" style="text-align: center;">
+                                <div class="d-md-flex">
+                                    <div class="col-md-7">
+                                        Serial # <a id="sch_serial3">SN_{{steel_id}} </a>
+                                    </div>
+                                    <div class="col-md-5">
+                                        Material: <a id="sch_defect3">Steel Surface</a>
+                                    </div>
+                                    <div class="col-md-7">
+                                        Observation: <a style="font-weight: 600;" id="sch_defect3" [style.color]="sch_def_color">{{sch_obv}}</a>
+                                    </div>
+                                </div>
+                            </h3>
+                            <button type="button" class="close" data-dismiss="modal" style="color:red;">&times;</button>
+                        </div>
+                        <div class="modal-body" id="sch_body">
+
+
+                            <div class="d-md-flex" style="background-color: #FFFFFF;">
+
+
+                                <figure style="margin: auto;">
+                                    <img [src]="camp" alt="" width="800" height="150" id="sch_p1">
+                                    <figcaption style="text-align: center;font-weight: bold;" id="sch_p1_cap">
+                                        Defects : {{sch_def}}</figcaption>
+                                </figure>
+
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1" >
+        <button class='start' (click)="start_steel()" id="btnstart">Start</button>
+    </div>
+
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+        <button class='stop' (click)="Stop()" id="btnstop">Stop</button>
+    </div>  
+
+
+</div>
+
+<!--User Windows-->
+<div class="d-flex">
+
+    <!--Steel Surface Image and Timeline Window-->
+    <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xxl-3" style="margin: 10px 0px 0px 0px; ">
+
+
+        <!--Surface Defect Images-->
+        <div class="d-flex"
+            style="background-color: #FFFFFF;margin-bottom: 10px;text-align: center;border-radius:10px; box-shadow:4px 4px 4px #888888;">
+            <figure style="margin: auto;">
+                <img src=".\assets\img\Defects_3.png" alt="" width="270" height="270">
+
+            </figure>
+        </div>
+
+
+        <!--Timeline-->
+        <div class="d-flex" style="background-color: #FFFFFF;border-top-left-radius: 10px;
+      border-top-right-radius: 10px; box-shadow:4px 4px 4px #888888;">
+
+            <span style="font-size:20px;margin-left: 10px;">Timeline</span>
+
+        </div>
+        <div class="d-flex"
+            style="background-color: #FFFFFF;height:200px; overflow-y:scroll; 
+                border-bottom-left-radius: 10px;border-bottom-right-radius: 10px; box-shadow:4px 4px 4px #888888;">
+            <ul class="timeline1" id='tmline1' (click)="timeline_click()"></ul>
+
+            <div class="modal fade" id="popupSearch2" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" id="popupSearchdlg2" style="max-width: 1050px;margin: 2rem; margin-top: 30%;margin-left: 19%;">
+                    <div class="modal-content">
+                        <div class="modal-header"
+                            style="background-color: #212445; padding-top: 0px;padding-bottom: 0px;color:#ffffff;">
+                            <h3 class="modal-title" id="popupTitle2" style="text-align: center;">
+                                <div class="d-md-flex">
+                                    <div class="col-md-7">
+                                        Serial # <a id="sch_serial2"></a>
+                                    </div>
+                                    <div class="col-md-5">
+                                        Material: <a id="sch_type2">Steel Surface</a>
+                                    </div>
+                                    <div class="col-md-7">
+                                        Observation: <a style="font-weight: 600;" id="sch_obvs2"></a>
+                                    </div>
+
+                                </div>
+                            </h3>
+                            <button type="button" class="close" data-dismiss="modal" style="color:red;">&times;</button>
+                        </div>
+                        <div class="modal-body" id="sch_body2">
+
+
+                            <div class="d-md-flex" style="background-color: #FFFFFF; ">
+
+
+                                <figure style="margin: auto;">
+                                    <img src="" alt="" width="800" height="150" id="sch2_p2">
+                                    <figcaption style="text-align: center;font-weight: bold;" id="sch2_p2_cap">
+                                    </figcaption>
+                                </figure>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Surface Images and graphs Window-->
+    <div class="col-9">
+        <div class="d-flex"
+            style="height: 30px; text-align: center; margin-top:10px;margin-right:10px;background-color:#16125a;border-top-left-radius: 10px;border-top-right-radius:10px; box-shadow:4px 4px 4px #888888;">
+            <!--Piston Plant, Line and Type Information-->
+            <span style="font-size: 20px;font-weight: 400; margin: auto; color: white; ">
+                Serial # {{sid}}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Material: Steel Surface
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Observation: <a id="defect" [style.color]="def_color">{{obv}}</a></span>
+        </div>
+
+        <!--Surface Images for Detection-->
+        <div class="d-flex"
+            style="background-color: #FFFFFF;padding-top:10px;margin-right:10px; box-shadow:  4px 4px 4px #888888;">
+
+            <!--Figure 1-->
+            <figure style="margin: auto;">
+                <img [src]="img_src" id="cam1" width="850" height="270">
+                <figcaption style="text-align: center;">
+                    <i class="fa fa-camera" aria-hidden="true"
+                        style="text-align: center; color:black;margin-right: 2px;"></i>
+                    Camera
+                </figcaption>
+            </figure>
+
+
+
+        </div>
+
+        <!--Details and Status of the Steel Surface-->
+
+        <div class="d-flex"
+            style="background-color: #FFFFFF;margin-right: 10px;height:fit-content; box-shadow: 4px 4px 4px #888888;
+                border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
+            <div class="table-responsize" style="margin:auto;">
+                <table class="table" style="border: none !important; margin-top: 0px;">
+                    <tbody>
+
+                        <tr>
+                            <td style="border: none !important;padding: 9px !important;"><b>Checking Time</b></td>
+                            <td style="border: none !important;padding: 9px !important;"><b>: {{date_time}}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none !important;padding: 9px !important;"><b>Observation</b></td>
+                            <td style="border: none !important;padding: 9px !important;" id="dt_type"><b>: {{obv}}</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none !important;padding: 9px !important;"><b>Defects</b></td>
+                            <td style="border: none !important;padding: 9px !important;" id="act"><b>: {{def}}</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div style=" height:170px; width:400px; margin: auto;">
+                <canvas id="steel_graph">{{ssi_graph}}</canvas>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>

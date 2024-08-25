@@ -1,0 +1,262 @@
+<section class="sectionDiv">
+  <div class="HeaderFlex">
+    <div class="HeaderFlex1">
+      <div class="backClass" (click)="goback()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-arrow-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+          />
+        </svg>
+        <div class="Pagetitle">Copper Price Prediction</div>
+      </div>
+    </div>
+    <div class="HeaderFlex2">
+      <!-- <div >
+      <label class="CommodityLabel">Commodity :</label>
+      <select class="selectFields">
+        <option>Select Commodity</option>
+
+      </select>
+    </div> -->
+
+      <div class="Textmar">
+        <label class="mardsh">Margin Dashboard:</label>
+        <div class="valuesdashboard">
+          <div class="dashboardText">
+            Cumulative Savings Till date :
+            <span class="labelvaluestill"> 1 MN</span>
+          </div>
+        </div>
+        <div class="valuesdashboard">
+          <div class="dashboardText">
+            Future Savings Projection :
+            <span class="labelvaluestill"> 4 MN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fexboxstyle">
+    <div class="fexboxstyle1">
+      <div class="MainBox1">
+        <div class="graphVal">
+         
+          <div id="timeChart" style="width: 100%; height: 95%"></div>
+          <div class="newsfeedherder">
+            <div class="newsfeed">News Feed :</div>
+            <div class="scroll-container">
+              <div class="scroll-content">
+                <ng-container *ngFor="let value of filteredData; let i = index">
+                  <div
+                    class="value"
+                    [style.animation]="
+                      currentIndex === i
+                        ? 'scroll-animation 5s linear infinite'
+                        : ''
+                    "
+                  >
+                    {{ value }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fexboxstyle2">
+      <div class="bottombox">
+        <div style="display: flex; flex-direction: column; margin-bottom: 10px; margin-left:-7px">
+          <div>
+            <div>
+              <label class="PPC">Price Prediction Co-Pilot</label>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                margin-top: 10px;
+              "
+            >
+              <div class="labeldropdown">
+                <!-- <label class="CommodityLabel">Commodity :</label> -->
+                <select class="selectFields" (change)="onSelect($event)">
+                  <option
+                    *ngFor="let item of commodity"
+                    [value]="item.commodityValues"
+                  >
+                    {{ item.commodityKeys }}
+                  </option>
+                </select>
+              </div>
+              <div>
+                <button class="buttonstyle" (click)="AnalyseFunction()">
+                  Analyse
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ppBoxmain1">
+          <div class="">
+            <div class="buyherader">
+              <div class="BUYPRICEINDICATOR">Buy Price Indicator</div>
+            </div>
+            <div class="boxflex">
+              <div class="flecclasss">
+                <div>
+                  <label class="labelclass"> Current Price ($)</label>
+                </div>
+
+                <div>
+                  <div class="labelvalues">{{ copperpricelive }}</div>
+                </div>
+              </div>
+              <div class="flecclasss">
+                <div>
+                  <label class="labelclass"> Last Weeks High($) </label>
+                </div>
+                <div>
+                  <div class="labelvalues">{{ yesterdayHigh }}</div>
+                </div>
+              </div>
+              <div class="flecclasss">
+                <div>
+                  <label class="labelclass"> Last Weeks Low ($) </label>
+                </div>
+                <div>
+                  <div class="labelvalues">{{ yesterdayLow }}</div>
+                </div>
+              </div>
+              <!-- <div class="flecclasss">
+              <div>
+                <label class="labelclass"> Todays Buy Price Range ($):</label> 
+
+              </div>
+              <div>
+                <div class="labelvalues">{{buy1}}-{{buy2}} </div>
+
+              </div>
+            
+            </div> -->
+              <div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="ppBoxmain11">
+          <div class="buyherader">
+            <div class="BUYPRICEINDICATOR">Forecast Accuracy </div>
+          
+
+          </div>
+          <div class="">
+          
+            <div class="guagevalue">{{forcastaccuracy}} %</div>
+            
+          </div>
+          
+        </div> -->
+        <!-- <div class="ppBoxmain1">
+          <div class="buyherader">
+            <div class="BUYPRICEINDICATOR">Future Sentiment</div>
+          
+
+          </div>
+          <div class="Marketguage">
+            
+            <div  id="GuageForcast" style="height:100%; width:100%"></div>
+          </div>
+          
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="bottombox">
+    <div style="display: flex; justify-content:space-between">
+      <div>
+      <label class="PPC" >Price Prediction Co-Pilot</label>
+    </div>
+    <div class="potDrop">
+      <div class="BUYPRICEINDICATOR">
+        Saving Potential
+      </div>
+      <div class="BUYPRICEINDICATOR">
+       120 K
+      </div>
+     <button style="border: none; border-radius: 8px; width:fit-content; height:auto; background-color:green; color:white; padding:10px; margin-right:10px" >Drop Price Alert</button>
+    </div>
+
+    </div>
+    
+    <div class="ppBoxmain">
+      <div class="ppBoxmain1">
+        <div>
+          <div class="BUYPRICEINDICATOR">Buy Price Indicator</div>
+        </div>
+        <div>
+          <label class="labelclass"> Buy Price Range :</label> <span class="labelvalues">3.5 $-3.6 $</span>
+        </div>
+        <div>
+          <label class="labelclass"> Date Range :</label> <span class="labelvalues">2024-04-10</span>
+        </div>
+       
+      </div>
+      <div class="ppBoxmain2">
+        <div>
+          <div class="BUYPRICEINDICATOR">Order Executed</div>
+        </div>
+        <div>
+          <label class="labelclass"> Buy Price Range :</label> <span class="labelvalues">3.5 $-3.6 $</span>
+        </div>
+        <div>
+          <label class="labelclass"> Date Range :</label> <span class="labelvalues">2024-04-10</span>
+        </div>
+
+      </div>
+      <div class="ppBoxmain3">
+        <div>
+          <div class="BUYPRICEINDICATOR">Forecast Accuracy</div>
+        </div>
+        <div class="Marketguage">
+          <div  id="GuageForcast" style="height:100%; width:100%"></div>
+        </div>
+
+      </div>
+      <div class="ppBoxmain4">
+        <div>
+          <div class="BUYPRICEINDICATOR">Market Sentiment</div>
+        </div>
+        <div class="Marketguage">
+          <div  id="marketSentiment" style="height:100%; width:100%"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div> 
+  -->
+
+  <div class="spinnercontent" *ngIf="loader">
+    <div class="spinnerclass">
+      <mat-progress-spinner
+        value="60"
+        mode="indeterminate"
+        diameter="50"
+      ></mat-progress-spinner>
+    </div>
+  </div>
+</section>

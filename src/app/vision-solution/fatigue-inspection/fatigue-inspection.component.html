@@ -1,0 +1,443 @@
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Upload Video</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div>
+  <div>
+    <nav class="navbar navbar-expand-lg" style="height: 60px">
+      <ul class="navbar-nav w-100 d-flex justify-content-between">
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+          "
+        >
+          <!-- <img
+          style="height: 40px; width: 40px; border-radius: 50%"
+          src="../../../assets/tcs.jpg"
+        /> -->
+          <button
+            (click)="goback()"
+            title="Click to go back"
+            style="
+              border-color: transparent;
+              background-color: transparent;
+              color: #212445;
+            "
+          >
+            <!-- <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon> -->
+            <img style="width: 15px" src="../../assets/images/left-arrow.png" />
+          </button>
+
+          <span style="width: 350px; margin-left: 20px; font-size: 22px">
+            Workforce Fatigue Detection</span
+          >
+        </div>
+
+        <li class="nav-item">
+          <label for="shift-input">Shift:</label>
+          <select
+            id="shift-dropdown"
+            class="form-control form-control-sm dropdown"
+            style="width: 100px"
+            (change)="onShiftChange()"
+          >
+            <option value="" disabled selected>Select Shift</option>
+
+            <option *ngFor="let shift of foods1" [value]="shift">
+              {{ shift.viewValue }}
+            </option>
+          </select>
+        </li>
+
+        <li class="nav-item">
+          <label for="employee-dropdown">Employee:</label>
+          <select
+            id="employee-dropdown"
+            class="form-control form-control-sm dropdown"
+            style="width: 200px"
+            (change)="onEmployeeSelect($event)"
+          >
+            <option value="" disabled selected>Select Employee</option>
+            <option *ngFor="let employee of foods2" [value]="employee">
+              {{ employee.viewValue }}
+            </option>
+          </select>
+        </li>
+        <li class="nav-item">
+          <button
+            class="btn btn-sm"
+            style="background-color: #bfc0cf"
+            (click)="toggleHistoryFatigue()"
+          >
+            🔔History
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (change)="onChange($event)">
+          Choose file
+        </button> -->
+
+          <!-- <button type="button" class="btn btn-primary" (click)="toggleModal()">Open Media Player</button> -->
+
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Record video
+        </button> -->
+
+          <input class="form-control" type="file" (change)="onChange($event)" />
+        </li>
+
+        <li class="nav-item">
+          <button
+            class="btn btn-sm"
+            style="background-color: #bfc0cf; margin-left: auto"
+            (click)="playcall()"
+          >
+            Analyse
+          </button>
+          <div
+            style="width: fit-content; top: 100px; font-size: 20px"
+            *ngIf="alertType"
+            [ngClass]="
+              'alert alert-' + alertType + ' text-center fixed-top mx-auto'
+            "
+            role="alert"
+          >
+            <ng-container *ngIf="alertType === 'success'"
+              >File uploaded successfully!</ng-container
+            >
+            <ng-container *ngIf="alertType === 'danger'"
+              >Internal Server Error</ng-container
+            >
+            <ng-container *ngIf="alertType === 'warning'"
+              >Please choose a file</ng-container
+            >
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div *ngIf="showHistoryFatigue" class="history-sidebar">
+      <button class="close-btn" (click)="closeHistory()">✖</button>
+      <h5>Fatigue History</h5>
+      <div *ngFor="let history of records">
+        <hr />
+        <p><strong>ID:</strong> {{ history.id }}</p>
+        <!-- <p><strong>Details:</strong> {{ history.details }}</p> -->
+        <p><strong>Date:</strong> {{ history.date }}</p>
+        <p><strong>Time:</strong> {{ history.time }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; height: calc(100% - 1rem)">
+    <div style="width: 25rem">
+      <div
+        class="timlinediv"
+        style="
+          border: solid rgb(45 35 66 / 40%) 2px; /* 紫色边框 */
+          border-radius: 5px; /* 轻微的圆角 */
+          box-shadow: rgb(45 35 66 / 40%) 0 2px 4px,
+            rgb(45 35 66 / 30%) 0 7px 13px -3px;
+          margin: 1rem;
+          height: 78vh;
+          background-color: white;
+          overflow: hidden;
+          overflow-y: auto;
+        "
+      >
+        <div style="margin: 10px"><h4>TimeLine</h4></div>
+
+        <hr />
+        <div style="margin-left: 15px" *ngFor="let temp of timelinelist">
+          <div (click)="setvideo(temp)" style="cursor: pointer">
+            {{ temp.name }}
+          </div>
+          <hr style="margin-left: -15px" />
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 100%">
+      <div class="container-fluid" style="padding: 1rem">
+        <div style="display: flex; width: 100%">
+          <div style="display: flex; width: 100%">
+            <div style="width: 50%">
+              <div class="col-content">
+                <video
+                  [src]="proc_vid_1"
+                  controls
+                  height="100%"
+                  style="max-width: 100%; max-height: 100%"
+                  autoplay
+                  type="video/mp4"
+                >
+                  <!-- <source
+              src="proc_vid_1"
+              type="video/mp4"
+            /> -->
+                </video>
+              </div>
+              <div style="font-weight: 600; font-size: 2vh">Fatigue Status</div>
+            </div>
+            <div
+              style="
+                width: 50%;
+                margin-left: auto;
+                margin-right: 10px;
+                margin-right: 1rem;
+              "
+            >
+              <div class="col-content">
+                <video
+                  [src]="proc_vid_2"
+                  controls
+                  height="100%"
+                  style="max-width: 100%; max-height: 100%"
+                  autoplay
+                  type="video/mp4"
+                >
+                  <!-- <source
+              src="proc_vid_2"
+              type="video/mp4"
+            /> -->
+                </video>
+              </div>
+              <div style="font-weight: 600; font-size: 2vh">
+                Body-Joint Diagram
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 35%; margin-left: auto">
+            <div class="col-content2">
+              <div style="width: 100%">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    text-align: center;
+                    margin-bottom: 9px;
+                  "
+                >
+                  <div class="cardhealth1">
+                    <div style="margin-top: 5px">
+                      Heart beat
+                      <i
+                        [style.color]="getBorderColorForValue(heartBeat)"
+                        class="fa fa-heart"
+                        style="font-size: 20px"
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+                    <div
+                      style="
+                        display: flex;
+                        margin-top: 30px;
+                        justify-content: center;
+                      "
+                      [style]="{ color: getBorderColorForValue(heartBeat) }"
+                    >
+                      <p style="font-size: 25px">{{ heartBeat }}</p>
+
+                      <p style="margin-top: 0px; margin-left: 5px">(BPM)</p>
+                    </div>
+                    <!-- <p
+                    style="margin-top: 20px; font-size: 25px"
+                    [style]="{ color: getcolor(value) }"
+                  >
+                    <span>{{ value }}</span>
+                  </p>
+                  <div>(BPM)</div> -->
+                  </div>
+                  <div class="cardhealth">
+                    <div style="margin-top: 5px">
+                      Temperature
+                      <i
+                        [style.color]="getBorderColorForValue(temperature)"
+                        class="fa fa-thermometer"
+                        style="font-size: 20px"
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+                    <div
+                      style="
+                        display: flex;
+                        margin-top: 30px;
+                        justify-content: center;
+                      "
+                      [style.color]="getBorderColorForValue(temperature)"
+                    >
+                      <p style="font-size: 25px">{{ temperature }}</p>
+
+                      <p style="margin-top: 0px; margin-left: 5px">
+                        (<sup>0</sup>C)
+                      </p>
+                    </div>
+                    <!-- <p
+                    style="margin-top: 20px; font-size: 25px"
+                    [style]="{ color: getcolor(value) }"
+                  >
+                    {{ value }} (<sup>0</sup>C)
+                  </p> -->
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    text-align: center;
+                  "
+                >
+                  <div class="cardhealth1">
+                    <div style="margin-top: 5px">
+                      Humidity
+                      <i
+                        [style.color]="getBorderColorForValue(hunidity)"
+                        class="fa fa-tint"
+                        aria-hidden="true"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div
+                      style="
+                        display: flex;
+                        margin-top: 30px;
+                        justify-content: center;
+                      "
+                      [style.color]="getBorderColorForValue(hunidity)"
+                    >
+                      <p style="font-size: 25px">{{ hunidity }}</p>
+
+                      <p style="margin-top: 0px; margin-left: 5px">(g/m3)</p>
+                    </div>
+                    <!-- <p
+                    style="margin-top: 20px; font-size: 25px"
+                    [style]="{ color: getcolor(value) }"
+                  >
+                    {{ value }} (g/m3)
+                  </p> -->
+                  </div>
+                  <div class="cardhealth">
+                    <div style="margin-top: 5px">
+                      SPO2
+                      <i
+                        [style.color]="getBorderColorForValue(spo2)"
+                        class="fa fa-tint"
+                        aria-hidden="true"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div
+                      style="
+                        display: flex;
+                        margin-top: 30px;
+                        justify-content: center;
+                      "
+                      [style.color]="getBorderColorForValue(spo2)"
+                    >
+                      <p style="font-size: 25px">{{ spo2 }}</p>
+
+                      <p style="margin-top: 0px; margin-left: 5px">(%)</p>
+                    </div>
+                    <!--                   
+                  <p
+                    style="margin-top: 20px; font-size: 25px"
+                    [style]="{ color: getcolor(value) }"
+                  >
+                    {{ value }} (%)
+                  </p> -->
+                  </div>
+                </div>
+
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex">
+          <div
+           class="chartdiv"
+          >
+            <div
+              id="timeChart"
+              style="height: 100%; overflow-x: auto"
+              class="chart-container"
+            ></div>
+          </div>
+
+
+          <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            margin-top: 15px;
+            width: 26%;
+           
+          "
+        >
+          <div class="cardhealth11">
+            <div style="margin-top: 5px">
+              <i class="fa fa-male styleperson" aria-hidden="true" 
+              [style.color]=" getBorderColorForValue(person1)" ></i>
+              
+              <!-- <img src="../../../assets/svg//Group.svg" class="styleperson" [style.fill]="red"/> -->
+            </div>
+            <p style="text-align: center;">
+              Person 1
+            </p>
+          </div>
+          <div class="cardhealth11">
+            <div style="margin-top: 5px">
+              <i class="fa fa-male  styleperson" aria-hidden="true"   [style.color]=" getBorderColorForValue(person2)" ></i>
+              <!-- <img src="../../../assets/svg//Group.svg" class="styleperson"/> -->
+            </div>
+            <p style="text-align: center;">
+              Person 2
+            </p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="fixed-top mt-3"
+    *ngIf="showAlert"
+    style="width: fit-content; left: 45%"
+  >
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+      <!-- <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg> -->
+      <div>Upload Success</div>
+    </div>
+  </div>
+</div>
+
+<div class="spinnercontent" *ngIf="loader">
+  <div class="spinnerclass">
+    <mat-progress-spinner
+      value="60"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+  </div>
+</div>

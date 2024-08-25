@@ -1,0 +1,243 @@
+.timeline :hover {
+    cursor: pointer;
+}
+
+.fa_cross :hover {
+    cursor: pointer;
+}
+
+#popsch_disp {
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 4px 4px 4px #888888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #2e315f;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #171a31;
+    border-radius: 5px;
+}
+
+#main {
+    transition: margin-left 0.5s;
+}
+
+.modal-backdrop {
+    display: none;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav 
+    (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    .h-md-100 {
+        height: 90vh;
+    }
+}
+
+.btn-round {
+    border-radius: 30px;
+}
+
+.bg-indigo {
+    background: indigo;
+}
+
+.text-cyan {
+    color: #35bdff;
+}
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
+}
+
+.timeline {
+    border-left: 3px solid #727cf5;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    background: rgba(114, 124, 245, 0.09);
+    margin: 0 auto;
+    position: relative;
+    padding: 50px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    list-style: none;
+    width: 93%;
+    height: fit-content;
+}
+
+.timeline p {
+    margin: 2px;
+}
+
+@media (max-width: 767px) {
+    .timeline {
+        width: 95%;
+        padding: 25px;
+    }
+}
+
+.timeline .event {
+    border-bottom: 1px dashed #e8ebf1;
+    position: relative;
+    margin-left: -20px;
+}
+
+.timeline .event .card {
+    width: 180%;
+    height: auto;
+    margin-left: -20%;
+    height: 55px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border-color: #19296f;
+}
+
+@media (max-width: 767px) {
+    .timeline .event {
+        padding-top: 0px;
+        margin-left: -10px;
+    }
+
+    .timeline .event .card {
+        width: 100%;
+        margin-left: 0%;
+    }
+}
+
+.timeline .event:last-of-type {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+}
+
+.timeline .event:after {
+    position: absolute;
+    display: block;
+    top: 0;
+}
+
+.timeline .event:after {
+    -webkit-box-shadow: 0 0 0 3px #727cf5;
+    box-shadow: 0 0 0 3px #727cf5;
+    left: -35.8px;
+    background: #fff;
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+    content: "";
+    top: 20px;
+}
+
+@media (max-width: 767px) {
+    .timeline .event:after {
+        left: -21.8px;
+    }
+}
+
+
+.swal-but {
+    margin-left: auto;
+    background-color: #3085d6;
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+.swal-cross {
+    color: red;
+    font-weight: bolder;
+}
+
+.swal-cross:focus {
+    outline: none;
+}
+
+#pwd_res {
+    width: 90%;
+    padding: 50px 0;
+    border-radius: 5px;
+    border: none;
+    margin: auto;
+    padding-left: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    // background-image: linear-gradient(to right,#e9e6f0, #887aa7);
+    background-color: white;
+    color: black;
+}
+
+#currshow_user_input_error,
+#newshow_user_input_error,
+#cnfmshow_user_input_error {
+    text-align: left;
+    margin-left: 1px;
+    margin-bottom: 0px;
+    vertical-align: bottom;
+    align-self: flex-end;
+    display: none;
+    color: rgb(191 5 5);
+    font-size: small;
+    font-style: italic;
+}
+
+
+.stopbtnpiston:hover mat-icon {
+    color: indianred;
+}
+
+.start,
+.stop {
+    width: 100%;
+    font-size: 18px;
+    background-color: #343378;
+    border-radius: 4px;
+    border: 1px solid white;
+    color: white;
+    height: 30px;
+    margin: 2px;
+}
+
+
+.start:active,
+.stop:active {
+    box-shadow: #23206f 0 1px 4px inset;
+    transform: translateY(2px);
+}
+
+
+/* image-display.component.css */
+.status-rejected {
+    color: red;
+}
+
+.status-accepted {
+    color: green;
+}
+
+.status-na {
+    color: gray;
+}

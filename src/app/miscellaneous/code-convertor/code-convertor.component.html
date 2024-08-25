@@ -1,0 +1,158 @@
+<div style="height: 100%">
+  <div style="display: flex; justify-content:space-between; align-items:center; background:#ffffff">
+  <div
+    class="d-flex"
+    style="
+      background-color: #ffffff;
+      padding: 3px;
+      align-items: center;
+      display: flex;
+    "
+  >
+    <button
+      (click)="goback()"
+      title="Click to go back"
+      style="
+        border-color: transparent;
+        background-color: transparent;
+        color: #0f0c3d;
+      "
+    >
+      <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+    </button>
+
+    <!--Use Case Name-->
+    <div style="font-size: 21px; margin-left: 20px">
+      <b>Legacy Application Modernization </b>
+      
+    </div>
+  </div>
+  
+</div>
+  <div class="BodyMain">
+    
+    <div class="content">
+      <div class="contentFlex1">
+        <div class="boxFlex">
+          <div class="boxFlex1">
+            <div class="headerLabel">
+              Input
+            </div>
+            <div style="margin: 5px 0px; float:right">
+              <select class="selectStyle1" (change)="onSelectInputLanguge($event)" [(ngModel)]="inputLanguage" >
+                <option value="" >Select Language</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+                <option value="Dot Net"> Dot Net</option>
+                <option value="Cobol">Cobol</option>
+              </select>
+
+            </div>
+            <div class="codeContent">
+              <textarea class="textAreaInput" [(ngModel)]="inputText" (input)="inputTextChange($event)">
+
+              </textarea>
+
+            </div>
+            <div class="buttonContents">
+              <div>
+                <select class="selectStyle" (change)="onSelectLanguage($event)" [(ngModel)]="Languagewant">
+                  <option value="" > Select Language</option>
+                  <option value="Python">Python</option>
+                  <option value="Java">Java</option>
+                  <option value="C++">C++</option>
+                  <option value="Dot Net"> Dot Net</option>
+                  <option value="Cobol">Cobol</option>
+                </select>
+
+              </div>
+              <div style="gap:24px;display:flex">
+                <button class="BtStyle" (click)="OnReset()">
+                  Reset
+                </button>
+                <button class="BtStyle" (click)="coverter()">
+                  Convert
+                </button>
+
+              </div>
+            </div>
+          
+          </div>
+          <div class="boxFlex1">
+            <div class="headerLabel">
+              Output
+            </div>
+            <div class="codeContent1">
+              <textarea class="textAreaInput" [(ngModel)]="Output">
+
+              </textarea>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="contentFlex2">
+        <div class="boxFlex">
+          <div class="boxFlex1">
+            <div class="headerLabel">
+              Debugging
+            </div>
+          
+            <div style="height: 65%; margin-top:10px">
+              <textarea class="textareaRuncode" [(ngModel)]="Debugging"></textarea>
+            </div>
+            <div class="runcodeDiv">
+              <button class="RunCode" (click)="check()">Run Code</button>
+            </div>
+          
+          </div>
+          <div class="boxFlex1">
+            <div class="headerLabel">
+              Report
+            </div>
+            <div style="height: 65%; margin-top:10px">
+              <textarea class="textareaRuncode"  [(ngModel)]="Report"></textarea>
+            </div>
+            <div class="runcodeDiv">
+              <button class="downBtn"><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="#D9D9D9"
+              >
+                <path
+                  d="M168-88v-65h624v65H168Zm311.23-175.77L205.62-615.46h153.76V-872h240.47v256.54h153.77L479.23-263.77Zm0-106.38 139.92-179.54h-85.3V-807H425.38v257.31h-84.3l138.15 179.54ZM481-549.69Z"
+                />
+              </svg>Download Report</button>
+            </div>
+          
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- <iframe
+      #iframeElement
+      style="width: 100%; border: none"
+      frameBorder="0"
+      src="https://apps.powerapps.com/play/e/d6754913-89f5-e971-a712-5cf677f1c1d9/a/ae396799-fd96-4109-b92d-286962962a29?tenantId=3c8ea0e4-127c-4a02-ac65-58830e4ac608&hint=87e32a63-c22d-476e-bfb2-e72d2a8608a7&sourcetime=1699601511369&hidenavbar=true"
+    ></iframe> -->
+  </div>
+</div>
+
+<div class="spinnercontent" *ngIf="loader">
+  <div class="spinnerclass">
+   <div class="loader">
+
+   </div>
+  </div>
+
+</div>

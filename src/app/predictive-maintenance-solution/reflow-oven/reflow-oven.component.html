@@ -1,0 +1,274 @@
+<div class="d-flex" style="background-color: #ffffff; height: 35px;  align-items: center; font-size: 18px;">
+    <!-- Back Button -->
+
+    <div class = "stopbtnvision" >
+        <button (click)="goback()" title="Click to go back" 
+        style = "border-color: transparent; background-color: transparent; color:#0f0c3d;">
+            <mat-icon style="font-size: 30px;">keyboard_arrow_left</mat-icon>
+        </button>
+    </div>
+
+    <!-- <div class = "stopbtnvision" >
+        <button (click)="goback()" title="Click to go back" 
+        style = "border-color: transparent; background-color: transparent; color:#0f0c3d;">
+            <span style="font-size: 1.5rem; color: rgb(43, 43, 43); "><i class="fa fa-angle-left"></i></span>
+        </button>
+    </div> -->
+
+    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xxl-6" >
+        <!-- <div><b>Remaining Useful Life of Milling Cutter &nbsp;<span style="cursor:pointer;" (click)="info_pop()"><i class="fa fa-info-circle" aria-hidden="true"></i></span></b> -->
+            <div><b>Reflow Oven Health Profile</b>
+        </div>
+    </div>
+    
+    <div style="text-align: right; padding-top: 2px; margin-left: auto; padding-right: 10px; font-size: 15px;">
+        <div><i>Powered by</i> Applied Machine Learning Workbench</div>
+    </div>
+</div>
+
+
+
+<div class="d-flex"  style="margin-top: 8px;">
+
+    <div style="padding: 2px; width: 20%; margin-top: 35px;">
+        <figure><img src=".\assets\images\reflow2.png" width="100%" height="220px" style="margin:5px; border-radius: 10px;">
+            <figcaption style="margin-left: 70px; margin-top:2px; margin-bottom: 2px;"><b>Reflow Oven</b></figcaption>
+            <img src=".\assets\images\reflow3.png" width="100%" height="219px" style="margin:5px; border-radius: 10px;">
+        </figure>
+    </div>
+
+    <div style="width: 100%;">
+
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div style="font-weight: bold; color: #000; display: flex; flex-direction: row;
+                align-items: center; padding-left: 20px;">
+
+                <div style="padding-right: 10px;">Parameter :</div>
+                <div>
+                    <select (change)="dislay_vel_or_acc()" id="graph_value"
+                        style="text-align-last:center;height:30px; border-radius: 10px;
+                        background-color: #36a3eb41; border: 1px solid #36a2eb;">
+                        <option value="1">Slope</option>
+                        <option value="2" disabled>Flux</option>
+                        <option value="3" disabled>Zone Temperature</option>
+                        <option value="4" disabled>TAL</option>
+                    </select>
+                </div>
+            
+                <div style="padding-left: 50px; padding-right: 10px;">Feed Rate (mm/s) : </div>
+                <div>
+                    <select
+                        style="text-align-last:center ; height: 30px; border-radius: 10px; width:80px;
+                        background-color: #36a3eb41; border: 1px solid #36a2eb;">
+                        <option value="3" disabled>10</option>
+                        <option value="6" disabled>15</option>
+                        <option value="9">20</option>
+                        <option value="12" disabled>25</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div style="display: flex; justify-content: space-between; width: 30%;">
+                <div style="width: 75px;">
+                    <button class='start' (click)="millin()" id="btnstart">Start</button>
+                </div>
+            
+                <div style="width: 75px;">
+                    <button class='stop' (click)="Stop()" id="btnstop">Stop</button>
+                </div>  
+
+                <div style="width: 100px;">
+                    <button class='stop' (click)="disp()" style="width: min-content;opacity: 0.5;cursor:text;" disabled>Compare</button>
+                </div>  
+            </div>
+
+        </div>
+
+        
+        <div class="d-flex" style="margin-top: 5px; width: 100%;">
+
+            <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 60%;">
+
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap;
+                    justify-content: center; align-items: center; width: 100%; margin-bottom: 10px;">
+                    <div class="notif-q22-mil" style="width: 95%; height: 35px; font-weight: 600;">
+                        <div class="notif-q22-text-mil">Reflow Oven Health Profile Status</div>
+                    </div>
+                    <div class="notif-q22-mil" style="display: flex; flex-direction: row;height: 70px;">
+                        <!-- <div class="notif-q22-num-mil" [style.color]="cvar">{{rul1}} min</div>
+                        <div class="notif-q22-tex-milt">Flux <br>Rate</div> -->
+                        <div style="display: flex; flex-direction: column;text-align: center;">
+                            <div class="notif-q22-text-mil" style="font-size: 14px;margin-bottom: 5px;">Slope (T3-T2)</div>
+                            <div style="font-size: 26px;font-weight: bolder; margin-bottom: 5px;" [style.color]="cslope1" class="notranslate">{{slope1}}</div>
+                            <div class="notif-q22-text-mil"  style="font-style: italic;font-size: 10px;">Range (0.8 - 1.6)</div>
+                        </div>
+
+                        <div class="notif-q22-text-mil" style="border-left: 3px solid;height: 60px;"></div>
+
+                        <div style="display: flex; flex-direction: column;text-align: center;">
+                            <div class="notif-q22-text-mil" style="font-size: 14px;margin-bottom: 5px;">Slope (T4-T3)</div>
+                            <div style="font-size: 26px;font-weight: bolder; margin-bottom: 5px;" [style.color]="cslope2" class="notranslate">{{slope2}}</div>
+                            <div class="notif-q22-text-mil"  style="font-style: italic;font-size: 10px;">Range (0.8 - 1.6)</div>
+                        </div>
+
+                    </div>
+                    <div class="notif-q22-mil" style="height: 70px;">
+                    <div class="notif-q22-num-mil" [style.color]="cvar" class="notranslate" style="font-size: 24px; font-weight:500;">{{pr}} %</div>
+                        <div class="notif-q22-text-mil">Reflow Oven <br> Health Indicator</div>
+                    </div>
+                </div>
+
+                <div style="width: 95%;">
+                    <canvas id="probabilities" 
+                        style=" height:340px; width: 100%;border-radius: 10px;background-color: rgb(255, 255, 255); box-shadow: 4px 4px 4px rgb(201, 200, 200);">{{predictions}}
+                    </canvas>
+                </div>
+
+            </div>
+
+            <div style="display: flex; flex-direction: column; width: 40%; margin-top: 4px;">
+                <div >
+                    
+                    <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xxl-12"
+                        style="height:230px;border-radius: 10px;background-color: rgb(255, 255, 255);text-align:center; box-shadow: 4px 4px 4px rgb(201, 200, 200);">
+                        <b id ="oven_txt" style="font-size: 15px;">Reflow Oven Slope</b>
+                        <figure id ="oven_img"><img src=".\assets\img\reflow_graph2.png" width="100%" height="200px">
+                        </figure>
+                    </div>
+
+                    
+                </div>
+
+                <div style="margin-top: 11px;">
+                    <!-- <b style="font-size: 15px;" [style.display]='vel_graph'>Spindle Velocity (mm/s)</b> -->
+                    <!-- <b style="font-size: 15px;" [style.display]='acc_graph'>Job Acceleration (mm/s<sup>2</sup>)</b> -->
+                    <canvas id="S1_CommandVelocity"
+                        class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xxl-12"
+                        style="height:228px;border-radius: 10px;background-color: rgb(255, 255, 255); box-shadow: 4px 4px 4px rgb(201, 200, 200);">{{S1_CV1}}
+                    </canvas>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+<div
+    style="position:fixed; width:930px;margin-left:300px;height:480px;background-color:white;border:2px solid #2196f3 !important;opacity:1;z-index:10;filter:blur(0px)"
+    [style.display]="comparevar" [style.opacity]="opa">
+    <div style="background-color: #212445;">
+      <Label
+        style="font-size:20px;border:2px solid white;margin-left:10px;border-radius: 10px;width:200px;text-align: center; color:white">Comparison
+        Chart</Label>
+      <Label class="fa_refresh" style="font-size:30px;color:whitesmoke"><i class="fa fa-refresh" title="refresh"
+          style="color:whitesmoke;font-size:24px ; margin-left: 630px;" (click)="refresh()"></i> </Label>
+      <Label class="fa_cross" title="close" style="font-size:30px;margin-left:30px;color:rgb(255, 0, 0)" (click)="minim()"> <i
+          class="fa fa-times"></i></Label>
+      <br>
+    </div>
+    <br>
+    <Label style="margin-left: 40px">Select Parameter</Label>
+    <select name="comparelist1" id="comparelis1" style="margin-left:20px" #selectedCategory1
+      (change)='para1(selectedCategory1.value)'>
+      <option value="M1_CURRENT_FEEDRATE">M1 CURRENT FEEDRATE</option>
+      <option value="S1_ActualAcceleration">S1 Actual Acceleration</option>
+      <option value="S1_ActualPosition">S1 Actual Position
+      </option>
+      <option value="S1_ActualVelocity">S1 Actual Velocity</option>
+      <option value="S1_CommandPosition">S1 CommandPosition</option>
+      <option value="S1_CommandVelocity">S1 Command Velocity</option>
+      <option value="S1_CurrentFeedback">S1 Current Feedback</option>
+      <option value="S1_DCBusVoltage">S1 DCBus Voltage</option>
+      <option value="Y1_DCBusVoltage">Y1 DCBus Voltage</option>
+      <option value="S1_OutputCurrent">S1 Output Current</option>
+      <option value="Y1_OutputCurrent">Y1 Output Current</option>
+      <option value="S1_OutputPower">S1 Output Power</option>
+      <option value="Y1_OutputVoltage">Y1 Output Voltage</option>
+      <option value="S1_OutputVoltage">S1 Output Voltage</option>
+      <option value="Z1_ActualAcceleration">Z1 Actual Acceleration</option>
+      <option value="X1_ActualAcceleration">X1 Actual Acceleration</option>
+      <option value="Z1_ActualPosition">Z1 Actual Position</option>
+      <option value="X1_ActualVelocity">X1 Actual Velocity</option>
+      <option value="Z1_ActualVelocity">Z1 Actual Velocity</option>
+      <option value="X1_CurrentFeedback">X1 Current Feedback</option>
+      <option value="Z1_CommandAcceleration">Z1 Command Acceleration</option>
+      <option value="X1_DCBusVoltage">X1 DCBus Voltage</option>
+      <option value="Z1_CommandPosition">Z1 Command Position</option>
+      <option value="X1_OutputCurrent">X1 Output Current</option>
+      <option value="Z1_CommandVelocity">Z1 Command Velocity</option>
+      <option value="X1_OutputPower">X1 Output Power</option>
+      <option value="probabilities">Probability</option>
+      <option value="X1_OutputVoltage">X1 Output Voltage</option>
+      <option value="Y1_ActualAcceleration">Y1 Actual Acceleration</option>
+      <option value="Y1_ActualVelocity">Y1 Actual Velocity</option>
+      <option value="Y1_CurrentFeedback">Y1 Current Feedback</option>
+  
+    </select>
+    <Label style="margin-left:100px"> Select Parameter</Label>
+    <label>{{value1}}</label>
+    <select name="comparelist2" id="comparelis2" style="margin-left:20px" #selectedCategory
+      (change)='para2(selectedCategory.value)'>
+      <option value="M1_CURRENT_FEEDRATE">M1 CURRENT FEEDRATE</option>
+      <option value="S1_ActualAcceleration">S1 Actual Acceleration</option>
+      <option value="S1_ActualPosition">S1 Actual Position
+      </option>
+      <option value="S1_ActualVelocity">S1 Actual Velocity</option>
+      <option value="S1_CommandPosition">S1 CommandPosition</option>
+      <option value="S1_CommandVelocity">S1 Command Velocity</option>
+      <option value="S1_CurrentFeedback">S1 Current Feedback</option>
+      <option value="S1_DCBusVoltage">S1 DCBus Voltage</option>
+      <option value="Y1_DCBusVoltage">Y1 DCBus Voltage</option>
+      <option value="S1_OutputCurrent">S1 Output Current</option>
+      <option value="Y1_OutputCurrent">Y1 Output Current</option>
+      <option value="S1_OutputPower">S1 Output Power</option>
+      <option value="Y1_OutputVoltage">Y1 Output Voltage</option>
+      <option value="S1_OutputVoltage">S1 Output Voltage</option>
+      <option value="Z1_ActualAcceleration">Z1 Actual Acceleration</option>
+      <option value="X1_ActualAcceleration">X1 Actual Acceleration</option>
+      <option value="Z1_ActualPosition">Z1 Actual Position</option>
+      <option value="X1_ActualVelocity">X1 Actual Velocity</option>
+      <option value="Z1_ActualVelocity">Z1 Actual Velocity</option>
+      <option value="X1_CurrentFeedback">X1 Current Feedback</option>
+      <option value="Z1_CommandAcceleration">Z1 Command Acceleration</option>
+      <option value="X1_DCBusVoltage">X1 DCBus Voltage</option>
+      <option value="Z1_CommandPosition">Z1 Command Position</option>
+      <option value="X1_OutputCurrent">X1 Output Current</option>
+      <option value="Z1_CommandVelocity">Z1 Command Velocity</option>
+      <option value="X1_OutputPower">X1 Output Power</option>
+      <option value="probabilities">Probability</option>
+      <option value="X1_OutputVoltage">X1 Output Voltage</option>
+      <option value="Y1_ActualAcceleration">Y1 Actual Acceleration</option>
+      <option value="Y1_ActualVelocity">Y1 Actual Velocity</option>
+      <option value="Y1_CurrentFeedback">Y1 Current Feedback</option>
+  
+  
+    </select>
+    <hr style="margin-top:-5px">
+    <table>
+      <tr>
+  
+        <td><canvas id="Para1id"
+            style="position:relative;width:400px; height:350px ;overflow-x:auto;margin-left:50px;margin-top:-15px;box-shadow: 4px 4px 4px rgb(201, 200, 200); border-radius: 10px;">{{Para1}}
+          </canvas>
+        </td>
+        <td>
+          <canvas id="Para2id"
+            style="position:relative;width:400px; height:350px ;overflow:auto;margin-left:40px;margin-top:-15px;box-shadow: 4px 4px 4px rgb(201, 200, 200); border-radius: 10px;">{{Para2}}
+          </canvas>
+        </td>
+  
+      </tr>
+    </table>
+  </div>
+  

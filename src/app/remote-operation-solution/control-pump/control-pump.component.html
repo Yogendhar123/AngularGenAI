@@ -1,0 +1,348 @@
+<div>
+  <div
+    class="d-flex"
+    style="background-color: #ffffff; padding: 5px; align-items: center"
+  >
+    <!-- Back Button -->
+    <div class="stopbtnpiston">
+      <button
+        (click)="goback()"
+        title="Click to go back"
+        style="
+          border-color: transparent;
+          background-color: transparent;
+          color: #0f0c3d;
+        "
+      >
+        <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+      </button>
+    </div>
+
+    <!--Use Case Name-->
+    <div class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xxl-5">
+      <div style="font-size: 21px">
+        <b
+          >Remote On/Off and speed control of Pump​ &nbsp;<span
+            style="font-size: 21px; cursor: pointer"
+            (click)="info_pop()"
+            ><i class="fa fa-info-circle" aria-hidden="true"></i></span
+        ></b>
+      </div>
+    </div>
+
+    <div
+      class="col-2 col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xxl-2"
+      style="margin-left: 5px; text-align: right"
+    >
+      <b class="sig_ratio" style="font-size: 19px">Vibration Noise: </b>
+    </div>
+    <div
+      class="col-2 col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xxl-2"
+      style="padding-left: 0px; padding-right: 0px"
+    >
+      <div
+        class="progress"
+        style="width: 100%; height: 30px; box-shadow: 4px 4px 4px #9c8888"
+      >
+        <div
+          [style.width]="warn_width"
+          style="height: 30px; position: absolute; background: red; left: 50%"
+          title="Warning"
+        ></div>
+        <div
+          class="progress-bar progress-bar-striped progress-bar-animated"
+          role="progressbar"
+          [style.width]="prog_sigr_str"
+          [style.background-color]="prog_bg"
+          aria-valuenow="80"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+
+    <div
+      class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1"
+      style="font-size: 19px; white-space: nowrap"
+    >
+      <a> <b>Radar :</b> </a>
+      <a
+        style="
+          margin-left: 2px;
+          padding-left: 15px;
+          padding-right: 15px;
+          background-color: #b8b8b852;
+          border: 1px solid #414141;
+          border-radius: 7px;
+        "
+        >{{ rpm1 }} rpm</a
+      >
+    </div>
+
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1"></div>
+
+    <div
+      class="col-0 col-md-0 col-sm-0 col-lg-0 col-xl-0 col-xxl-0"
+      style="white-space: nowrap; padding-left: 10px"
+    >
+      <button
+        class="stop"
+        (click)="select_real_data()"
+        title="Fetching {{ real_reserve }} Data now - Click to Get {{
+          realresevetoggle
+        }} Data"
+        style="
+          font-size: 18px;
+          background-color: #0f0c3d;
+          border-radius: 4px;
+          width: 35px;
+          height: 30px;
+          border: 1px solid white;
+          color: white;
+        "
+      >
+        <i [attr.class]="icon_rr" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- main Window for Water Pump -->
+  <div
+    style="
+      margin: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    "
+  >
+    <!-- Pump plus 2 radar images -->
+    <div
+      style="
+        height: 36vh;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px rgb(201, 200, 200);
+        background-color: white;
+        width: 38%;
+        margin: 5px;
+      "
+    >
+      <div style="display: flex; justify-content: space-evenly; height: 95%">
+        <!-- Water Pump Motor Image -->
+        <figure
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          "
+        >
+          <img
+            src=".\assets\img\radar2.png"
+            height="80"
+            width="80"
+            style="margin-left: 20px; z-index: 1"
+          />
+          <figcaption>
+            <h5>
+              <b><a style="font-size: 14px">Front Radar</a></b>
+            </h5>
+          </figcaption>
+        </figure>
+
+        <figure
+          style="
+            padding-top: 2%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <img
+            [src]="wp_img"
+            height="130"
+            width="160"
+            style="margin-left: 20px"
+          />
+          <figcaption>
+            <h5 style="font-size: 18px">
+              <b><a>Pump</a></b>
+            </h5>
+          </figcaption>
+        </figure>
+
+        <figure
+          style="
+            padding-top: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          "
+        >
+          <img src=".\assets\img\radar1.png" height="80" width="80" />
+          <figcaption>
+            <h5>
+              <b
+                ><a style="font-size: 14px; padding-left: 30px"
+                  >Side Radar</a
+                ></b
+              >
+            </h5>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Dial Graphs for Water Pump (POF and Load)  -->
+    <div
+      style="
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px rgb(201, 200, 200);
+        width: 60%;
+        margin: 5px;
+      "
+    >
+      <div
+        class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xxl-5"
+        style="height: 35vh; padding: 5px; text-align: center"
+      >
+        <div class="graphs_water">
+          <canvas
+            id="pof_graph_water"
+            style="padding-top: 4px; height: 188px; width: 300px"
+            >{{ pof_dial_water }}</canvas
+          >
+        </div>
+        <div class="graph" [style.color]="warning_color">
+          <b>{{ pof }}%</b>
+        </div>
+        <!-- <div class="graph_name" style="font-size: 18px;"><b>Impeller Rotation Efficiency (%)</b></div> -->
+      </div>
+
+      <div
+        class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xxl-5"
+        style="height: 35vh; text-align: center"
+      >
+        <div class="graphs_water">
+          <canvas
+            id="rul_graph_water"
+            style="
+              margin-top: 5px;
+              padding-top: 4px;
+              height: 190px;
+              width: 300px;
+            "
+            >{{ rul_dial_water }}
+          </canvas>
+        </div>
+        <div class="graph" [style.color]="warning_color2">
+          <b>{{ load_val }}</b>
+        </div>
+        <!-- <div class ="graph_name" style="font-size: 18px;"><b>Load (Current Drawn) (A)</b></div> -->
+      </div>
+      <div
+        class="col-2 col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xxl-2"
+        style="padding-left: 0px; padding-right: 0px; height: 35vh"
+      >
+        <b [style.display]="graph_index">
+          <div
+            style="
+              font-size: 15px;
+              margin-top: 31px;
+              padding-left: 0px;
+              color: #ffcd56;
+              margin-left: -33px;
+            "
+          >
+            Low: < 4.65A
+          </div>
+          <br />
+          <div
+            style="
+              font-size: 15px;
+              padding-left: 0px;
+              color: #4bc0c0;
+              white-space: nowrap;
+              margin-left: -33px;
+            "
+          >
+            Normal: 4.65A-4.69A
+          </div>
+          <br />
+          <div
+            style="
+              font-size: 15px;
+              padding-left: 0px;
+              color: #ff6384;
+              margin-left: -33px;
+            "
+          >
+            High > 4.69A
+          </div>
+        </b>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lines Graphs -->
+  <div
+    style="
+      margin: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    "
+  >
+    <div
+      style="
+        width: 20%;
+        height: 35vh;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px rgb(201, 200, 200);
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      "
+    >
+      <div class="jumbotron" style="background-color: #ffffff; height: 30px">
+        <div class="df-switch">
+          <button
+            type="button"
+            class="btn btn-lg btn-toggle"
+            data-toggle="button"
+            aria-pressed="false"
+            (click)="tog_but()"
+          >
+            <div class="inner-handle"></div>
+            <div class="handle"></div>
+          </button>
+        </div>
+      </div>
+      <h5 style="font-size: 18px"><b>Switch</b></h5>
+    </div>
+
+    <!-- <div style = "width: 20%; height: 35vh; border-radius: 10px; box-shadow: 4px 4px 4px rgb(201, 200, 200); 
+          background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly;" >
+          <ngx-slider [(value)]="value" [options]="options" style="color:#bbb;height: 180px; "></ngx-slider>
+          <h5 style="font-size: 18px;text-align: center;"><b>RPM Slider</b></h5>
+        </div> -->
+
+    <div
+      style="
+        width: 77%;
+        height: 35vh;
+        border-radius: 10px;
+        box-shadow: 4px 4px rgb(201, 200, 200);
+        background-color: white;
+      "
+    >
+      <canvas id="rpm_graph">{{ rpm_dial }} </canvas>
+    </div>
+  </div>
+</div>

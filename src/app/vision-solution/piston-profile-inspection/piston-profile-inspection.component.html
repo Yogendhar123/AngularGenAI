@@ -1,0 +1,541 @@
+<!--Main Window for Piston Profile Inspection-->
+<div class="d-flex" style="background-color: #fff; align-items: center">
+  <!-- Back Button -->
+  <div class="stopbtnpiston">
+    <button
+      (click)="goback()"
+      title="Click to go back"
+      style="
+        border-color: transparent;
+        background-color: transparent;
+        color: #0f0c3d;
+      "
+    >
+      <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
+
+  <!--Use Case Name-->
+  <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xxl-6">
+    <div style="font-size: 21px">
+      <b
+        >Piston Profile Inspection &nbsp;
+        <span style="font-size: 22px; cursor: pointer" (click)="info_pop()"
+          ><i class="fa fa-info-circle" aria-hidden="true"></i></span
+      ></b>
+    </div>
+  </div>
+
+  <!--Search Bar-->
+  <div
+    class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1"
+    style="
+      padding-top: 5px;
+      font-size: 17px;
+      padding-left: 0px;
+      padding-right: 0px;
+    "
+  >
+    Enter Serial #
+  </div>
+  <div
+    class="col-2 col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xxl-2"
+    style="margin-right: 50px; padding-left: 0px; padding-right: 0px"
+  >
+    <div class="input-group rounded" style="height: 35px">
+      <input
+        type="search"
+        class="form-control rounded"
+        (focusin)="sch_box_focus()"
+        (focusout)="sch_box_nfocus()"
+        placeholder="PI_"
+        aria-label="Search"
+        aria-describedby="search-addon"
+        style="height: 35px"
+        id="sch_label"
+      />
+      <span class="input-group-text border-0">
+        <i
+          class="fa fa-search"
+          data-toggle="modal"
+          id="popsch_disp"
+          data-target="#popupModal"
+          (click)="openpopup()"
+        ></i>
+      </span>
+
+      <div
+        class="modal fade"
+        id="popupModal"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog"
+          id="popupSearchdlg"
+          style="
+            max-width: 700px;
+            margin: 2rem;
+            margin-top: 30%;
+            margin-left: 30%;
+          "
+          [style.display]="pop_disp"
+        >
+          <div class="modal-content">
+            <div
+              class="modal-header"
+              style="
+                background-color: #212445;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                color: #ffffff;
+              "
+            >
+              <h3
+                class="modal-title"
+                id="popupTitle"
+                style="text-align: center"
+              >
+                <div class="d-md-flex">
+                  <div class="col-md-4" style="font-size: 20px">
+                    Serial # <a id="sch_serial">{{ sch_serial }}</a>
+                  </div>
+                  <div class="col-md-5" style="font-size: 20px">
+                    Observation: <a id="sch_defect">{{ sch_defect }}</a>
+                  </div>
+                  <div class="col-md-5" style="font-size: 20px">
+                    Action:
+                    <a id="sch_acc" [style.color]="sch_acc_color">{{
+                      sch_acc
+                    }}</a>
+                  </div>
+                </div>
+              </h3>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                style="color: red"
+              >
+                &times;
+              </button>
+            </div>
+
+            <div class="modal-body" id="sch_body">
+              <!--Piston Images for Detection-->
+              <div class="d-md-flex" style="background-color: #ffffff">
+                <!--Figure 1-->
+                <figure style="margin: auto">
+                  <img [src]="cam1p" alt="Piston 1" width="150" id="sch_p1" />
+                  <figcaption style="text-align: center" id="sch_p1_cap">
+                    <i
+                      class="fa fa-camera"
+                      aria-hidden="true"
+                      style="
+                        text-align: center;
+                        color: black;
+                        margin-right: 2px;
+                      "
+                    ></i>
+                    Top View
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+    <button class="start" (click)="startPiston()" id="btnstart">Start</button>
+  </div>
+
+  <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+    <div style="display: flex; gap: 12px">
+      <button class="stop" (click)="stopApiCalls()" id="btnstop">Stop</button>
+      <button class="stop" (click)="clearImages()" id="btnstop">Clear</button>
+    </div>
+  </div>
+</div>
+
+<!--User Windows-->
+<div class="d-md-flex">
+  <!--Piston Image and Timeline Window-->
+  <div class="col-md-2" style="margin: 10px 0px 0px 0px">
+    <!--Normal Piston Caras Images-->
+    <div
+      class="d-md-flex"
+      style="
+        background-color: #ffffff;
+        margin-bottom: 10px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px #888888;
+      "
+    >
+      <figure style="margin: auto">
+        <div
+          id="carouselExampleSlidesOnly"
+          class="carousel slide"
+          data-ride="carousel"
+        >
+          <div class="carousel-inner" width="90" height="95">
+            <div class="carousel-item active">
+              <img
+                src=".\assets\img\nm_1.png"
+                alt="Normal Piston_First slide"
+                width="90"
+                height="95"
+              />
+              <figcaption style="text-align: center; font-size: 15px">
+                Normal Piston
+              </figcaption>
+            </div>
+            <div class="carousel-item">
+              <img
+                src=".\assets\img\nm_6.png"
+                alt="Greasy Piston_Second slide"
+                width="90"
+                height="85"
+                style="margin-bottom: 3px; margin-top: 7px"
+              />
+              <figcaption style="text-align: center; font-size: 15px">
+                Greasy Piston
+              </figcaption>
+            </div>
+            <div class="carousel-item">
+              <img
+                src=".\assets\img\nm_5.png"
+                alt="Damaged Piston_Third slide"
+                width="90"
+                height="95"
+              />
+              <figcaption style="text-align: center; font-size: 15px">
+                Damaged Piston
+              </figcaption>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <!--Timeline-->
+    <div
+      class="d-md-flex"
+      style="
+        background-color: #ffffff;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 4px 4px 4px #888888;
+      "
+    >
+      <span style="font-size: 18px; margin-left: 10px">Timeline</span>
+    </div>
+    <div
+      class="d-md-flex"
+      style="
+        background-color: #ffffff;
+        height: 370px;
+        overflow-y: scroll;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 4px 4px 4px #888888;
+      "
+    >
+      <!-- <ul class="timeline" id="tmline" (click)="timeline_click()"></ul> -->
+      <div class="image-list" style="width: 100%; margin: 15px; cursor:pointer">
+        <div>
+          <div
+            *ngFor="let img of latestResponse; let i = index"
+            (click)="selectImage(i)"
+          >
+            <div>Image {{ i + 1 }}</div>
+            <hr />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="popupSearch1"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog"
+          id="popupSearchdlg1"
+          style="
+            max-width: 700px;
+            margin: 2rem;
+            margin-top: 30%;
+            margin-left: 30%;
+          "
+        >
+          <div class="modal-content">
+            <div
+              class="modal-header"
+              style="
+                background-color: #212445;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                color: #ffffff;
+              "
+            >
+              <h5
+                class="modal-title"
+                id="popupTitle1"
+                style="text-align: center"
+              >
+                <div class="d-md-flex" style="font-size: 20px">
+                  <div class="col-md-4">Serial # <a id="sch_serial1"></a></div>
+                  <div class="col-md-5">
+                    Observation: <a id="sch_defect1"></a>
+                  </div>
+                  <div class="col-md-5">Action: <a id="sch_acc1"></a></div>
+                </div>
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                style="color: red"
+              >
+                &times;
+              </button>
+            </div>
+
+            <div class="modal-body" id="sch_body1">
+              <!--Piston Images for Detection-->
+              <div class="d-md-flex" style="background-color: #ffffff">
+                <!--Figure 1-->
+                <figure style="margin: auto">
+                  <img src="" alt="Piston 1" width="150" id="sch1_p1" />
+                  <figcaption style="text-align: center" id="sch1_p1_cap">
+                    <i
+                      class="fa fa-camera"
+                      aria-hidden="true"
+                      style="
+                        text-align: center;
+                        color: black;
+                        margin-right: 2px;
+                      "
+                    ></i>
+                    Top View
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Piston Images and graphs Window-->
+  <div class="col-md-10" style="margin-top: 5px">
+    <!-- <div class="d-md-flex"
+            style="text-align: center; margin-top:5px; white-space: nowrap;
+          background-image: linear-gradient(to right,#7555B8, #62479B, #45428D, #23206F, #1a166b);border-top-left-radius: 10px;border-top-right-radius:10px; box-shadow:4px 4px 4px #888888;">
+        </div> -->
+
+    <!--Piston Images for Detection-->
+    <div
+      class="d-md-flex"
+      style="
+        margin-top: 5px;
+        font-size: 20px;
+        background-color: white;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        box-shadow: 4px 4px 4px #888888;
+      "
+    >
+      <!--Figure 3-->
+      <div
+        class="d-flex"
+        style="
+          margin: auto;
+          margin-top: 20px;
+          font-size: 18px;
+          flex-direction: column;
+          width: 300px;
+          border-radius: 10px;
+          box-shadow: rgb(45 35 66 / 40%) 0 2px 4px,
+            rgb(45 35 66 / 30%) 0 7px 13px -3px;
+        "
+      >
+        <div style="text-align: center; font-weight: 400; margin: 5px">
+          Serial #{{ imageIndices[2] + 1 }}
+        </div>
+        <figure
+          style="
+            background-color: #c7c7c7;
+            display: flex;
+            justify-content: center;
+            height: 225px;
+          "
+          class="image-container"
+        >
+          <img
+            [src]="getImageUrl(imageIndices[2])"
+            alt="Image 3"
+            style="width: 100%; height: 100%"
+          />
+
+          <!-- <img [src]="currentImage" alt="Greasy Image" style="width: 100%; height: 100%" /> -->
+        </figure>
+        <div
+          style="
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+            padding-top: 0%;
+            margin-top: -4%;
+          "
+        >
+          Observation : {{ getPredClass(imageIndices[2]) | json }}
+        </div>
+        <div style="font-weight: 600; font-size: 15px; text-align: center">
+          Action :
+
+          <span [ngStyle]="{'color': getStatusColor(getStatus(latestResponse[imageIndices[2]]?.predclass))}">          {{ getStatus(latestResponse[imageIndices[2]]?.predclass) || "NA" }}</span>
+        </div>
+      </div>
+
+      <!--Figure 2-->
+      <div
+        class="d-flex"
+        style="
+          margin: auto;
+          margin-top: 20px;
+          font-size: 18px;
+          flex-direction: column;
+          width: 300px;
+          border-radius: 10px;
+          box-shadow: rgb(45 35 66 / 40%) 0 2px 4px,
+            rgb(45 35 66 / 30%) 0 7px 13px -3px;
+        "
+      >
+        <div style="text-align: center; font-weight: 400; margin: 5px">
+          Serial #{{ imageIndices[1] + 1 }}
+        </div>
+        <figure
+          style="
+            background-color: #c7c7c7;
+            display: flex;
+            justify-content: center;
+            height: 225px;
+          "
+          class="image-container"
+        >
+          <img
+            [src]="getImageUrl(imageIndices[1])"
+            alt="Image 2"
+            style="width: 100%; height: 100%"
+          />
+
+          <!-- <img [src]="currentImage" alt="Greasy Greasy Image"  style="width: 100%; height:100%"/> -->
+        </figure>
+        <div
+          style="
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+            padding-top: 0%;
+            margin-top: -4%;
+          "
+        >
+          Observation : {{ getPredClass(imageIndices[1]) | json }}
+        </div>
+        <div style="font-weight: 600; font-size: 15px; text-align: center">
+          Action :
+
+          <span [ngStyle]="{'color': getStatusColor(getStatus(latestResponse[imageIndices[1]]?.predclass))}">          {{ getStatus(latestResponse[imageIndices[1]]?.predclass) || "NA" }}</span>
+        </div>
+      </div>
+
+      <!--Figure 1-->
+      <div
+        class="d-flex"
+        style="
+          margin: auto;
+          margin-top: 20px;
+          font-size: 18px;
+          flex-direction: column;
+          width: 300px;
+          border-radius: 10px;
+          box-shadow: rgb(45 35 66 / 40%) 0 2px 4px,
+            rgb(45 35 66 / 30%) 0 7px 13px -3px;
+        "
+      >
+        <div style="text-align: center; font-weight: 400; margin: 5px">
+          Serial #{{ imageIndices[0] + 1 }}
+        </div>
+        <figure
+          style="background-color: #c7c7c7; display: flex; height: 225px"
+          class="image-container"
+        >
+          <img
+            [src]="getImageUrl(imageIndices[0])"
+            alt="Image 1"
+            style="width: 100%; height: 100%"
+          />
+
+          <!-- <img [src]="currentImage" alt="Greasy Greasy Greasy Image" style="width: 100%; height:100%"/> -->
+        </figure>
+        <div
+          style="
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+            padding-top: 0%;
+            margin-top: -4%;
+          "
+        >
+          Observation : {{ getPredClass(imageIndices[0]) | json }}
+        </div>
+        <div style="font-weight: 600; font-size: 15px; text-align: center">
+          Action :
+
+          <span [ngStyle]="{'color': getStatusColor(getStatus(latestResponse[imageIndices[0]]?.predclass))}">          {{ getStatus(latestResponse[imageIndices[0]]?.predclass) || "NA" }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!--Details and Status of the Piston Profile-->
+
+    <div
+      class="d-md-flex"
+      style="
+        background-color: #ffffff;
+        padding-top: 20px;
+        height: 194px;
+        box-shadow: 4px 4px 4px #888888;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      "
+    >
+      <div
+        class="chart-container"
+        style="height: 20vh; width: 20vw; margin: auto"
+      >
+        <canvas #pieCanvas id="piecanvas" style="margin-top: -10px"></canvas>
+      </div>
+      <div
+        class="chart-container"
+        style="height: 20vh; width: 25vw; margin: auto"
+      >
+        <canvas #barCanvas id="barcanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Start, Stop, and Clear Buttons -->
+<!-- <button (click)="startApiCalls()">Start</button>
+<button (click)="stopApiCalls()">Stop</button>
+<button (click)="clearImages()">Clear</button> -->

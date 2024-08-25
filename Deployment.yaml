@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sandbox-ui-deploy
+spec:
+  selector:
+    matchLabels:
+      app: sandbox-ui-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sandbox-ui-service
+    spec:
+      containers:
+        - name: sandbox-ui-service
+          image: smartfactoryacrdev.azurecr.io/sandbox/sandbox-ui:v3
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sandbox-ui-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: sandbox-ui-service
+  type: ClusterIP

@@ -1,0 +1,167 @@
+<div class="bodyMain">
+  <div class="cad-main">
+    <div class="cad-main1">
+      <div class="img-card">
+        <div style="text-align: center">
+          <div
+            style="
+              background: #212445;
+              height: 44px;
+              border-radius: 8px;
+              width: margin;
+            "
+          >
+            <div style="padding-top: 10px; color: white; font-size: 20px">
+              <p style="">
+                <input type="file" (change)="onFileSelected($event)" />
+              </p>
+            </div>
+          </div>
+          <div style="margin-top: 20px">
+            <img class="imgHeightstyle" [src]="url" *ngIf="url" />
+            <div *ngIf="currentImageUrl">
+              <img
+                [src]="currentImageUrl"
+                alt="Selected Image"
+                style="width: 100%; height: 450px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Analyse-button" (click)="onUpload()">
+        <button class="buttonstyle">Analyse</button>
+      </div>
+    </div>
+    <div class="cad-main2">
+      <div class="img-card2" style="width: 100%">
+        <div class="input-field">
+          <div class="input-field-chind1">
+            <label style="font-size: 20px" for="questionInput"
+              >Question</label
+            >
+            <div style="width: 100%; height: 65%">
+              <textarea
+                style="
+                  width: 100%;
+                  border: none;
+                  height: 90%;
+                  padding: 10px;
+                  font-size: 16px;
+                  outline: none;
+
+                  border: 1px solid rgba(208, 213, 221, 1);
+                  color: #212445;
+                  border-radius: 10px;
+                "
+                type="text"
+                id="questionInput"
+                [(ngModel)]="userQuestion"
+                (input)="cleartext()"
+              ></textarea>
+              <div style="text-align: center; margin-right: 10px">
+                <button class="buttonstyle1" (click)="submitQuestion()">
+                  Ask
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            *ngIf="showAlertq"
+            class="alert fixed-top"
+            style="width: fit-content; left: 600px; font-size: 20px"
+            [ngClass]="'alert-' + alertColor + ' text-center mt-3'"
+          >
+            {{ alertMessage }}
+          </div>
+
+          <div class="input-field-chind2">
+            <label for="" style="font-size: 20px">Answer</label>
+            <div class="answer">
+              <div *ngIf="Ansloader" class="Ansloader">
+                <mat-progress-spinner
+                  [diameter]="40"
+                  mode="indeterminate"
+                ></mat-progress-spinner>
+              </div>
+              <div *ngIf="answer" style="max-height: 280px">
+                {{ answer }}
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              margin-top: 6px;
+              justify-content: space-around;
+            "
+            class=""
+          >
+            <div>
+              <button class="buttonstyle" (click)="onReset()">
+                Reset
+              </button>
+            </div>
+            <div style="">
+              <button class="buttonstyle" (click)="onClear()">
+                Clear
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cad-main3">
+      <div class="Img-url">
+        <div
+          *ngFor="let image of imageUrls"
+          (click)="displayImage(image.url, image.rawUrl)"
+          style="cursor: pointer; font-size: 20px"
+        >
+          {{ image.name }}
+          <hr />
+        </div>
+        <div class="ErrorNode" *ngIf="show">
+          Once Pdf is Analysed You will see Images
+        </div>
+      </div>
+      <div class="question_list">
+        <div style="margin-bottom: 20px">
+          <label class="questionsLabel">Frequently Asked Questions</label>
+          <hr />
+        </div>
+        <div
+          *ngFor="let question of questions; let i = index"
+          style="font-size: 16px"
+        >
+          <div (click)="selectQuestion(question)">
+            {{ question }}
+          </div>
+          <hr *ngIf="i < questions.length - 1" />
+        </div>
+      </div>
+
+      <div
+        style="margin-top: 0px; display: flex; justify-content: center"
+      >
+        <div class="buttonstyle" style="display: flex; gap: 12px">
+          <div (click)="getExcelUrl()">Download BOM</div>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20px"
+              viewBox="0 -960 960 960"
+              width="20px"
+              fill="#D9D9D9"
+            >
+              <path
+                d="M168-88v-65h624v65H168Zm311.23-175.77L205.62-615.46h153.76V-872h240.47v256.54h153.77L479.23-263.77Zm0-106.38 139.92-179.54h-85.3V-807H425.38v257.31h-84.3l138.15 179.54ZM481-549.69Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="cad-mainPM">
+    <div class="cad-mainPM1">
+      <div class="img-card">
+        <div style="text-align: center">
+          <div
+            style="
+              background: #212445;
+              height: 44px;
+              border-radius: 8px;
+              width: margin;
+            "
+          >
+            <div style="padding-top: 10px; color: white; font-size: 20px">
+              <p style="">
+                <input type="file" (change)="onFileSelected($event)" />
+              </p>
+            </div>
+          </div>
+          <div style="margin-top: 20px">
+            <img class="imgHeightstyle" [src]="url1" *ngIf="url1" />
+          </div>
+        </div>
+      </div>
+      <div class="Analyse-button" (click)="onUpload()">
+        <button class="buttonstyle">Analyse Image</button>
+      </div>
+    </div>
+    <div class="cad-mainPM2">
+      <div class="img-card2" style="width: 100%">
+        <div class="input-field">
+          <div class="input-field-chind1">
+            <label style="font-size: 20px" for="questionInput"
+              >Question</label
+            >
+            <div style="width: 100%; height: 65%">
+              <textarea
+                style="
+                  width: 100%;
+                  border: none;
+                  height: 90%;
+                  padding: 10px;
+                  font-size: 16px;
+                  outline: none;
+                  background-color: #c9c9c9;
+                  color: #212445;
+                  border-radius: 10px;
+                "
+                type="text"
+                id="questionInput"
+                [(ngModel)]="userQuestion"
+                (input)="cleartext()"
+              ></textarea>
+              <div style="text-align: center; margin-right: 10px">
+                <button class="buttonstyle1" (click)="submitQuestion()">
+                  Ask
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            *ngIf="showAlertq"
+            class="alert fixed-top"
+            style="width: fit-content; left: 600px; font-size: 20px"
+            [ngClass]="'alert-' + alertColor + ' text-center mt-3'"
+          >
+            {{ alertMessage }}
+          </div>
+
+          <div class="input-field-chind2">
+            <label for="" style="font-size: 20px">Answer</label>
+            <div class="answer">
+              <div *ngIf="Ansloader" class="Ansloader">
+                <mat-progress-spinner
+                  [diameter]="40"
+                  mode="indeterminate"
+                ></mat-progress-spinner>
+              </div>
+              <div *ngIf="answer" style="max-height: 280px">
+                {{ answer }}
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              margin-top: 20px;
+              justify-content: space-around;
+            "
+            class=""
+          >
+            <div>
+              <button class="buttonstyle" (click)="onReset()">Reset</button>
+            </div>
+            <div style="">
+              <button class="buttonstyle" (click)="onClear()">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

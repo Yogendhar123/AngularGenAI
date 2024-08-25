@@ -1,0 +1,818 @@
+.sectionDiv {
+    // height: 100vh;
+    // background-color: white;
+
+
+}
+
+.HeaderFlex {
+    display: flex;
+    background-color: white;
+}
+
+.HeaderFlex1 {
+
+    padding: 20px;
+    flex: 2;
+}
+
+.HeaderFlex2 {
+    display: flex;
+    flex: 7;
+    align-items: center;
+    margin-right: 10px;
+    justify-content: flex-end;
+}
+
+.backClass {
+    display: flex;
+}
+
+.Pagetitle {
+    margin-left: 20px;
+    //styleName: Display sm/Medium;
+    font-family: Inter;
+
+
+
+    color: rgba(16, 24, 40, 1);
+    font-size: 20px;
+    font-weight: 700;
+    color: #212445;
+    margin-left: 20px;
+
+}
+
+.selectFields {
+    padding: 10px 16px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    margin-right: 12px;
+    height: 40px;
+}
+
+.CommodityLabel {
+    margin-right: 10px;
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.Textmar {
+    display: flex;
+    float: right;
+}
+
+.ppBoxmain {
+    display: flex;
+
+}
+
+.ppBoxmain1 {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    margin: 0px 0px 15px 0px;
+    padding: 10px;
+    height: auto;
+
+
+}
+
+.ppBoxmain11 {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    margin: 0px 0px 15px 0px;
+    padding: 10px;
+    height: auto;
+
+
+}
+
+
+.ppBoxmain2 {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    margin: 10px;
+    padding: 15px;
+
+}
+
+.ppBoxmain3 {
+    flex: 2;
+    border-radius: 8px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    margin: 10px;
+    padding: 15px;
+    height: 200px;
+
+}
+
+.ppBoxmain4 {
+    flex: 2;
+    border-radius: 8px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    margin: 10px;
+    padding: 15px;
+    height: 200px;
+
+}
+
+.mardsh {
+    margin-right: 10px;
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+
+}
+
+.dashboardText {
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(16, 24, 40, 1);
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    margin: 5px 10px;
+    padding: 15px;
+
+}
+
+.buttonstyle {
+    color: white;
+    background-color: #343378;
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: none;
+    margin-top: 0px;
+    width: 100px;
+    height: 35px;
+
+}
+
+.valuesdashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.labeldropdown {
+
+    margin-left: 10px;
+}
+
+.labelvaluestill {
+
+    color: #3636e3;
+    font-weight: 600;
+}
+
+.newsfeed {
+    margin: 0px 20px;
+    font-size: 16px;
+}
+
+.newsfeedherder {
+    overflow: hidden;
+    display: flex;
+
+}
+
+.graphVal {
+    // width: 100%;
+    border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 15px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+    height: 71vh;
+    background-color: white;
+    // margin: 20px 10px;
+    padding: 10px;
+    width: 98%;
+}
+
+.potDrop {
+    display: flex;
+
+}
+
+.fexboxstyle {
+    display: flex;
+    padding: 20px;
+}
+
+.fexboxstyle1 {
+    flex: 5;
+}
+
+.fexboxstyle2 {
+    flex: 2;
+}
+
+.nainPVAFF {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+}
+
+.pva {
+    border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 8px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+
+    background-color: rgba(68, 114, 196, 100);
+
+    text-align: center;
+    padding: 10px 40px;
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+
+    color: white;
+
+}
+
+.FF {
+    border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 8px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+
+    background-color: rgba(68, 114, 196, 100);
+
+    text-align: center;
+    padding: 10px 40px;
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+
+    color: white;
+
+}
+
+.bottombox {
+    border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 15px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+    height: 100%;
+    background-color: white;
+
+    padding: 10px 10px 5px 10px;
+
+}
+
+.PPC {
+
+
+
+
+
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
+.bottomBoxflex {
+    display: flex;
+}
+
+.bottomBoxflex1 {
+    flex: 8;
+
+
+}
+
+.bottomBoxflex2 {
+    flex: 1;
+
+
+}
+
+.MainBox {
+    display: flex;
+
+}
+
+.MainBox2 {
+    flex: 5;
+
+}
+
+.pdA {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: green;
+    border: 1px solid gray;
+    color: white;
+    width: fit-content;
+
+    height: 40px;
+    margin-top: 20px;
+
+
+}
+
+.valuesPrice {
+    display: flex;
+}
+
+.valuesPrice1 {
+    flex: 1;
+}
+
+.valuesPrice2 {
+    flex: 1;
+}
+
+.valuesPrice3 {
+    flex: 1;
+}
+
+.dropAlertdiv {
+    display: flex;
+    // flex-direction: column;
+}
+
+.alertRightbox {
+    // border: 1px solid black;
+    width: 70%;
+
+
+
+
+}
+
+.chartSize {
+    // height: 100%;
+    // width: 100%;
+
+}
+
+.guageBorder {
+    margin-top: -155px;
+    float: right;
+    // height: 300px;
+    // width: 300px;
+    // border: 1px solid black;
+}
+
+.Flexsetgraph {
+    display: flex;
+    flex-direction: column;
+}
+
+.Marketguage {
+    margin-top: -90px;
+    margin-left: 20px;
+    margin-bottom: -20px;
+
+}
+
+.flexset {
+    display: flex;
+}
+
+.bypr {
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 173px;
+}
+
+.BUYPRICERANGE {
+    //styleName: Text md/Medium;
+    //styleName: Display sm/Semibold;
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 38px;
+    text-align: left;
+    color: rgba(16, 24, 40, 1);
+
+
+
+
+}
+
+.buyherader {
+    display: flex;
+    justify-content: center;
+    background: #16125a;
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.buyheraderval {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.BUYPRICEINDICATOR {
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    width: fit-content;
+
+
+}
+
+.boxflex {
+    margin-top: 15px;
+}
+
+.labelclass {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.graphylabel {
+    position: absolute;
+    rotate: -90deg;
+    font-size: large;
+    font-weight: 600;
+    font-family: 'Inter';
+    margin-top: 250px;
+    margin-left: -85px;
+}
+
+.labelIcon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: orange;
+    margin-right: 10px;
+
+
+}
+
+.labelmaindiv {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    width: 65%;
+    margin-top: 15px;
+    justify-content: right;
+}
+
+
+
+.labelIcon1 {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: blue;
+    margin-right: 10px;
+
+}
+
+
+.datesLabel {
+    position: absolute;
+    margin-top: -25px;
+    text-align: center;
+    width: 70%;
+    font-size: large;
+    font-weight: 600;
+    font-family: 'Inter';
+}
+
+.labelplotname {
+    margin-right: 10px;
+}
+
+
+
+
+.scroll-container {
+    width: 880px;
+    /* Adjust container width as needed */
+    overflow: hidden;
+    margin-top: -4px;
+    font-size: 16px;
+}
+
+.scroll-content {
+    display: flex;
+    animation: scroll 50s linear infinite;
+    /* Adjust animation duration as needed */
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-100% - 10px));
+        /* Adjust distance between numbers as needed */
+    }
+}
+
+.number {
+    padding: 5px 10px;
+    /* Adjust padding as needed */
+    margin-right: 10px;
+    /* Adjust space between numbers as needed */
+    width: 100%;
+    white-space: nowrap;
+
+}
+
+.value {
+    padding: 5px 10px;
+    /* Adjust padding as needed */
+    margin-right: 10px;
+    /* Adjust space between numbers as needed */
+    width: 100%;
+    white-space: nowrap;
+
+}
+
+.flecclasss {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.guagevalue {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 75px;
+    margin-left: 7px;
+    margin-bottom: 30px;
+}
+
+.labelvalues {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 10px;
+
+    margin-bottom: 10px;
+    border: rgba(208, 213, 221, 1);
+    width: 100%;
+    padding: 8px 4px;
+    border-radius: 5px;
+    // border: 1px solid rgba(208, 213, 221, 1);
+    color: #3636e3;
+
+}
+
+.BUYPRICEINDICATORVALUE {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 15px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    padding: 16px 30px;
+    margin-right: 15px;
+
+}
+
+.orderDate {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 15px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    padding: 16px 30px;
+
+}
+
+.savdiv {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 15px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    padding: 16px;
+    background-color: rgba(173, 185, 202, 100);
+    margin-left: 12px;
+
+}
+
+.Savingsvalue {
+    margin-left: 12px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 15px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    padding: 16px;
+
+}
+
+
+
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 310px;
+    max-width: 500px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+
+
+.customer-load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0.5);
+    /* Light gray background with 50% opacity */
+}
+
+
+.loader {
+    width: 60px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side, #000 90%, #0000);
+    background:
+        var(--_g) 0% 50%,
+        var(--_g) 50% 50%,
+        var(--_g) 100% 50%;
+    background-size: calc(100%/3) 50%;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    20% {
+        background-position: 0% 0%, 50% 50%, 100% 50%
+    }
+
+    40% {
+        background-position: 0% 100%, 50% 0%, 100% 50%
+    }
+
+    60% {
+        background-position: 0% 50%, 50% 100%, 100% 0%
+    }
+
+    80% {
+        background-position: 0% 50%, 50% 50%, 100% 100%
+    }
+}
+
+
+
+.spinnercontent {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
+    display: flex;
+    text-align: center;
+    height: 100vh;
+}
+
+.spinnerclass {
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    left: 45%;
+    right: 0;
+    top: 50%;
+    bottom: 0;
+}
+
+
+.highcharts-xaxis-labels {
+    margin-top: 10px;
+    /* Adjust the value as needed */
+}
+
+@media only screen and (min-width: 1390px) {
+    .ppBoxmain1 {
+        flex: 1;
+        border-radius: 8px;
+        border: 1px solid rgba(208, 213, 221, 1);
+        margin: 0px 0px 15px 0px;
+        padding: 10px;
+        height: auto;
+
+
+    }
+
+    .ppBoxmain11 {
+        flex: 1;
+        border-radius: 8px;
+        border: 1px solid #d0d5dd;
+        margin: 0px 0px 15px 0px;
+        padding: 10px;
+        height: auto;
+    }
+
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 900px) {
+    .fexboxstyle{
+        display: flex;
+        padding: 20px;
+        flex-direction: column;
+    }
+    .graphVal {
+        // width: 100%;
+        border: solid rgba(45, 35, 66, 0.4) 2px;
+        border-radius: 15px;
+        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+        height: 71vh;
+        background-color: white;
+        // margin: 20px 10px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .fexboxstyle1{
+        flex: 5;
+        margin-bottom: 25px;
+    }
+
+    .newsfeed{
+        margin: 0px 20px;
+        font-size: 16px;
+        width: 20%;
+    }
+}

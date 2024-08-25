@@ -1,0 +1,437 @@
+<div
+  id="main"
+  style="display: flex; flex-direction: column; align-items: center"
+>
+  <!--Use Case Name-->
+  <div
+    style="width: 100%; display: flex; flex-direction: row; align-items: center"
+  >
+    <!-- Back Button -->
+    <div class="stopbtnvision">
+      <button
+        (click)="goback()"
+        title="Click to go back"
+        style="
+          border-color: transparent;
+          background-color: transparent;
+          color: #0f0c3d;
+        "
+      >
+        <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+      </button>
+    </div>
+
+    <div
+      class="col-11 col-md-11 col-sm-11 col-lg-11 col-xl-11 col-xxl-11"
+      style="
+        font-size: 21px;
+        color: black;
+        margin-top: 1%;
+        text-align: center;
+        font-family: Roboto, Helvetica Neue, sans-serif;
+        margin-bottom: 35px;
+      "
+    >
+      <b
+        ><img
+          src=".\assets\solution\ai.png"
+          height="40"
+          style="padding-right: 20px"
+        />
+        GenAI Usecases</b
+      >
+    </div>
+    <!-- <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1"
+            style="display: flex; justify-content: flex-end;">
+            <button class='stopbtn' (click)="goback()" title="Click to go back"
+                style="font-size: 18px; background-color:#0f0c3d; border-radius:4px; color:white;">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </button>
+        </div> -->
+  </div>
+
+  <div class="containerGENA" style="" *ngIf="usecaseShow" >
+    <div class="containerBox">
+      <div class="containerBox1">
+        <div class="borderStyle">
+          <b> <div class="Borderheader">Copilot for Product Design</div></b>
+        </div>
+
+        <ng-container *ngFor="let item of usecasesProductDesign; let i = index">
+          <div *ngIf="item.Enabled == 'Y'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="text-decoration: none"
+              >
+                <button
+                  class="button-32"
+                  role="button"
+                  style="background-color: #fcfcfd"
+                >
+                  <img
+                    src="{{ item.ImagePath }}"
+                    style="height: auto; width: 30px; background-color: white"
+                  />
+
+                  <div
+                    class="cardtext"
+                    style="background-color: #fcfcfd; "
+                  >
+                    {{ item.UsecaseName }}
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div *ngIf="item.Enabled == 'N'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="pointer-events: none"
+              >
+                <button
+                  class="button-32"
+                  role="button"
+                  style="opacity: 0.45"
+                  (click)="(navigatURL)"
+                >
+                  <div class="">
+                    <div class="">
+                      <img
+                        src="{{ item.ImagePath }}"
+                        style="
+                          height: auto;
+                          width: 30px;
+                          background-color: white;
+                        "
+                      />
+                    </div>
+                  </div>
+                  <div class="cardtext">{{ item.UsecaseName }}</div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="containerBox2">
+        <div class="borderStyle">
+          <b> <div class="Borderheader">Copilot for Supply Chain</div></b>
+        </div>
+        <ng-container *ngFor="let item of usecasesSuppluChain; let i = index">
+          <div *ngIf="item.Enabled == 'Y'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="text-decoration: none"
+              >
+                <button
+                  class="button-32"
+                  role="button"
+                  style="background-color: #fcfcfd"
+                >
+                  <img
+                    src="{{ item.ImagePath }}"
+                    style="height: auto; width: 30px; background-color: white"
+                  />
+
+                  <div
+                    class="cardtext"
+                    style="background-color: #fcfcfd; "
+                  >
+                    {{ item.UsecaseName }}
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div *ngIf="item.Enabled == 'N'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="pointer-events: none"
+              >
+                <button class="button-32" role="button" style="opacity: 0.45">
+                  <div class="">
+                    <div class="">
+                      <img
+                        src="{{ item.ImagePath }}"
+                        style="height: auto; width: 30px"
+                    
+                      />
+                    </div>
+                  </div>
+                  <div class="cardtext">{{ item.UsecaseName }}</div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="containerBox3">
+        <div class="borderStyle">
+          <b><div class="Borderheader">Copilot for Plant Operations</div></b>
+        </div>
+
+        <ng-container
+          *ngFor="let item of usecasesPlantOperations; let i = index"
+        >
+          <div *ngIf="item.Enabled == 'Y'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="text-decoration: none"
+              >
+                <button
+                  class="button-32"
+                  role="button"
+                  style="background-color: #fcfcfd"
+                >
+                  <img
+                    src="{{ item.ImagePath }}"
+                    style="height: auto; width: 30px; background-color: white"
+                  />
+
+                  <div
+                    class="cardtext"
+                    style="background-color: #fcfcfd; "
+                  >
+                    {{ item.UsecaseName }}
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div *ngIf="item.Enabled == 'N'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="pointer-events: none"
+              >
+                <button class="button-32" role="button" style="opacity: 0.45">
+                  <div class="">
+                    <div class="">
+                      <img
+                        src="{{ item.ImagePath }}"
+                        style="height: auto; width: 30px"
+                      />
+                     
+                    </div>
+                  </div>
+                  <div class="cardtext">{{ item.UsecaseName }}</div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="containerBox4">
+        <div class="borderStyle">
+          <b><div class="Borderheader">Copilot for field servicing</div></b>
+        </div>
+
+        <ng-container *ngFor="let item of usecasesFieldServices; let i = index">
+          <div *ngIf="item.Enabled == 'Y'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="text-decoration: none"
+              >
+                <button
+                  class="button-32"
+                  role="button"
+                  style="background-color: #fcfcfd"
+                >
+                  <img
+                    src="{{ item.ImagePath }}"
+                    height="50px"
+                    width="50px"
+                    style="height: auto; width: 30px; background-color: white"
+                  />
+
+                  <div
+                    class="cardtext"
+                    style="background-color: #fcfcfd; "
+                  >
+                    {{ item.UsecaseName }}
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div *ngIf="item.Enabled == 'N'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="pointer-events: none"
+              >
+                <button class="button-32" role="button" style="opacity: 0.45">
+                  <div class="">
+                    <div class="">
+                      <img
+                        src="{{ item.ImagePath }}"
+                        style="height: auto; width: 30px"
+                      />
+                    </div>
+                  </div>
+                  <div class="cardtext">{{ item.UsecaseName }}</div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="containerBox5">
+        <div class="borderStyle">
+          <b
+            ><div class="Borderheader">
+              Application development and support
+            </div></b
+          >
+        </div>
+
+        <ng-container
+          *ngFor="let item of usecasesApplicationDevelopment; let i = index"
+        >
+          <div *ngIf="item.Enabled == 'Y'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="text-decoration: none"
+              >
+                <button
+                  class="button-32"
+                  role="button"
+                  style="background-color: #fcfcfd"
+                >
+                  <img
+                    src="{{ item.ImagePath }}"
+                    style="height: auto; width: 30px; background-color: white"
+                  />
+
+                  <div
+                    class="cardtext"
+                    style="background-color: #fcfcfd; "
+                  >
+                    {{ item.UsecaseName }}
+                  </div>
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <div *ngIf="item.Enabled == 'N'">
+            <div class="cardsol1">
+              <a
+                class="row"
+                routerLink="/{{ item.UsecaseUrl }}"
+                style="pointer-events: none"
+              >
+                <button
+                  class="button-32"
+                  role="button"
+                  style="opacity: 0.45"
+                  (click)="
+                    navigatURL(
+                      'https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_legend'
+                    )
+                  "
+                >
+                  <div class="">
+                    <div class="">
+                      <img
+                        src="{{ item.ImagePath }}"
+                        style="height: auto; width: 30px"
+                      />
+                    </div>
+                  </div>
+                  <div class="cardtext">{{ item.UsecaseName }}</div>
+                </button>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- <ng-container *ngFor="let item of usecases; let i = index">
+      <div *ngIf="item.Enabled == 'Y'">
+        <div class="cardsol1">
+          <a
+            class="row"
+            routerLink="/{{ item.UsecaseUrl }}"
+            style="text-decoration: none"
+          >
+            <button
+              class="button-32"
+              role="button"
+              style="background-color: #fcfcfd"
+            >
+              <div class="" style="background-color: #fcfcfd">
+                <div class="">
+                  <img
+                    src="{{ item.ImagePath }}"
+                    height="50px"
+                    width="50px"
+                    style="
+                      padding: 12px;
+                      transform: rotate(-225deg);
+                      border-radius: 50%;
+                      background-color: white;
+                    "
+                  />
+                </div>
+              </div>
+              <div class="" style="background-color: #fcfcfd">
+                {{ item.UsecaseName }}
+              </div>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="item.Enabled == 'N'">
+        <div class="cardsol1">
+          <a
+            class="row"
+            routerLink="/{{ item.UsecaseUrl }}"
+            style="pointer-events: none"
+          >
+            <button class="button-32" role="button" style="opacity: 0.45">
+              <div class="">
+                <div class="">
+                  <img
+                    src="{{ item.ImagePath }}"
+                    height="50px"
+                    width="50px"
+                    style="
+                      padding: 10px;
+                      transform: rotate(-225deg);
+                      border-radius: 50%;
+                      background-color: white;
+                    "
+                  />
+                </div>
+              </div>
+              <div class="">{{ item.UsecaseName }}</div>
+            </button>
+          </a>
+        </div>
+      </div>
+    </ng-container> -->
+  </div>
+</div>

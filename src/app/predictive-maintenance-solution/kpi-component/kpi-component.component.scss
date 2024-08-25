@@ -1,0 +1,870 @@
+.MainSection {
+    width: 100%;
+    
+    background: white;
+    // overflow: hidden;
+}
+.headerMain {
+    width: 100%;
+    height: 35px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px 0px 5px
+}
+.heading {
+    //styleName: Display sm/Medium;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 26px;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.bodyMain {
+    background-color: whitesmoke;
+    /* padding: 32px; */
+    margin: 15px;
+    border-radius: 10px;
+    height: 80vh;
+}
+
+.graphArea {
+    width: 95%;
+    height: 100%;
+    // border: 1px solid black;
+
+}
+.chart{
+    height: 80%;
+}
+
+.graphlineChart {
+    height: 100%;
+}
+
+.bodySection {
+    padding: 10px 10px 25px 10px;
+}
+
+.mainHeader {
+    display: flex;
+    margin-bottom: -10px;
+}
+
+.mainHeader1 {
+    flex: 6;
+}
+
+.mainHeader2 {
+    flex: 0;
+}
+
+.mainHeader3 {
+   
+    text-align: end;
+    margin-right: 10px;
+    display: flex;
+    gap: 6px;
+}
+
+
+.backClass {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+    //styleName: Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    
+
+}
+
+.KpiTitle {
+    //styleName: Display sm/Medium;
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+
+}
+
+/* button.component.css */
+.custom-button {
+    padding: 10px;
+    // margin: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: whitesmoke;
+    /* Default background color */
+    // color: rgba(102, 112, 133, 1);
+    //styleName: Text sm/Medium;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+
+}
+
+.active-button {
+    background-color: #212445;
+    /* Active background color */
+    color: white;
+    /* Text color for active button */
+    border: none;
+    /* Remove border for active button */
+
+    height: Hug (36px)px;
+    padding: 8px 12px;
+    gap: 8px;
+    border-radius: 6px;
+    opacity: 0px;
+    color: white;
+    //styleName: Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+
+
+}
+
+.resExport {
+    display: flex;
+    gap: 12px;
+    justify-content: end;
+    margin-right: -15px;
+
+}
+
+.buttonExport {
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: #212445;
+    border: 1px solid rgba(208, 213, 221, 1);
+    //styleName: Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+
+.buttonReset {
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: #212445;
+    border: 1px solid white;
+    //styleName: Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+
+}
+
+.leftClassbody {
+    display: flex;
+    gap: 16px;
+}
+
+.filters {
+    //styleName: Text md/Normal;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: rgba(102, 112, 133, 1);
+    margin-top: 10px;
+    margin-right: 16px;
+}
+
+.selectFields {
+    padding: 10px 16px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    margin-right: 12px;
+    background-color: whitesmoke;
+
+}
+
+.placeholder {
+    position: absolute;
+    top: 11px;
+    left: 94px;
+    color: white;
+    pointer-events: none;
+    width: 80px;
+}
+
+.datpickertoggle {
+    color: rgba(0, 0, 0, .54);
+    // display: flex;
+
+}
+
+.mat-form-field-type-mat-date-range-input {
+    margin-bottom: -10px;
+}
+
+.datclass {
+    padding: 10px 5px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    height: 40px;
+    margin-right: 12px;
+
+
+}
+
+.datacomponents {
+    display: flex;
+    margin-top: -10px;
+}
+
+.startdateEnd {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    width: 160px;
+}
+
+.dateIcon {}
+
+.cardsMain {
+    margin: 24px 0px;
+}
+
+.card1 {
+    // border-radius: 8px;
+    border: 1px solid rgba(208, 213, 221, 1);
+    margin: 24px 10px;
+    padding: 20px, 16px;
+    border-radius: 8px;
+}
+
+.card1Body {
+    padding: 20px 16px;
+    box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    
+}
+
+
+.cardLabel {
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+   
+    text-align: center;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 24px;
+
+
+}
+
+.Gaugevalue {
+    //styleName: Untitled-UI(Inter)/Display md/Semibold;
+    font-family: Inter;
+    font-size: 36px;
+    font-weight: 600;
+ 
+    letter-spacing: -0.02em;
+    text-align: left;
+    margin-bottom: 24px;
+
+}
+
+.dayvalues {
+    display: flex;
+
+}
+
+.dayv1 {
+    flex: 1;
+}
+
+.dayv2 {
+    flex: 2;
+}
+
+.dayv3 {
+    flex: 1;
+}
+
+.dayvalunum {
+    //styleName: Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    margin-bottom: 4px;
+
+}
+
+.vallabel {
+    //styleName: Untitled-UI(Inter)/Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    color: rgba(102, 112, 133, 1);
+
+}
+
+.tppl {
+    padding: 20px 16px;
+    /* border: 1px solid #d0d5dd; */
+    border-radius: 8px;
+    margin-bottom: 24px;
+    margin: 0px 10px 24px;
+    box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+}
+
+
+.titleTLP {
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 24px;
+}
+.titleTLP1 {
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 24px;
+}
+
+.TLPNUM {
+    //styleName: Display sm/Semibold;
+    font-family: Inter;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 38px;
+    text-align: center;
+    color: #020362;
+    margin-right: 5px;
+}
+
+.sub {
+    //styleName: Display sm/Semibold;
+    font-family: Inter;
+    font-size: 25px;
+    font-weight: 400;
+
+    line-height: 38px;
+    text-align: left;
+    color: #020362;
+}
+
+.GrapsBOx {
+    padding: 20px 16px;
+    // border: 1px solid rgba(208, 213, 221, 1);
+    border-radius: 8px;
+    margin: 0px 10px 24px;
+    height: 286px;
+    box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+
+}
+
+.containerMain {
+    display: flex;
+    margin-bottom: -10px;
+}
+
+.containerMain1 {
+    flex: 1
+}
+
+.containerMain2 {
+    flex: 1
+}
+
+.containerMain3 {
+    flex: 1
+}
+
+.containerMain4 {
+    flex: 1
+}
+
+.containerr {
+    display: flex;
+
+}
+
+.box-1 {
+    flex: 1
+}
+
+.box-2 {
+    flex: 2
+}
+
+.box-3 {
+    flex: 2
+}
+
+.valbo1 {
+    flex: 2
+}
+
+.valbo2 {
+    flex: 2
+}
+
+.valbo3 {
+    flex: 1
+}
+
+.slideerflex {
+    display: flex;
+}
+
+.slidervalu {
+    //styleName: Untitled-UI(Inter)/Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgba(102, 112, 133, 1);
+
+
+}
+
+.parendMapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 32px;
+}
+
+.outerred {
+    width: 32px;
+    height: 32px;
+    gap: 0px;
+    border-radius: 50%;
+    opacity: 0px;
+
+
+    opacity: 10%;
+    position: absolute;
+    animation-name: stretch;
+    animation-duration: 4.0s;
+    animation-timing-function: ease-in-out;
+    animation-direction: reverse;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+
+
+
+
+
+
+}
+
+.middleRed {
+    width: 20px;
+    height: 20px;
+
+
+    border-radius: 50%;
+
+    opacity: 20%;
+    z-index: 1;
+    animation-name: stretch;
+    animation-duration: 4.0s;
+    animation-timing-function: ease-in-out;
+    animation-direction: reverse;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+
+
+
+
+}
+
+.innerred {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    opacity: 0px;
+
+    position: absolute;
+    z-index: 2;
+
+
+}
+
+
+.parendMapper1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 32px;
+}
+
+.outerred1 {
+    width: 32px;
+    height: 32px;
+    gap: 0px;
+    border-radius: 50%;
+    opacity: 0px;
+
+
+    opacity: 10%;
+    position: absolute;
+    background: gray;
+
+}
+
+.middleRed1 {
+    width: 20px;
+    height: 20px;
+
+
+    border-radius: 50%;
+
+    opacity: 20%;
+    z-index: 1;
+    background: gray;
+
+
+
+
+
+}
+
+.innerred1 {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    opacity: 0px;
+
+    position: absolute;
+    z-index: 2;
+    background: gray;
+
+
+}
+
+.status {
+    //styleName: Untitled-UI(Inter)/Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    // line-height: 20px;
+    text-align: left;
+    color: rgba(52, 64, 84, 1);
+    // margin-bottom: 20px;
+
+}
+
+.GuageValuesFlex {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+
+@keyframes stretch {
+    0% {
+        transform: scale(.5);
+
+        border-radius: 50%;
+    }
+
+    50% {}
+
+    100% {
+        transform: scale(1.3);
+
+    }
+}
+
+.dayvalesall {
+    display: flex;
+}
+
+.textmr {
+    //styleName: Untitled-UI(Inter)/Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: rgba(102, 112, 133, 1);
+
+}
+
+.colordiv {
+    width: Hug (38px)px;
+    height: Hug (24px)px;
+    padding: 2px 4px 2px 4px;
+    gap: 0px;
+    border-radius: 4px 0px 0px 0px;
+    opacity: 0px;
+
+    //styleName: Untitled-UI(Inter)/Text sm/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+
+
+}
+
+.FYPmainDiv {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.FYPmainDiv1 {
+    // border: 1px solid black;
+    flex: 5;
+}
+
+.FYPmainDiv2 {}
+
+.fypmainbox {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.fypbox1 {
+    border-radius: 8px;
+   box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+    width: 325px;
+    height: 126px;
+    flex: 1;
+
+
+    opacity: 0px;
+    margin-right: 24px;
+    padding: 20px 16px;
+
+
+}
+
+.fypbox2 {
+    border-radius: 8px;
+   box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+    width: 325px;
+    height: 126px;
+    flex: 1;
+
+
+    opacity: 0px;
+    margin-right: 24px;
+    padding: 20px 16px;
+
+}
+
+.fypbox3 {
+    border-radius: 8px;
+   box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+    width: 325px;
+    height: 126px;
+    flex: 1;
+
+
+    opacity: 0px;
+    margin-right: 24px;
+    padding: 20px 16px;
+
+}
+
+.fypbox4 {
+    border-radius: 8px;
+   box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+    width: 325px;
+    height: 126px;
+    flex: 1;
+
+
+    opacity: 0px;
+    padding: 20px 16px;
+}
+
+.FYPtitlelabel {
+    //styleName: Text md/Medium;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    color: rgba(16, 24, 40, 1);
+    margin-bottom: 24px;
+
+}
+
+.FYPnumValue {
+    //styleName: Display sm/Semibold;
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 38px;
+    text-align: left;
+    color: rgba(16, 24, 40, 1);
+
+}
+
+.Fypgraph {
+    width: 100%;
+
+    padding: 20px 16px 20px 16px;
+    gap: 24px;
+    border-radius: 8px;
+    box-shadow: 0 5px 35px 0 rgba(31, 42, 56, 0.1);
+    background-color: white;
+   
+    box-shadow: rgba(16, 24, 40, 0.06);
+    height: 350px
+
+}
+
+@media screen and (min-device-width: 480px) and (max-device-width: 800px) {
+    resExport {
+        margin-top: 10px;
+    }
+}
+
+
+
+.custom-slider {
+    position: relative;
+    width: 200px;
+    height: 10px;
+    background-color: #ddd;
+  }
+   
+  .slider-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+   
+  .slider-thumb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .radiusblock{
+    display: flex;
+    text-align: right;
+    justify-content: right;
+    margin-top: -18px;
+  }
+  .boxradiusblue{
+    background: #1849A9;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+
+  }
+
+
+  .boxradius{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(3, 152, 85, 1);
+    margin-right: 5px;
+    
+  }
+  
+  .boxradiusGreen{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(217, 45, 32, 1);
+    margin-right: 5px;
+  }
+  
+
+  .textadjust{
+    margin-top: -5px;
+  }
+
+
+  @media screen and (min-width: 320px) and (max-width: 900px) {
+    .bodyMain {
+        background-color: whitesmoke;
+        margin: 15px;
+        border-radius: 10px;
+        height: 80vh;
+        height: fit-content;
+    }
+    .mainHeader {
+        display: flex;
+        margin-bottom: -10px;
+        flex-direction: column;
+    }
+
+    .mainHeader3 {
+        text-align: end;
+        margin-right: 10px;
+        display: flex;
+        gap: 6px;
+        margin-left: 12px;
+        margin-top: 20px;
+
+    }
+    .containerMain{
+        display: flex;
+        margin-bottom: -10px;
+        flex-direction: column;
+    }
+    .containerr {
+        display: flex;
+        flex-direction: column;
+    }
+}
+ 
+
+
+
+

@@ -1,0 +1,237 @@
+<!--Main Window for Water Pump-->
+
+<div>
+    <div class="d-flex" style="background-color: #fff; align-items: center;">
+
+        <div class = "stopbtnvision" >
+            <button (click)="goback()" title="Click to go back" 
+            style = "border-color: transparent; background-color: transparent; color:#0f0c3d;">
+                <mat-icon style="font-size: 30px;">keyboard_arrow_left</mat-icon>
+            </button>
+        </div>
+
+        <!--Use Case Name-->
+        <div class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 col-xxl-9" style="margin-right: 60px;">
+            <div style="font-size:20px;"><b>Tensile Strength Prediction of a Friction Stir Weld (FSW) &nbsp;<span
+                        style="font-size:20px;cursor:pointer;" (click)="info_pop()"><i class="fa fa-info-circle"
+                            aria-hidden="true"></i></span></b></div>
+        </div>
+
+
+        <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1" >
+            <button class='start' id='start_fsw' [style.background-color]="atv_clr" (click)="fsw_init()">Start</button>
+        </div>
+    
+        <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+            <button class='stop' id='stop_fsw' [style.background-color]="deatv_clr" (click)="Stop()" disabled>Stop</button>
+        </div>  
+
+    </div>
+
+    <div class="d-flex" style="margin-top: 5px; font-size: 18px;">
+
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4"
+            style="text-align: center; padding-left: 0px;padding-right: 0px;">
+            <div style="font-size:18px;">Experiment No. :
+                <select (change)="reset_fsw()" id="exp_value"
+                    style="text-align-last:center ; height: 30px;width: 80px; color: black;background-color: #b3cfe1; border: 1px solid #3ba3ea; border-radius: 10px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+
+                </select>
+            </div>
+
+
+        </div>
+
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4"
+            style="padding-left: 110px;padding-right: 0px;">
+            <div class="d-flex">
+                <div style = "padding-top: 2px;text-align: center;">Rotational Speed(RPM) :&nbsp; </div>
+                <div style = "display: flex; justify-content: center; align-items: center; height: 30px;width: 80px;background-color: #b8b8b852; border: 1px solid #414141; border-radius: 10px;" class="notranslate">
+                    {{rot_speed}}
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4"
+            style="padding-left: 110px;padding-right: 0px;">
+            <div class="d-flex">
+                <div style = "padding-top: 2px;">Welding Speed(mm/min) :&nbsp; </div>
+                <div style = "display: flex; justify-content: center; align-items: center; height: 30px;width: 80px;background-color: #b8b8b852; border: 1px solid #414141; border-radius: 10px;" class="notranslate">
+                    {{weld_speed}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- main Window for Water Pump -->
+    <div style="margin-right:5px; margin-left: 5px; margin-bottom: 10px; margin-top: 10px; display: flex;">
+
+        <!-- <div style="padding-left: 10px;"></div> -->
+        <div style="width: 35%; margin: 2px auto; border-radius: 20px; box-shadow: 4px 4px 4px rgb(201, 200, 200); background-color: white;">
+            <figure style="text-align: center; display:flex; flex-direction:column; align-items: center; height: 36vh;">
+                <img src=".\assets\img\weld.png" width="280" height="200px" style="padding-top: 5px;" >
+                <figcaption>
+                    <h5><b><a style="font-size: 17px;">Friction Stir Welding</a></b></h5>
+                </figcaption>
+            </figure>
+        </div>
+
+
+        <!-- Dial Graphs for Water Pump (POF and Load)  -->
+        <div style="width: 63%;  margin: 2px auto;">
+            <div style="display: flex; flex-direction:row">
+                <div class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xxl-5"
+                    style="height:38vh;padding: 5px; text-align: center;border-top-left-radius: 20px;border-bottom-left-radius: 20px;background-color: #fff;box-shadow: 4px 4px rgb(201, 200, 200);">
+                    <div class="graphs_water">
+                        <canvas id="Tensile"
+                            style="padding-top: 4px; height: 220px; width: 350px;">{{tensile_graph}}</canvas>
+                    </div>
+                    <div class="graphfsw notranslate" [style.color]="warning_color"><b>{{tensile_strength}}</b></div>
+                    <!-- <div class="graph_name" style="font-size: 18px;"><b>Tensile Strength (MPa)</b></div> -->
+                </div>
+
+                <div class="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xxl-7"
+                    style="height:38vh;padding: 5px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;background-color: #fff;box-shadow: 4px 4px 4px rgb(201, 200, 200);">
+
+
+                    <div class="table-responsize" style="text-align: left;margin-top: 30px;">
+                        <table class="table" style="border: none !important; margin-top: 0px;">
+                            <tbody>
+                                <tr>
+                                    <td style="border: none !important;width:40%"><b>Status</b></td>
+                                    <td style="border: none !important;">
+
+                                        <div [style.display]="weld_status1">
+                                            <b>:&nbsp;&nbsp;&nbsp;</b>
+                                            <i class="fa fa-circle" [style.color]="data_status1"></i><b> Live
+                                                Data&nbsp;&nbsp;&nbsp;</b>
+                                            <i class="fa fa-circle" [style.color]="data_status2"></i><b> Reserve
+                                                Data</b>
+
+                                        </div>
+
+                                        <div [style.display]="weld_status2">
+                                            <b>:&nbsp;&nbsp;&nbsp; Disconnected</b>
+
+                                        </div>
+
+                                        <div [style.display]="weld_status3">
+                                            <b>:&nbsp;&nbsp;&nbsp; Connecting</b>
+
+                                        </div>
+
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: none !important;width:40%"><b>Welding Progress</b></td>
+                                    <td style="border: none !important;">
+                                        <div class="d-flex">
+                                            <div><b>:&nbsp;&nbsp;&nbsp;</b></div>
+
+                                            <div class="progress"
+                                                style="width:80%;height: 30px; box-shadow: 4px 4px 4px #9c8888;">
+
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated  notranslate"
+                                                    role="progressbar" [style.width]="fsw_progress"
+                                                    style="background-color:#36a2eb;font-weight: bold;" >{{fsw_progress}}
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: none !important;width:40%"><b>Welding Quality</b></td>
+                                    <td style="border: none !important;"><b>:&nbsp;&nbsp;&nbsp;</b><b> <b
+                                                [style.color]="wq_color">{{welding_quality}}</b></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div style="margin:4px; display: flex; flex-direction: row; justify-content: space-around;">
+
+        <div 
+            style="width: 32%;height: 30vh; border-radius: 20px;box-shadow: 4px 4px 4px rgb(201, 200, 200); background-color: white;">
+            <!-- <div style="font-size: 18px;text-align: center;"><b>Force (N)</b></div> -->
+            <!-- <div style="height: 30vh;"> -->
+                <canvas id="Force_Graph">{{force_graph}} </canvas>
+            <!-- </div> -->
+        </div>
+
+        <div 
+            style="width: 32%; height: 30vh; border-radius: 20px;box-shadow: 4px 4px 4px rgb(201, 200, 200); background-color: white;">
+            <!-- <div style="font-size: 18px;text-align: center;"><b>Power (kW)</b></div> -->
+            <!-- <div style="height: 30vh;"> -->
+                <canvas id="Power_Graph">{{power_graph}} </canvas>
+            <!-- </div> -->
+        </div>
+
+
+        <div 
+            style="width: 32%; height: 30vh; border-radius: 20px;box-shadow: 4px 4px 4px rgb(201, 200, 200); background-color: white;">
+            <!-- <div style="font-size: 18px;text-align: center;"><b>Torque (Nm)</b></div> -->
+            <!-- <div style="height: 30vh;"> -->
+                <canvas id="Torque_Graph">{{torque_graph}} </canvas>
+            <!-- </div> -->
+        </div>
+
+
+    </div>
+
+    <div style="width: 100%; padding-top: 20px;"></div>
+
+</div>

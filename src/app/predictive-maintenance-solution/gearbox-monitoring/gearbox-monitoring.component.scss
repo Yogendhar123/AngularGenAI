@@ -1,0 +1,120 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
+}
+
+
+.stopbtngear:hover mat-icon{
+    color: indianred;
+   }
+   
+.start_gear, .stop_gear {
+    width:100%;
+    font-size: 18px;
+    background-color:#343378;
+    border-radius:4px;
+    border:1px solid white;
+    color:white;
+    height: 30px;
+    margin: 2px;
+}
+
+.start_gear:active, .stop_gear:active {
+    box-shadow: #23206f 0 1px 4px inset;
+    transform: translateY(2px);
+}
+
+
+.top_content_gear{
+    display: flex; flex-direction: row; justify-content: space-around;
+}
+
+.top_left_gear, .top_middle_gear{
+    width: 45%;
+}
+.top_right_gear{
+    width: 100%;
+}
+
+.bottom_content_gear{
+    display: flex; flex-direction: row; justify-content: space-around;
+}
+
+.bottom_left_gear, .bottom_middle_gear{
+    width: 45%;
+}
+.bottom_right_gear{
+    width: 92%;
+}
+
+.bottom_gear{
+    display: flex; flex-direction: column; justify-content: space-around;
+}
+
+.notif-q22_gear1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    height: 45px;
+    width: 95%;
+    margin: 7px 7px 0px 7px;
+}
+
+.notif-q22_gear2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    height: 45px;
+    width: 95%;
+    margin: 0px 7px 10px 7px;
+}
+
+.notif-q22-num_gear {
+    font-size: 16px;
+    font-weight: 350;
+    font-family: Lato, sans-serif;
+    margin: 10px 25px 10px 10px;
+}
+
+.notif-q22-text_gear {
+    color: rgb(94, 94, 94);
+    font-size: 15px;
+    margin-left: 25px;
+    // margin-top: 10px;
+    font-family: Lato, sans-serif;
+    text-overflow: ellipsis;
+}
+
+.notif-q22_gear3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    height: 47px;
+    width: 95%;
+    margin: 10px 7px 0px 7px;
+}
+
+.notif-q22_gear4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    height: 47px;
+    width: 95%;
+    margin: 0px 7px 7px 7px;
+}

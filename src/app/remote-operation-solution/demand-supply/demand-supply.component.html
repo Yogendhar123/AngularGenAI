@@ -1,0 +1,1275 @@
+<section class="mainBody">
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      margin: 0px 0px;
+      align-items: center;
+    "
+  >
+    <div style="padding: 5px; align-items: center; display: flex">
+      <button
+        (click)="goback()"
+        title="Click to go back"
+        style="
+          border-color: transparent;
+          background-color: transparent;
+          color: #0f0c3d;
+        "
+      >
+        <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+      </button>
+
+      <!--Use Case Name-->
+      <div style="font-size: 21px; margin-left: 20px; margin-top: -5px">
+        <b>Demand - Supply Scheduler</b>
+      </div>
+    </div>
+    <div style="margin-right: 24px">
+      <button class="getData" (click)="demadSupplierPostApi()">Get Data</button>
+    </div>
+  </div>
+
+  <div class="bodyBox">
+    <div class="bodyContentMain">
+      <div class="bodyContentMain1">
+        <div class="productionplanBox">
+          <div class="proPlan">Production Plan</div>
+          <div class="setdisplay">
+            <div class="setdisplay1">
+              <div class="arrowClass" (click)="navigate('prev')">
+                <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+              </div>
+            </div>
+            <div class="setdisplay2">
+              <div class="">
+                <div [hidden]="currentSlide !== 0">
+                  <div class="slide" style=" box-shadow: rgba(0, 80, 149, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                    <div class="headerSk" style="background: rgba(0, 80, 149, 1);">SKU1</div>
+                    <div class="contentFlex">
+                      <div class="contentFlex1">
+                        <div class="qualityTheader">Production Demand</div>
+                        <div style="width: 100%">
+                          <input
+                            type="number"
+                            class="inputQualityDemand"
+                            [(ngModel)]="sku1Quality"
+                            (ngModelChange)="sku1Rawinput()"
+                          />
+                        </div>
+                        <div class="secoundDuvMultifactor">
+                          <div class="multiF">Multiplication Factor</div>
+                          <div class="inputQuality1">
+                            <input
+                              type="number"
+                              class="inputQuality"
+                              [(ngModel)]="sku1Factor"
+                              (ngModelChange)="sku1Rawinput()"
+                            />
+                          </div>
+                        </div>
+                        <div class="secoundDuvMultifactor">
+                          <div class="multiF">Raw Material Requirement</div>
+                          <div class="inputQuality2R">
+                            <input
+                              type="number"
+                              class="inputQuality"
+                              [(ngModel)]="sku1Raw"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="contentFlex2">
+                        <input
+                          type="range"
+                          min="0"
+                          max="10000"
+                          step="500"
+                          [(ngModel)]="sku1Quality"
+                          (ngModelChange)="updateSku1Demad()"
+                          style="margin-top: 32px"
+                        />
+
+                        <input
+                          type="range"
+                          min="0"
+                          max="10"
+                          step="1"
+                          [(ngModel)]="sku1Factor"
+                          (ngModelChange)="updateSku1Factor()"
+                          style="margin-top: 20px"
+                        />
+                        <!-- <mat-slider min="1" max="5" step="0.5">
+                      <input matSliderThumb value="1.5">
+                    </mat-slider> -->
+                      </div>
+                    </div>
+                    <div class="thirdDiv">
+                      <div class="multiF1">Quality Check</div>
+                      <div class="secoundDuv">
+                        <div class="multiF">Spec1</div>
+                        <div class="inputQuality2">
+                          <select
+                            class="inputQuality"
+                            (change)="onColorChangeSku1($event)"
+                          >
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="multiF">Spec2</div>
+                        <div class="inputQuality2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div [hidden]="currentSlide !== 1">
+                  <div class="slide" style="box-shadow: rgba(0, 172, 172, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                    <div class="headerSk" style="background:rgba(0, 172, 172, 1)">SKU2</div>
+                    <div class="contentFlex">
+                      <div class="contentFlex1">
+                        <div class="qualityTheader">Production Demand</div>
+                        <div style="width: 100%">
+                          <input
+                            type="number"
+                            class="inputQualityDemand"
+                            [(ngModel)]="sku2Quality"
+                            (ngModelChange)="sku2Rawinput()"
+                          />
+                        </div>
+                        <div class="secoundDuvMultifactor">
+                          <div class="multiF">Multiplication Factor</div>
+                          <div class="inputQuality1">
+                            <input
+                              type="number"
+                              class="inputQuality"
+                              [(ngModel)]="sku2Factor"
+                              (ngModelChange)="sku2Rawinput()"
+                            />
+                          </div>
+                        </div>
+                        <div class="secoundDuvMultifactor">
+                          <div class="multiF">Raw Material Requirement</div>
+                          <div class="inputQuality2R">
+                            <input
+                              type="number"
+                              class="inputQuality"
+                              [(ngModel)]="sku2Raw"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="contentFlex2">
+                        <input
+                          type="range"
+                          min="1000"
+                          max="5000"
+                          step="500"
+                          [(ngModel)]="sku2Quality"
+                          (ngModelChange)="updatesku2Demad()"
+                          style="margin-top: 32px"
+                        />
+
+                        <input
+                          type="range"
+                          min="0"
+                          max="100"
+                          step="1"
+                          [(ngModel)]="sku2Factor"
+                          (ngModelChange)="updatesku2Factor()"
+                          style="margin-top: 20px"
+                        />
+                        <!-- <mat-slider min="1" max="5" step="0.5">
+                      <input matSliderThumb value="1.5">
+                    </mat-slider> -->
+                      </div>
+                    </div>
+                    <div class="thirdDiv">
+                      <div class="multiF1">Quality Check</div>
+                      <div class="secoundDuv">
+                        <div class="multiF">Spec1</div>
+                        <div class="inputQuality2">
+                          <select
+                            class="inputQuality"
+                            (change)="onColorChangeSku2($event)"
+                          >
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="multiF">Spec2</div>
+                        <div class="inputQuality2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div [hidden]="currentSlide !== 2">
+                  <div class="slide" style="box-shadow: rgba(239, 115, 51, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                    <div class="headerSk" style="background:rgba(239, 115, 51, 1)">SKU3</div>
+                    <div class="contentFlex">
+                      <div class="contentFlex1">
+                        <div class="qualityTheader">Production Demand</div>
+                        <div style="width: 100%">
+                          <input
+                            type="number"
+                            class="inputQualityDemand"
+                            [(ngModel)]="sku3Quality"
+                            (ngModelChange)="sku3Rawinput()"
+                          />
+                        </div>
+                        <div class="secoundDuvMultifactor">
+                          <div class="multiF">Multiplication Factor</div>
+                          <div class="inputQuality1">
+                            <input
+                              type="number"
+                              class="inputQuality"
+                              [(ngModel)]="sku3Factor"
+                              (ngModelChange)="sku3Rawinput()"
+                            />
+                          </div>
+                        </div>
+                        <div class="secoundDuvMultifactor">
+                          <div class="multiF">Raw Material Requirement</div>
+                          <div class="inputQuality2R">
+                            <input  type="number"class="inputQuality" [(ngModel)]="sku3Raw" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="contentFlex2">
+                        <input
+                          type="range"
+                          min="0"
+                          max="10000"
+                          step="500"
+                          [(ngModel)]="sku3Quality"
+                          (ngModelChange)="updatesku3Demad()"
+                          style="margin-top: 32px"
+                        />
+
+                        <input
+                          type="range"
+                          min="0"
+                          max="10"
+                          step="1"
+                          [(ngModel)]="sku3Factor"
+                          (ngModelChange)="updatesku3Factor()"
+                          style="margin-top: 20px"
+                        />
+                        <!-- <mat-slider min="1" max="5" step="0.5">
+                      <input matSliderThumb value="1.5">
+                    </mat-slider> -->
+                      </div>
+                    </div>
+                    <div class="thirdDiv">
+                      <div class="multiF1">Quality Check</div>
+                      <div class="secoundDuv">
+                        <div class="multiF">Spec1</div>
+                        <div class="inputQuality2">
+                          <select
+                            class="inputQuality"
+                            (change)="onColorChangeSku3($event)"
+                          >
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="multiF">Spec2</div>
+                        <div class="inputQuality2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="setdisplay3">
+              <div class="arrowClass" (click)="navigate('next')">
+                <mat-icon style="font-size: 30px"
+                  >keyboard_arrow_right</mat-icon
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="supplierStockBox" >
+          <div class="proPlan">Supplier Stock</div>
+
+          <div class="setdisplay">
+            <div class="setdisplay1">
+              <div class="arrowClass" (click)="navigateStock('prev')">
+                <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+              </div>
+            </div>
+            <div class="setdisplay2">
+              <div>
+                <div class="slide1" [hidden]="supplierStock !== 0"style="box-shadow: rgba(0, 125, 197, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                  <div class="headerSk" style="background:rgba(0, 125, 197, 1)">
+                    <div
+                      style="
+                        filter: invert(1);
+                        margin-top: -3px;
+                        margin-right: 11px;
+                      "
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                          stroke="#101828"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div>Supplier 1</div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Availability</div>
+                        <div class="supplierMain2">
+                          <input
+                            type="number"
+                            class="inputQuality"
+                            [(ngModel)]="supplier1"
+                            (ngModelChange)="supplierStockTotal()"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10000"
+                        step="500"
+                        [(ngModel)]="supplier1"
+                        style="margin-top: 25px"
+                        (ngModelChange)="supplierStockTotal()"
+                      />
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec1</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec2</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="slide1" [hidden]="supplierStock !== 1" style="box-shadow: rgba(127, 86, 217, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                  <div class="headerSk" style="background:rgba(127, 86, 217, 1)">
+                    <div
+                      style="
+                        filter: invert(1);
+                        margin-top: -3px;
+                        margin-right: 11px;
+                      "
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                          stroke="#101828"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div>Supplier 2</div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Availability</div>
+                        <div class="supplierMain2">
+                          <input
+                            type="number"
+                            class="inputQuality"
+                            [(ngModel)]="supplier2"
+                            (ngModelChange)="supplierStockTotal()"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10000"
+                        step="500"
+                        [(ngModel)]="supplier2"
+                        style="margin-top: 25px"
+                        (ngModelChange)="supplierStockTotal()"
+                      />
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec1</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec2</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="slide1" [hidden]="supplierStock !== 2" style="box-shadow: rgba(0, 172, 172, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                  <div class="headerSk" style="background:rgba(0, 172, 172, 1)">
+                    <div
+                      style="
+                        filter: invert(1);
+                        margin-top: -3px;
+                        margin-right: 11px;
+                      "
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                          stroke="#101828"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div>Supplier 3</div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Availability</div>
+                        <div class="supplierMain2">
+                          <input
+                            type="number"
+                            class="inputQuality"
+                            [(ngModel)]="supplier3"
+                            (ngModelChange)="supplierStockTotal()"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10000"
+                        step="500"
+                        [(ngModel)]="supplier3"
+                        style="margin-top: 25px"
+                        (ngModelChange)="supplierStockTotal()"
+                      />
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec1</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec2</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="slide1" [hidden]="supplierStock !== 3" style="box-shadow: rgba(239, 115, 51, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                  <div class="headerSk" style="background:rgba(239, 115, 51, 1)">
+                    <div
+                      style="
+                        filter: invert(1);
+                        margin-top: -3px;
+                        margin-right: 11px;
+                      "
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                          stroke="#101828"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div>Supplier 4</div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Availability</div>
+                        <div class="supplierMain2">
+                          <input
+                            type="number"
+                            class="inputQuality"
+                            [(ngModel)]="supplier4"
+                            (ngModelChange)="supplierStockTotal()"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10000"
+                        step="500"
+                        [(ngModel)]="supplier4"
+                        style="margin-top: 25px"
+                        (ngModelChange)="supplierStockTotal()"
+                      />
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec1</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec2</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="slide1" [hidden]="supplierStock !== 4" style="box-shadow: rgba(221, 37, 144, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                  <div class="headerSk" style="background:rgba(221, 37, 144, 1)">
+                    <div
+                      style="
+                        filter: invert(1);
+                        margin-top: -3px;
+                        margin-right: 11px;
+                      "
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                          stroke="#101828"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div>Supplier 5</div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Avalibility</div>
+                        <div class="supplierMain2">
+                          <input
+                            type="number"
+                            class="inputQuality"
+                            [(ngModel)]="supplier5"
+                            (ngModelChange)="supplierStockTotal()"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10000"
+                        step="500"
+                        [(ngModel)]="supplier5"
+                        style="margin-top: 25px"
+                        (ngModelChange)="supplierStockTotal()"
+                      />
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec1</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec2</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="slide1" [hidden]="supplierStock !== 5" style="box-shadow: rgba(113, 123, 188, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                  <div class="headerSk" style="background:rgba(113, 123, 188, 1)">
+                    <div
+                      style="
+                        filter: invert(1);
+                        margin-top: -3px;
+                        margin-right: 11px;
+                      "
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                          stroke="#101828"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div>Supplier 6</div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Availability</div>
+                        <div class="supplierMain2">
+                          <input
+                            type="number"
+                            class="inputQuality"
+                            [(ngModel)]="supplier6"
+                            (ngModelChange)="supplierStockTotal()"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10000"
+                        step="500"
+                        [(ngModel)]="supplier6"
+                        style="margin-top: 25px"
+                        (ngModelChange)="supplierStockTotal()"
+                      />
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec1</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let color of colors"
+                              [value]="color"
+                            >
+                              {{ color }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                  <div class="contentFlex">
+                    <div class="contentFlex1">
+                      <div class="supplierMain">
+                        <div class="supplierMain1">Spec2</div>
+                        <div class="supplierMain2">
+                          <select class="inputQuality">
+                            <option
+                              *ngFor="let gravity of specificgravity"
+                              [value]="gravity"
+                            >
+                              {{ gravity }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="contentFlex2">
+                      <!-- <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      [(ngModel)]="input1"
+                      style="margin-top: 25px"
+                    /> -->
+                      <!-- <mat-slider min="1" max="5" step="0.5">
+                    <input matSliderThumb value="1.5">
+                  </mat-slider> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="setdisplay3">
+              <div class="arrowClass" (click)="navigateStock('next')">
+                <mat-icon style="font-size: 30px"
+                  >keyboard_arrow_right</mat-icon
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bodyContentMain2">
+        <div class="proPlan">Supplier Scheduler</div>
+        <div class="setdisplay">
+          <div class="setdisplay1">
+            <div class="arrowClass" (click)="navigateScheduler('prev')">
+              <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+            </div>
+          </div>
+          <div class="setdisplay2">
+            <div style="height: 100%">
+              <div class="slide2" [hidden]="stock !== 0" style=" box-shadow: rgba(0, 80, 149, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                <div class="headerSk" style="background: rgba(0, 80, 149, 1);">SKU1</div>
+
+                <div class="stockhigh">
+                  <form *ngIf="sku1Data.length > 0" style="width: 100%">
+                    <div
+                      class="stockScheduler"
+                      style="margin: 25px 10px"
+                      *ngFor="let item of sku1Data; let i = index"
+                    >
+                      <div
+                        class="stockScheduler1"
+                        style="
+                          margin-top: 7px;
+                          margin-right: 20px;
+                          display: flex;
+                        "
+                      >
+                        <div class="stockIndicator" [ngClass]="{'green-blink': item.Allocated > 0, 'yellow-no-blink': item.Allocated <= 0}"></div>
+                        <label for="allocated-{{ i }}">Allocated</label>
+                      </div>
+                      <div class="stockScheduler2">
+                        <input
+                          class="schedulerInput"
+                          id="allocated-{{ i }}"
+                          [(ngModel)]="item.Allocated"
+                          name="allocated-{{ i }}"
+                        />
+                      </div>
+                      <div
+                        class="stockScheduler3"
+                        style="margin-top: 7px; margin-left: 20px"
+                      >
+                        <label for="gower-{{ i }}">Supplier {{ i + 1 }}</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="bottomStock">
+                  <div class="bottomStock1">
+                    <div >
+                      Supplier Stock Availability
+                    </div>
+                    <div>
+                      <input
+                        class="stocckBottomInput"
+                        [(ngModel)]="Supplier_Stock_Avaliability"
+                      />
+                    </div>
+                  </div>
+                  <div class="bottomStock2">
+                    <div >
+                      Supplier Stock Consumption
+                    </div>
+                    <div>
+                      <input
+                        class="stocckBottomInput"
+                        [(ngModel)]="Supplier_Stock_Consumption"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide2" [hidden]="stock !== 1"  style="box-shadow: rgba(0, 172, 172, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                <div class="headerSk" style="background:rgba(0, 172, 172, 1)">SKU2</div>
+                <div class="stockhigh">
+                  <form *ngIf="sku2Data.length > 0" style="width: 100%">
+                    <div
+                      class="stockScheduler"
+                      style="margin: 25px 10px"
+                      *ngFor="let item of sku2Data; let i = index"
+                    >
+                      <div
+                        class="stockScheduler1"
+                        style="
+                          margin-top: 7px;
+                          margin-right: 20px;
+                          display: flex;
+                        "
+                      >
+                        <div class="stockIndicator" [ngClass]="{'green-blink': item.Allocated > 0, 'yellow-no-blink': item.Allocated <= 0}"></div>
+                        <label for="allocated-{{ i }}">Allocated</label>
+                      </div>
+                      <div class="stockScheduler2">
+                        <input
+                          class="schedulerInput"
+                          id="allocated-{{ i }}"
+                          [(ngModel)]="item.Allocated"
+                          name="allocated-{{ i }}"
+                        />
+                      </div>
+                      <div
+                        class="stockScheduler3"
+                        style="margin-top: 7px; margin-left: 20px"
+                      >
+                        <label for="gower-{{ i }}">Supplier {{ i + 1 }}</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="bottomStock">
+                  <div class="bottomStock1">
+                    <div style="text-align: center">
+                      Supplier Stock Availability
+                    </div>
+                    <div>
+                      <input
+                        class="stocckBottomInput"
+                        [(ngModel)]="Supplier_Stock_Avaliability"
+                      />
+                    </div>
+                  </div>
+                  <div class="bottomStock2">
+                    <div style="text-align: center">
+                      Supplier Stock Consumption
+                    </div>
+                    <div>
+                      <input
+                        class="stocckBottomInput"
+                        [(ngModel)]="Supplier_Stock_Consumption"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slide2" [hidden]="stock !== 2" style="box-shadow: rgba(239, 115, 51, 1) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;">
+                <div class="headerSk" style="background:rgba(239, 115, 51, 1)">SKU3</div>
+                <div class="stockhigh">
+                  <form *ngIf="sku3Data.length > 0" style="width: 100%">
+                    <div
+                      class="stockScheduler"
+                      style="margin: 25px 10px"
+                      *ngFor="let item of sku3Data; let i = index"
+                    >
+                      <div
+                        class="stockScheduler1"
+                        style="
+                          margin-top: 7px;
+                          margin-right: 20px;
+                          display: flex;
+                        "
+                      >
+                        <div class="stockIndicator" [ngClass]="{'green-blink': item.Allocated > 0, 'yellow-no-blink': item.Allocated <= 0}"></div>
+                        <label for="allocated-{{ i }}">Allocated</label>
+                      </div>
+                      <div class="stockScheduler2">
+                        <input
+                          class="schedulerInput"
+                          id="allocated-{{ i }}"
+                          [(ngModel)]="item.Allocated"
+                          name="allocated-{{ i }}"
+                        />
+                      </div>
+                      <div
+                        class="stockScheduler3"
+                        style="margin-top: 7px; margin-left: 20px"
+                      >
+                        <label for="gower-{{ i }}">Supplier {{ i + 1 }}</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="bottomStock">
+                  <div class="bottomStock1">
+                    <div style="text-align: center">
+                      Supplier Stock Availability
+                    </div>
+                    <div>
+                      <input
+                        class="stocckBottomInput"
+                        [(ngModel)]="Supplier_Stock_Avaliability"
+                      />
+                    </div>
+                  </div>
+                  <div class="bottomStock2">
+                    <div style="text-align: center">
+                      Supplier Stock Consumption
+                    </div>
+                    <div>
+                      <input
+                        class="stocckBottomInput"
+                        [(ngModel)]="Supplier_Stock_Consumption"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="setdisplay3">
+            <div class="arrowClass" (click)="navigateScheduler('next')">
+              <mat-icon style="font-size: 30px">keyboard_arrow_right</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spinnercontent" *ngIf="loader">
+    <div class="spinnerclass">
+     <div class="loader">
+
+     </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,303 @@
+<div style="height: 100%">
+  <div
+    style="
+      display: flex;
+      /* text-align: center; */
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+    "
+  >
+    <div
+      class=""
+      style="
+        background-color: #ffffff;
+        padding: 5px;
+        align-items: center;
+        display: flex;
+        height: 40px;
+      "
+    >
+      <button
+        (click)="goback()"
+        title="Click to go back"
+        style="
+          border-color: transparent;
+          background-color: transparent;
+          color: #0f0c3d;
+        "
+      >
+        <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+      </button>
+
+      <!--Use Case Name-->
+      <div style="font-size: 21px; margin-left: 20px">
+        <b>Detecting pump failure using vibration signals</b>
+      </div>
+    </div>
+    <div
+      id=""
+      style="margin-right: 30px; font-size: large; font-weight: 600;"
+    >
+      Running Time: <span style="color:#f04438">{{elapsedTime}} Seconds</span>
+    </div>
+    <!-- Timer display -->
+  </div>
+  <div style="">
+    <div class="VBody">
+      <div class="Vcontent">
+        <div class="Vcontent1">
+          <div class="boxLeft">
+            <div class="Boxleft1">
+              <div class="ImgContainer">
+                <img src="../../../assets/pump.png" height="100%" />
+              </div>
+            </div>
+            <div class="Boxleft2">
+              <div class="togglemainDiv">
+                <mat-slide-toggle
+                  (change)="onToggleChange($event)"
+                  class="custom-slide-toggle"
+                >
+                  {{ toggleState ? "ON" : "OFF" }}
+                </mat-slide-toggle>
+              </div>
+            </div>
+            <div class="Boxleft3">
+              <div class="ObservationmainDiv">
+                <div class="ObservationHeader">Observation</div>
+                <p
+                  class="ClassNameval"
+                  style="margin-right: 15px"
+                  
+                >
+                {{ clasNameUpdate === 'normal' ? 'Normal' : (clasNameUpdate === 'bearing' ? 'Bearing Fault' : (clasNameUpdate === 'misalignment' ? 'Misalignment' : (clasNameUpdate === 'unbalanced' ? 'Unbalanced' : 'NA'))) }}
+              </p>
+
+                <div class="ObservationContent">
+                  <div class="ObservationContent1">
+                    <label>ID:</label>
+                  </div>
+                  <div class="ObservationContent2">
+                    <div class="ResultBox">
+                      {{ MachineID }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ObservationContent">
+                  <div class="ObservationContent1">
+                    <label>Name:</label>
+                  </div>
+                  <div class="ObservationContent2">
+                    <div class="ResultBox">{{ MAchineName }}</div>
+                  </div>
+                </div>
+
+                <div class="ObservationContent">
+                  <div class="ObservationContent1">
+                    <label>Power:</label>
+                  </div>
+                  <div class="ObservationContent2">
+                    <div class="ResultBox">{{ Power }}</div>
+                  </div>
+                </div>
+
+                <div class="ObservationContent">
+                  <div class="ObservationContent1">
+                    <label>Flow Rate:</label>
+                  </div>
+                  <div class="ObservationContent2">
+                    <div class="ResultBox">{{ FlowRate }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="Vcontent2">
+          <div class="rightMainbox">
+            <div class="UpperrightBOx">
+              <div class="UpperrightBOx1">
+                <div class="GraphDiv" style="margin-bottom: 10px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      font-size: 15px;
+                      font-weight: 600;
+                    "
+                  >
+                    <div>Acceleration in X Dir vs Time</div>
+                    <div class="Graph_item">
+                      <div class="GraphRound"></div>
+                      <div>Series 1</div>
+                    </div>
+                  </div>
+                  <div
+                    id="chart-x"
+                    style="
+                      width: 100%;
+                      height: 70%;
+
+                      margin-top: 20px;
+                    "
+                  ></div>
+                </div>
+                <div class="GraphDiv">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      font-size: 15px;
+                      font-weight: 600;
+                    "
+                  >
+                    <div>Acceleration in Y Dir vs Time</div>
+                    <div class="Graph_item">
+                      <div class="GraphRoundY"></div>
+                      <div>Series 1</div>
+                    </div>
+                  </div>
+
+                  <!-- <div id="container" style="width: 100%; height: 400px"></div> -->
+                  <div
+                    id="chart-y"
+                    style="
+                      width: 100%;
+                      height: 70%;
+
+                      margin-top: 20px;
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="UpperrightBOx2">
+                <div class="GraphDiv" style="margin-bottom: 10px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      font-size: 15px;
+                      font-weight: 600;
+                    "
+                  >
+                    <div>Acceleration in Z Dir vs Time</div>
+                    <div class="Graph_item">
+                      <div class="GraphRoundZ"></div>
+                      <div>Series 1</div>
+                    </div>
+                  </div>
+                  <div
+                    id="chart-z"
+                    style="
+                      width: 100%;
+                      height: 70%;
+
+                      margin-top: 20px;
+                    "
+                  ></div>
+                </div>
+                <div class="GraphDiv1">
+                  <div>
+                    <div
+                      style="
+                        font-size: larger;
+                        font-weight: 600;
+                        text-align: center;
+                        margin-bottom: 15px;
+                      "
+                    >
+                      Power
+                    </div>
+                    <div id="GuageLoad"></div>
+                    <div class="valueLbel">7.5 HP</div>
+                  </div>
+                  <div>
+                    <div
+                      style="
+                        font-size: larger;
+                        font-weight: 600;
+                        text-align: center;
+                        margin-bottom: 15px;
+                      "
+                    >
+                      Flow Rate
+                    </div>
+                    <div id="GuageSpeed"></div>
+                    <div class="valueLbel">7.8 m3/hr</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="BottomrightBox">
+              <div class="BottomrightBox1">
+                <div class="AxisLeft">
+                  <div class="ColorChange" id="normalDiv">
+                    <div>Normal</div>
+                  </div>
+                  <div class="ColorChange" id="misalignmentDiv">
+                    <div>Mis-alignment</div>
+                  </div>
+                  <div class="ColorChange" id="bearingDiv">
+                    <div>Bearing fault</div>
+                  </div>
+                  <div class="ColorChange" id="unbalancedDiv">
+                    <div>Unbalanced</div>
+                  </div>
+                </div>
+              </div>
+              <div class="BottomrightBox2">
+                <div class="Axisvaluesmain">
+                  <div class="axisValue">
+                    <div class="axisValue1">X-Axis</div>
+                    <div class="axisValue2">
+                      <div
+                        class="Axisvalues"
+                        id="xPointDisplay"
+                        style="color: #f04438"
+                      ></div>
+                    </div>
+                  </div>
+                  <div class="axisValue">
+                    <div class="axisValue1">Y-Axis</div>
+                    <div class="axisValue2">
+                      <div
+                        class="Axisvalues"
+                        id="yPointDisplay"
+                        style="color: #f79009"
+                      ></div>
+                    </div>
+                  </div>
+                  <div class="axisValue">
+                    <div class="axisValue1">Z-Axis</div>
+                    <div class="axisValue2">
+                      <div
+                        class="Axisvalues"
+                        id="zPointDisplay"
+                        style="color: #12b76a"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <iframe
+      #iframeElement
+      style="width: 100%; border: none"
+      frameBorder="0"
+      src="https://apps.powerapps.com/play/e/d6754913-89f5-e971-a712-5cf677f1c1d9/a/9e8f04e1-f762-400b-9419-2a2b251b460f?tenantId=3c8ea0e4-127c-4a02-ac65-58830e4ac608&hint=4570c74c-f119-43ba-97c2-63f6e4226530&sourcetime=1697694218695&hidenavbar=true"
+    ></iframe> -->
+  </div>
+</div>
+
+<div class="spinnercontent" *ngIf="loader">
+  <div class="spinnerclass">
+    <div class="loader"></div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+[
+    {
+        "loggerName": "console",
+        "loggerLocation": "",
+        "isActive":  false
+    },
+    {
+        "loggerName": "localstorage",
+        "loggerLocation": "logging",
+        "isActive": false
+    },
+    {
+        "loggerName": "fluentd",
+        "loggerLocation": "",
+        "isActive": false
+    },
+    {
+        "loggerName": "webapi",
+        "loggerLocation": "/api/log",
+        "isActive": false
+    }
+]

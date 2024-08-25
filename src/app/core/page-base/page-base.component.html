@@ -1,0 +1,325 @@
+<!--Code for Home Page -->
+
+<!-- Top Bar Tags -->
+<mat-toolbar
+  style="background-color: #212445; color: white"
+  class="mat-elevation-z6"
+>
+  <mat-toolbar-row style="height: 70px; flex-wrap: wrap">
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <span>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon matTooltip="Menu">menu</mat-icon>
+        </button>
+      </span>
+      <img id="tcs-logo-img" src=".\assets\img\latestlogo.svg" />
+      <!-- <img id="tcs-logo-img" src="../assets/img/tcs-logo-crop.png"> -->
+      <mat-divider vertical></mat-divider>
+      <mat-card-title>Industry Copilots Studio&nbsp;
+        <span style="font-size: 1.25rem; cursor: pointer"
+          ><i
+            class="fa fa-info-circle"
+            aria-hidden="true"
+            (click)="info_pop()"
+          ></i
+        ></span></mat-card-title>
+
+
+
+
+    </div>
+
+    <div class="joybtn" style="width: 40%; float: right; color: #d3d3d3">
+      <button
+        mat-button
+        style="width: max-content; float: right"
+        [matMenuTriggerFor]="sandboxmenu"
+        matTooltip="{{ uname }}"
+        matTooltipPosition="left"
+      >
+        <mat-icon>account_circle</mat-icon>
+        <span style="margin-left: 5%; font-size: large">{{ uname }}</span>
+        <mat-divider style="background-color: #3e4164"></mat-divider>
+        <div style="font-size: small; margin-top: -5px">{{ userrole }}</div>
+      </button>
+
+      <button mat-button hidden>
+        <div id="google_translate_element"></div>
+      </button>
+
+      <button
+        mat-button
+        style="width: 20%; float: right"
+        matTooltip="{{ date_time }}"
+        matTooltipPosition="left"
+      >
+        <mat-icon>schedule</mat-icon>
+        <mat-divider style="background-color: #3e4164"></mat-divider>
+        <div style="font-size: small; margin-top: -5px">{{ only_time }}</div>
+      </button>
+
+      <mat-menu #sandboxmenu="matMenu">
+        <button mat-menu-item disabled>User: {{ uname }}</button>
+        <button mat-menu-item disabled>Role: {{ userrole }}</button>
+        <button mat-menu-item data-toggle="modal" data-target="#ChangePWModal">
+          Change Password
+          <mat-icon style="margin: 0px; size: 50%">lock_open</mat-icon>
+        </button>
+        <button mat-menu-item (click)="click_logout()">
+          Logout
+          <mat-icon style="margin: 10%; size: 50%">exit_to_app</mat-icon>
+        </button>
+      </mat-menu>
+
+      <mat-form-field class="language-dropdown" value="notranslate">
+        <mat-select
+          [(value)]="selectedLanguage"
+          (selectionChange)="onLanguageChange() "
+          
+        >
+          <mat-option value="en">English</mat-option>
+          <mat-option value="ja">Japanese</mat-option>
+          <mat-option value="ko">Korean</mat-option>
+          <mat-option value="de">German</mat-option>
+          <mat-option value="sv">Swedish</mat-option>
+          <mat-option value="it">Italian</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Side Navigation Menu -->
+<mat-sidenav-container class="example-container" autosize>
+  <!-- Content inside Side Nav container -->
+  <mat-sidenav
+    #sidenav
+    class="example-sidenav"
+    mode="side"
+    [fixedInViewport]="false"
+    style="background-color: #212445"
+  >
+    <mat-divider id="matdividerid"></mat-divider>
+    <a routerLink="{{ home_url }}" style="text-decoration: none"
+      ><button mat-button id="sidenavbtnid">
+        <mat-icon>home</mat-icon>
+        <span style="margin: 10px">Home</span>
+      </button>
+    </a>
+    <mat-divider id="matdividerid"></mat-divider>
+    <button
+      mat-button
+      id="sidenavbtnid"
+      [matMenuTriggerFor]="sandboxsolutionmenu"
+    >
+      <mat-icon>explore</mat-icon>
+      <span style="margin: 10px">Solution</span>
+    </button>
+
+    <!-- <ng-container *ngFor="let item of intSolutions"> -->
+    <mat-menu #sandboxsolutionmenu="matMenu">
+      <!-- <button routerLink="/vision" mat-menu-item>
+        Computer Vision Use Cases
+      </button> -->
+      <button routerLink="/predictive" mat-menu-item>
+        Condition Monitoring of Assets​
+      </button>
+      <button routerLink="/remote" mat-menu-item>
+        Remote Control of Operations​
+      </button>
+      <button routerLink="/miscellaneous" mat-menu-item>Miscellaneous</button>
+    </mat-menu>
+    <!-- </ng-container> -->
+    <mat-divider id="matdividerid"></mat-divider>
+    <a routerLink="{{ help_url }}" style="text-decoration: none"
+      ><button mat-button id="sidenavbtnid">
+        <mat-icon>contact_support</mat-icon>
+        <span style="margin: 10px">Help</span>
+      </button>
+    </a>
+    <mat-divider id="matdividerid"></mat-divider>
+    <a routerLink="{{ contact_url }}" style="text-decoration: none"
+      ><button mat-button id="sidenavbtnid">
+        <mat-icon> mail </mat-icon>
+        <span style="margin: 10px">Contact Us</span>
+      </button></a
+    >
+    <mat-divider id="matdividerid"></mat-divider>
+    <button mat-button id="sidenavbtnid" (click)="sidenav.toggle()">
+      <mat-icon>close</mat-icon>
+      <span style="margin: 10px">Close</span>
+    </button>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+
+  <mat-sidenav-content style="background-color: #dddddd">
+    <router-outlet></router-outlet>
+
+    <footer
+      style="
+        background-color: #212445;
+        color: #d3d3d3;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+      "
+    >
+      <div>©2024 Tata Consultancy Services Limited. All Rights Reserved</div>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- Change Password Modal -->
+<div
+  class="modal fade"
+  id="ChangePWModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="ChangePWModalLabel"
+  aria-hidden="true"
+  style="margin-top: 5%"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div
+      class="modal-content"
+      style="background-image: linear-gradient(to right, #e9e6f0, #887aa7)"
+    >
+      <div class="modal-header" style="border: none">
+        <h2
+          class="modal-title"
+          id="ChangePWModalLabel"
+          style="padding-left: 5%"
+        >
+          Change Your Password
+        </h2>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          style="color: #ff0000"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="pwd_res">
+        <div class="d-flex">
+          <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
+            <label for="currPW">Current Password :&nbsp;</label>
+          </div>
+          <div class="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xxl-7">
+            <input
+              type="password"
+              id="currPW"
+              (keyup)="check_new_pwd()"
+              style="width: 100%"
+            />
+            <div class="d-flex">
+              <div id="currshow_user_input_error">Please enter password</div>
+            </div>
+          </div>
+          <br /><br /><br />
+        </div>
+        <div class="d-flex">
+          <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
+            <label for="newPW">Set new Password :&nbsp;</label>
+          </div>
+          <div class="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xxl-7">
+            <input
+              type="password"
+              id="newPW"
+              (keyup)="check_new_pwd()"
+              style="width: 100%"
+            />
+            <div class="d-flex">
+              <div id="newshow_user_input_error"></div>
+            </div>
+          </div>
+          <br /><br /><br />
+        </div>
+        <div class="d-flex">
+          <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4">
+            <label for="ConfPW">Confirm Password :&nbsp;</label>
+          </div>
+          <div class="col-7 col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xxl-7">
+            <input
+              type="password"
+              id="confPW"
+              (keyup)="check_new_pwd()"
+              style="width: 100%"
+            />
+            <div class="d-flex">
+              <div id="cnfmshow_user_input_error"></div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="passw"
+          style="
+            padding-left: 15%;
+            text-align: left;
+            display: none;
+            font-size: small;
+          "
+        >
+          <ul>
+            <li>
+              Should be
+              <strong id="length" style="color: #f04b4b"
+                >8 - 15 characters</strong
+              >
+            </li>
+            <li>
+              At least
+              <strong id="capital" style="color: #f04b4b"
+                >one capital letter</strong
+              >
+            </li>
+            <li>
+              At least
+              <strong id="number" style="color: #f04b4b">one number</strong>
+            </li>
+            <li>
+              At least
+              <strong id="spec" style="color: #f04b4b"
+                >one special character</strong
+              >
+              <br />[~ , ! , @ , # , $ , ; , % , ^ , & , . , * , - , = ]
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer" style="border: none">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          style="background-color: #d43c3c"
+        >
+          Close
+        </button>
+        <button
+          id="change_pwd_submit"
+          type="submit"
+          class="btn btn-primary"
+          style="background-color: #127c1b"
+          (click)="change_pwd()"
+          disabled
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

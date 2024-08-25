@@ -1,0 +1,427 @@
+<!-- <p>gearbox-monitoring works!</p> -->
+<div>
+  <div class="d-flex" style="background-color: #fff; align-items: center">
+    <div class="stopbtngear">
+      <button
+        (click)="goback()"
+        title="Click to go back"
+        style="
+          border-color: transparent;
+          background-color: transparent;
+          color: #0f0c3d;
+        "
+      >
+        <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+      </button>
+    </div>
+
+    <!--Use Case Name-->
+    <div class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 col-xxl-9">
+      <div style="font-size: 20px">
+        <b
+          >Condition monitoring of Gearbox &nbsp;<span
+            style="font-size: 20px; cursor: pointer"
+            (click)="info_pop()"
+            ><i class="fa fa-info-circle" aria-hidden="true"></i></span
+        ></b>
+      </div>
+    </div>
+
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+      <button
+        class="start_gear"
+        id="start_gb"
+        [style.background-color]="atv_clr"
+        (click)="gear_init()"
+      >
+        Start
+      </button>
+    </div>
+
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+      <button
+        class="stop_gear"
+        id="stop_gb"
+        [style.background-color]="deatv_clr"
+        (click)="Stop()"
+        disabled
+      >
+        Stop
+      </button>
+    </div>
+  </div>
+
+  <!-- <div > -->
+
+  <div style="width: 98%; margin: 6px 10px 0px 17px">
+    <div
+      class="titlebar_gb"
+      style="
+        height: 30px;
+        text-align: center;
+        padding-top: 3px;
+        margin-right: 6px;
+        background-color: #16125a;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 4px 4px 4px #888888;
+      "
+    >
+      <!--Piston Plant, Line and Type Information-->
+      <!-- <span class="Serial_Span" style="font-size: 20px;font-weight: 400; margin: auto; margin-right: 10%; color: white; ">
+            Serial # {{i + 1}} </span> -->
+      <!-- {{sid}} -->
+      <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+
+      <span
+        class="comp_Span"
+        style="font-size: 20px; font-weight: 400; margin: auto; color: white"
+      >
+        Component:
+      </span>
+      <select
+        (change)="display_gear_or_bearing()"
+        id="component_value"
+        style="
+          text-align-last: center;
+          height: 25px;
+          border-radius: 10px;
+          background-color: white;
+          border: 1px solid #36a2eb;
+          margin-right: 10%;
+        "
+      >
+        <option value="1">Gear</option>
+        <option value="2">Bearing</option>
+      </select>
+      <!-- disabled -->
+      <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+      <!-- </span> -->
+      <span
+        class="obv_Span"
+        style="font-size: 20px; font-weight: 400; margin: auto; color: white"
+      >
+        Observation:
+      </span>
+      <a
+        id="defect"
+        style="font-size: 20px; font-weight: 500"
+        [style.color]="action_color"
+        >{{ obs }}</a
+      >
+      <!-- </span> -->
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div
+      style="
+        background-color: whitesmoke;
+        border-radius: 12px;
+        margin: 5px 10px 0px 22px;
+        width: 70%;
+      "
+    >
+      <div class="top_content_gear">
+        <div
+          class="top_left_gear"
+          style="
+            height: 34vh;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px rgb(201, 200, 200);
+            background-color: white;
+            margin: 1% 2% 2% 0%;
+          "
+        >
+          <span
+            class="signal_Span"
+            style="
+              font-size: 14px;
+              font-weight: 350;
+              margin: 2% 0 0 28%;
+              text-align-last: center;
+            "
+          >
+            Select Signal:
+          </span>
+          <select
+            name="signal1"
+            id="signal_lis1"
+            style="
+              text-align-last: center;
+              font-size: 12px;
+              height: 25px;
+              border-radius: 10px;
+              background-color: white;
+              border: 1px solid #36a2eb;
+              margin-right: 5%;
+            "
+            #selectedCategory1
+            (change)="sig1(selectedCategory1.value)"
+          >
+            <option value="motor_vib">Motor Vibration</option>
+            <!-- <option value="gb_vib_x">Planetary Gearbox Vibration in X-Direction</option>
+                        <option value="gb_vib_y">Planetary Gearbox Vibration in Y-Direction</option>
+                        <option value="gb_vib_z">Planetary Gearbox Vibration in Z-Direction</option> -->
+            <option value="motor_torq">Motor Torque</option>
+            <!-- <option value="par_gb_vib_x">Parallel Gearbox Vibration in X-Direction</option>
+                        <option value="par_gb_vib_y">Parallel Gearbox Vibration in Y-Direction</option>
+                        <option value="par_gb_vib_z">Parallel Gearbox Vibration in Z-Direction</option> -->
+          </select>
+          <div id="chartContainer1" style="height: 30vh">
+            <canvas id="sig1id" style="width: 100%">{{ sign1 }} </canvas>
+          </div>
+        </div>
+
+        <div
+          class="top_middle_gear"
+          style="
+            height: 34vh;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px rgb(201, 200, 200);
+            background-color: white;
+            margin: 1% 0% 2% -6%;
+          "
+        >
+          <span
+            class="signal_Span"
+            style="
+              font-size: 14px;
+              font-weight: 350;
+              margin: 2% 0 0 12%;
+              text-align-last: center;
+            "
+          >
+            Select Signal:
+          </span>
+          <select
+            name="signal2"
+            id="signal_lis2"
+            style="
+              text-align-last: center;
+              font-size: 12px;
+              height: 25px;
+              border-radius: 10px;
+              background-color: white;
+              border: 1px solid #36a2eb;
+              margin-right: 5%;
+            "
+            #selectedCategory2
+            (change)="sig2(selectedCategory2.value)"
+          >
+            <option value="gb_vib_x">
+              Planetary Gearbox Vibration in X-Direction
+            </option>
+            <!-- <option value="motor_vib">Motor Vibration</option>
+                        <option value="gb_vib_y">Planetary Gearbox Vibration in Y-Direction</option>
+                        <option value="gb_vib_z">Planetary Gearbox Vibration in Z-Direction</option>
+                        <option value="motor_torq">Motor Torque</option> -->
+            <option value="par_gb_vib_x">
+              Parallel Gearbox Vibration in X-Direction
+            </option>
+            <!-- <option value="par_gb_vib_y">Parallel Gearbox Vibration in Y-Direction</option>
+                        <option value="par_gb_vib_z">Parallel Gearbox Vibration in Z-Direction</option> -->
+          </select>
+          <div style="height: 30vh">
+            <canvas id="sig2id" style="width: 130%">{{ sign2 }} </canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom_content_gear">
+        <div
+          class="bottom_left_gear"
+          style="
+            height: 34vh;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px rgb(201, 200, 200);
+            background-color: white;
+            margin: 0% 2% 1% 0%;
+          "
+        >
+          <span
+            class="signal_Span"
+            style="
+              font-size: 14px;
+              font-weight: 350;
+              margin: 2% 0 0 12%;
+              text-align-last: center;
+            "
+          >
+            Select Signal:
+          </span>
+          <select
+            name="signal3"
+            id="signal_lis3"
+            style="
+              text-align-last: center;
+              font-size: 12px;
+              height: 25px;
+              border-radius: 10px;
+              background-color: white;
+              border: 1px solid #36a2eb;
+              margin-right: 5%;
+            "
+            #selectedCategory3
+            (change)="sig3(selectedCategory3.value)"
+          >
+            <option value="gb_vib_y">
+              Planetary Gearbox Vibration in Y-Direction
+            </option>
+            <!-- <option value="gb_vib_x">Planetary Gearbox Vibration in X-Direction</option>
+                    <option value="motor_vib">Motor Vibration</option>
+                    <option value="gb_vib_z">Planetary Gearbox Vibration in Z-Direction</option>
+                    <option value="motor_torq">Motor Torque</option>
+                    <option value="par_gb_vib_x">Parallel Gearbox Vibration in X-Direction</option> -->
+            <option value="par_gb_vib_y">
+              Parallel Gearbox Vibration in Y-Direction
+            </option>
+            <!-- <option value="par_gb_vib_z">Parallel Gearbox Vibration in Z-Direction</option> -->
+          </select>
+          <div style="height: 30vh">
+            <canvas id="sig3id" style="width: 100%">{{ sign3 }} </canvas>
+          </div>
+        </div>
+        <div
+          class="bottom_middle_gear"
+          style="
+            height: 34vh;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px rgb(201, 200, 200);
+            background-color: white;
+            margin: 0% 0% 1% -6%;
+          "
+        >
+          <span
+            class="signal_Span"
+            style="
+              font-size: 14px;
+              font-weight: 350;
+              margin: 2% 0 0 12%;
+              text-align-last: center;
+            "
+          >
+            Select Signal:
+          </span>
+          <select
+            name="signal4"
+            id="signal_lis4"
+            style="
+              text-align-last: center;
+              font-size: 12px;
+              height: 25px;
+              border-radius: 10px;
+              background-color: white;
+              border: 1px solid #36a2eb;
+              margin-right: 5%;
+            "
+            #selectedCategory4
+            (change)="sig4(selectedCategory4.value)"
+          >
+            <option value="gb_vib_z">
+              Planetary Gearbox Vibration in Z-Direction
+            </option>
+            <!-- <option value="gb_vib_x">Planetary Gearbox Vibration in X-Direction</option>
+                            <option value="gb_vib_y">Planetary Gearbox Vibration in Y-Direction</option>
+                            <option value="motor_vib"> Motor Vibration</option>
+                            <option value="motor_torq">Motor Torque</option>
+                            <option value="par_gb_vib_x">Parallel Gearbox Vibration in X-Direction</option>
+                            <option value="par_gb_vib_y">Parallel Gearbox Vibration in Y-Direction</option> -->
+            <option value="par_gb_vib_z">
+              Parallel Gearbox Vibration in Z-Direction
+            </option>
+          </select>
+          <div style="height: 30vh">
+            <canvas id="sig4id" style="width: 130%">{{ sign4 }} </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="bottom_gear"
+      style="
+        background-color: whitesmoke;
+        border-radius: 12px;
+        margin: 5px 10px 0px 1px;
+        width: 26%;
+      "
+    >
+      <div class="table-responsize" style="margin: 2% 0% 5px 4%; width: 92%">
+        <div
+          style="
+            margin-top: 2px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          "
+        >
+          <!-- </div> -->
+          <div class="notif-q22_gear1" style="background-color: white">
+            <div class="notif-q22-text_gear">Rotating Speed</div>
+            <div class="notif-q22-num_gear">{{ speed1 }} Hz</div>
+          </div>
+          <div class="notif-q22_gear2" style="background-color: white">
+            <div class="notif-q22-text_gear">System Load</div>
+            <div class="notif-q22-num_gear">{{ load1 }} V</div>
+          </div>
+
+          <div class="notif-q22_gear3" style="background-color: white">
+            <div class="notif-q22-text_gear">Observation</div>
+            <div class="notif-q22-num_gear" [style.color]="action_color">
+              {{ obs }}
+            </div>
+          </div>
+
+          <div class="notif-q22_gear4" style="background-color: white">
+            <div class="notif-q22-text_gear">Fault Type</div>
+            <div class="notif-q22-num_gear">{{ fault_type }}</div>
+          </div>
+        </div>
+
+        <!-- <div class="top_right_gear "
+                    style="height: 14vh; border-radius: 20px;box-shadow: 4px 4px 4px rgb(201, 200, 200);background-color: white;">
+    
+                
+
+                    <table class="table_gear" style="border: none !important;margin-left: 18%;font-size: 110%;">
+                        <tbody>
+
+                            <tr>
+                                <td style="border: none !important;padding: 9px !important;margin-top: 5%;"><b>Observation</b></td>
+                                <td style="border: none !important;padding: 9px !important;margin-top: 5%;"><b>:   Healthy</b></td>
+                            </tr>
+                            <tr>
+                                <td style="border: none !important;padding: 9px !important;"><b>Fault Type</b></td>
+                                <td style="border: none !important;padding: 9px !important;" id="dt_type"><b>:  NA</b>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div> -->
+        <!-- </div> -->
+      </div>
+
+      <div
+        class="bottom_right_gear"
+        style="
+          height: 34vh;
+          border-radius: 20px;
+          box-shadow: 4px 4px 4px rgb(201, 200, 200);
+          background-color: white;
+          margin: 5% 0% 5px 4%;
+          width: 92%;
+        "
+      >
+        <div style="height: 34vh">
+          <!-- <canvas id="gear_graph">{{gear_bar_graph}}</canvas> -->
+          <canvas #barCanvas id="gear_graph"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

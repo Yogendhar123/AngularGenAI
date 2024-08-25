@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sandbox-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tsl-acme: "true"
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    kubernetes.io/secure-backends: "true"
+    nginx.ingress.kubernetes.io/whitelist-source-range: "0.0.0.0/0"
+spec:
+  tls:
+  # - hosts:
+  #   - localhost       ## 20.81.100.2
+  - secretName: my-tls
+  rules:
+  # - host: localhost # can be DNS string 
+  - http:
+      paths:
+      - path: /smartfac/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: smartfac
+            port:
+              number: 80      
+      - path: /hubapi/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: hubapi
+            port:
+              number: 80                  

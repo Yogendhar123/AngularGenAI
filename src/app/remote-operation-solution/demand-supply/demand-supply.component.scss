@@ -1,0 +1,722 @@
+.mainBody {
+    // background-color: whitesmoke;
+    width: 100%;
+    // height: 100%;
+}
+
+.bodyBox{
+    height: 80vh;
+
+}
+
+.divdody {
+    background-color: whitesmoke;
+    height: auto;
+}
+
+
+
+.bodyContentMainBottom {
+    display: flex;
+    margin: 0px 10px;
+
+
+
+}
+
+.bodyContentMain {
+    display: flex;
+    margin: 0px 10px;
+    height: 100%;
+
+}
+
+.bodyContentMainBottom1 {
+
+    flex: 2;
+    border: 1px solid black;
+    padding: 20px 15px;
+    border-radius: 16px;
+    height: 35vh;
+    width: 100%;
+    margin: 3px;
+
+    background-color: whitesmoke;
+    border: none;
+    // box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+
+
+
+
+}
+
+.bodyContentMainBottom2 {
+
+    flex: 2;
+    border: 1px solid black;
+    padding: 10px 15px;
+    border-radius: 16px;
+    height: 35vh;
+    width: 100%;
+    margin: 3px;
+
+    background-color: whitesmoke;
+    border: none;
+    // box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+
+
+
+
+
+}
+
+
+.bodyContentMain1 {
+
+    flex: 2;
+    // border: 1px solid black;
+    // padding: 20px 15px;
+    // border-radius: 16px;
+    // height: auto;
+    // width: 100%;
+    margin: 0px 10px 0px 0px;
+    height: 100%;
+    // background-color: whitesmoke;
+    // border: none;
+    // box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+
+
+
+}
+
+.bodyContentMain2 {
+
+    flex: 2;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+    border: none;
+    // box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+
+
+
+
+}
+
+.productionplanBox {
+    border: 1px solid black;
+    padding: 15px 5px;
+    border-radius: 8px;
+    min-height: 53.5%;
+    width: 100%;
+    background-color: whitesmoke;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.supplierStockBox {
+    border: 1px solid black;
+    padding: 15px 5px;
+    border-radius: 8px;
+    height: 45%;
+    width: 100%;
+    background-color: whitesmoke;
+    border: none;
+
+
+}
+
+.proPlan {
+    text-align: center;
+    font-family: inter;
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.skuBox {
+    background-color: white;
+    height: 90%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* carousel.component.css */
+
+.carousel {
+    position: relative;
+    width: 300px;
+    /* Adjust as needed */
+    margin: 0 auto;
+}
+
+.slide {
+    // border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 15px;
+    // box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+
+    background-color: white;
+    padding: 10px;
+    height: auto;
+}
+
+.slide1 {
+    border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 15px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+
+    background-color: white;
+    padding: 10px;
+    height: auto;
+}
+
+.slide2 {
+    // border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 15px;
+    // box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+
+    background-color: white;
+    padding: 10px;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+//   button {
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//   }
+
+button:first-child {
+    left: 0;
+}
+
+button:last-child {
+    right: 0;
+}
+
+.arrowClass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.875rem;
+    height: 100%;
+    cursor: pointer;
+}
+
+.setdisplay {
+    display: flex;
+    height: 93%;
+
+}
+
+.setdisplay1 {
+    flex: 1;
+
+}
+
+.setdisplay2 {
+    flex: 16;
+    height: 100%;
+
+}
+
+.setdisplay3 {
+    flex: 1;
+
+}
+
+.headerSk {
+
+    // background: #212445;
+    height: 30px;
+    border-radius: 8px;
+    color: white;
+    /* display: flex; */
+    justify-content: center;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 20px;
+    display: flex;
+}
+
+.contentFlex {
+    display: flex;
+}
+
+.contentFlex1 {
+    flex: 3;
+
+}
+
+.contentFlex2 {
+    flex: 1;
+
+}
+
+.qualityTheader {
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 2px;
+    font-size: 15px;
+    font-family: inter;
+    font-weight: 600;
+}
+
+.inputQuality {
+    border: 1px solid rgba(208, 213, 221, 1);
+    padding: 10px 14px;
+    border-radius: 8px;
+    height: 36px;
+    width: 90%;
+    text-align: center;
+
+}
+
+.inputQualityDemand {
+    border: 1px solid rgba(208, 213, 221, 1);
+    padding: 10px 14px;
+    border-radius: 8px;
+    height: 36px;
+    width: 95%;
+    text-align: center;
+
+}
+
+.schedulerInput {
+    border: 1px solid rgba(208, 213, 221, 1);
+    padding: 10px 14px;
+    border-radius: 8px;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+
+
+}
+
+.secoundDuv {
+    display: flex;
+    margin: 5px 0px;
+
+}
+
+
+.secoundDuvMultifactor{
+    display: flex;
+    margin: 5px 0px;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.Qualitycheck {
+    margin: 5px 0px;
+
+}
+
+.thirdDiv {
+    margin: 5px 0px;
+
+}
+
+.multiF1 {
+    margin-top: 7px;
+    margin-right: 10px;
+
+
+    margin-bottom: 2px;
+    font-size: 13px;
+    font-family: inter;
+    font-weight: 600;
+    text-align: center;
+}
+
+.multiF {
+    margin-top: 7px;
+    margin-right: 10px;
+
+
+    margin-bottom: 2px;
+    font-size: 13px;
+    font-family: inter;
+    font-weight: 500;
+}
+
+.multiFColor {
+    margin-top: 7px;
+    margin-right: 70px;
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-family: inter;
+    font-weight: 500;
+}
+
+
+.inputQuality1 {
+    width: 50%;
+    outline: none;
+
+
+}
+
+.inputQuality1Demad {
+    width: 64%;
+    outline: none;
+}
+
+.inputQuality2 {
+    width: 35%;
+    outline: none;
+}
+
+.inputQualityColor {
+    width: 80%;
+    outline: none;
+}
+.inputQualityGravity {
+    width: 80%;
+    outline: none;
+}
+.inputQuality2R {
+    width: 50%;
+}
+
+.supplierMain {
+    display: flex;
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+.supplierMain1 {
+    flex: 1;
+    /* display: flex; */
+    margin-top: 5px;
+}
+
+.supplierMain2 {
+    flex: 2;
+}
+
+.stockScheduler {
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    font-size: 16px;
+
+}
+
+.stockScheduler1 {
+    flex: 2;
+
+}
+
+.stockScheduler2 {
+    flex: 3;
+
+}
+
+.stockScheduler3 {
+    flex: 2;
+    text-align: center;
+
+}
+
+.stockIndicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    // background-color: blue;
+    margin-right: 15px;
+}
+
+.green-blink {
+    background-color: green;
+    animation: blink 1.5s infinite;
+  }
+   
+  .yellow-no-blink {
+    background-color: #DC6803;
+  }
+   
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.stockhigh {
+    // min-height: 51vh;
+    overflow: auto;
+    margin-top: 5px;
+    height: 100%;
+    // max-height: 54vh;
+    // margin-bottom: 56px;
+}
+
+.stockhigh::-webkit-scrollbar {
+    width: 8px;
+    /* Set the width of the scrollbar */
+}
+
+.stockhigh::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Set the color of the scrollbar thumb */
+    border-radius: 6px;
+    /* Set the border radius of the scrollbar thumb */
+}
+
+.stockhigh::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Set the color of the scrollbar thumb on hover */
+}
+
+.stockhigh::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Set the color of the scrollbar track */
+}
+
+.bottomStock {
+    margin: 5px 10px 15px 0px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.bottomStock1 {
+    flex: 1;
+    display: flex;
+   
+}
+
+.bottomStock2 {
+    flex: 1;
+    display: flex;
+}
+
+.stocckBottomInput {
+    border: 1px solid rgba(208, 213, 221, 1);
+    padding: 10px;
+    border-radius: 8px;
+    height: 35px;
+    width: 100%;
+    outline: none;
+    text-align: center;
+
+}
+
+.graphbocx {
+    border: solid rgba(45, 35, 66, 0.4) 2px;
+    border-radius: 15px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px;
+
+    background-color: white;
+
+    height: 100%;
+    // width: 98%;
+
+}
+
+.getData {
+    color: white;
+    background: #212445;
+    padding: 5px;
+    border-radius: 8px;
+    // width: 70px;
+}
+
+
+
+.customer-load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinnercontent {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
+    display: flex;
+    text-align: center;
+    height: 100vh;
+}
+
+.spinnerclass {
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    left: 45%;
+    right: 0;
+    top: 50%;
+    bottom: 0;
+}
+
+
+@media screen and (min-device-width: 320px) and (max-device-width: 1030px) {
+
+    .bodyContentMainBottom {
+        display: flex;
+        margin: 0px 10px;
+        flex-direction: column;
+
+
+    }
+
+    .bodyContentMain {
+        display: flex;
+        margin: 0px 10px;
+        flex-direction: column;
+
+    }
+    .supplierStockBox{
+        border: 1px solid black;
+        padding: 15px 5px;
+        border-radius: 8px;
+        height: auto;
+        width: 100%;
+        background-color: whitesmoke;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";  // or any other theme
+/* upload.component.css or upload.component.scss */
+::ng-deep .success-snackbar {
+    background-color: green !important;
+    color: white !important;
+    text-align: center;
+  }
+   
+  ::ng-deep .error-snackbar {
+    background-color: red !important;
+    color: white !important;
+    text-align: center;
+  
+  }
+   
+  ::ng-deep .mat-snack-bar-container {
+    justify-content: center !important;
+  }
+   
+  ::ng-deep .mat-simple-snackbar {
+    display: inline-block !important;
+    padding: 0 24px !important;
+    text-align: center !important;
+    font-size: 16px;
+    width: fit-content;
+  }
+
+
+  .spinnercontent {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
+    display: flex;
+    text-align: center;
+    height: 100vh;
+}
+
+.spinnerclass {
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    left: 45%;
+    right: 0;
+    top: 50%;
+    bottom: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128,
+            128,
+            128,
+            0.5);
+    /* Light gray background with 50% opacity */
+}
+
+.loader {
+    height: 30px;
+    aspect-ratio: 2.5;
+    --_g: no-repeat radial-gradient(farthest-side, #000 90%, #0000);
+    background: var(--_g), var(--_g), var(--_g), var(--_g);
+    background-size: 20% 50%;
+    animation: l44 1s infinite linear alternate;
+}
+
+@keyframes l44 {
+
+    0%,
+    5% {
+        background-position: calc(0*100%/3) 50%, calc(1*100%/3) 50%, calc(2*100%/3) 50%, calc(3*100%/3) 50%
+    }
+
+    12.5% {
+        background-position: calc(0*100%/3) 0, calc(1*100%/3) 50%, calc(2*100%/3) 50%, calc(3*100%/3) 50%
+    }
+
+    25% {
+        background-position: calc(0*100%/3) 0, calc(1*100%/3) 0, calc(2*100%/3) 50%, calc(3*100%/3) 50%
+    }
+
+    37.5% {
+        background-position: calc(0*100%/3) 100%, calc(1*100%/3) 0, calc(2*100%/3) 0, calc(3*100%/3) 50%
+    }
+
+    50% {
+        background-position: calc(0*100%/3) 100%, calc(1*100%/3) 100%, calc(2*100%/3) 0, calc(3*100%/3) 0
+    }
+
+    62.5% {
+        background-position: calc(0*100%/3) 50%, calc(1*100%/3) 100%, calc(2*100%/3) 100%, calc(3*100%/3) 0
+    }
+
+    75% {
+        background-position: calc(0*100%/3) 50%, calc(1*100%/3) 50%, calc(2*100%/3) 100%, calc(3*100%/3) 100%
+    }
+
+    87.5% {
+        background-position: calc(0*100%/3) 50%, calc(1*100%/3) 50%, calc(2*100%/3) 50%, calc(3*100%/3) 100%
+    }
+
+    95%,
+    100% {
+        background-position: calc(0*100%/3) 50%, calc(1*100%/3) 50%, calc(2*100%/3) 50%, calc(3*100%/3) 50%
+    }
+}

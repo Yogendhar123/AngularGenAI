@@ -1,0 +1,64 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 4px 4px 4px #888888;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #95a1f4;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #62479b;
+}
+
+.head2 {
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#block2 {
+    background-color: white;
+    margin: 20px auto;
+}
+
+#btnhome, #btnback {
+    cursor: pointer;
+    width: 20%;
+    font-size: 16px;
+    background-color: #343378;
+    border-radius: 4px;
+    border: 1px solid white;
+    color: white;
+}
+
+.stopbtnvision:hover mat-icon{
+    color: indianred;
+   }
+   
+.start, .stop {
+    width:100%;
+    font-size: 18px;
+    background-color:#343378;
+    border-radius:4px;
+    border:1px solid white;
+    color:white;
+    height: 30px;
+    margin: 2px;
+}
+
+.start:active, .stop:active {
+    box-shadow: #23206f 0 1px 4px inset;
+    transform: translateY(2px);
+}

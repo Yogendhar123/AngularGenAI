@@ -1,0 +1,459 @@
+<div>
+
+    <div class="d-flex" style="background-color: #d1d1d1;">
+
+        <!--Burger Icon for Opening and closing Side Navigation Bar-->
+
+        <div class = "stopbtnvision" >
+            <button (click)="goback()" title="Click to go back" 
+            style = "border-color: transparent; background-color: transparent; color:#0f0c3d;">
+                <mat-icon style="font-size: 30px;">keyboard_arrow_left</mat-icon>
+            </button>
+        </div>
+
+
+        <!--Use Case Name-->
+        <div class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xxl-5"
+            style="display: flex;justify-content: left;align-items: center;">
+
+            <div style="font-size:20px;"><b>Power Management (PowMan) &nbsp;<span style="font-size:20px;cursor:pointer;"
+                        (click)="info_pop()"><i class="fa fa-info-circle" aria-hidden="true"></i></span></b></div>
+        </div>
+
+        <div class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xxl-5"
+            style="display: flex;justify-content: left;align-items: center; margin-left: 11%;">
+            <input type="radio" checked name="section" value="section"
+                style="height:20px; width:20px; margin-right: 5px; vertical-align: middle; ">
+            <div
+                style="background-color: #8ddf8d;padding: 5px;height: 20px; font-size:13px;color: black;display: flex;justify-content: left;align-items: center;border-radius: 5px; border: 1.5px solid rgb(8, 107, 13);margin-right: 5%;">
+                <b>Section 1</b> </div>
+
+            <input type="radio" name="section" value="section"
+                style="height:20px; width:20px; margin-right: 5px; vertical-align: middle;" disabled>
+            <div
+                style="opacity: 0.5; background-color: #8ddf8d;padding: 5px;height: 20px; font-size:13px;color: black;display: flex;justify-content: left;align-items: center;border-radius: 5px;border: 1.5px solid rgb(8, 107, 13);margin-right: 5%;">
+                <b>Section 2</b> </div>
+
+            <input type="radio" name="section" value="section"
+                style="height:20px; width:20px; margin-right: 5px; vertical-align: middle;" disabled>
+            <div
+                style="opacity: 0.5;background-color: #8ddf8d;padding: 5px;height: 20px; font-size:13px;color: black;display: flex;justify-content: left;align-items: center;border-radius: 5px;border: 1.5px solid rgb(8, 107, 13);margin-right: 5%;">
+                <b>Section 3</b> </div>
+
+            <input type="radio" name="section" value="section"
+                style="height:20px; width:20px; margin-right: 5px; vertical-align: middle;" disabled>
+            <div
+                style="opacity: 0.5;background-color: #8ddf8d;padding: 5px;height: 20px; font-size:13px;color: black;display: flex;justify-content: left;align-items: center;border-radius: 5px;border: 1.5px solid rgb(8, 107, 13);">
+                <b>Section 4</b> </div>
+        </div>
+
+        <!-- <div class="col-0 col-md-0 col-sm-0 col-lg-0 col-xl-0 col-xxl-0">
+            <button class='stop' (click)="goback()" title="Click to go back" style=" font-size: 18px; background-color:#0f0c3d; border-radius:4px;
+          border:1px solid white;color:white;">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </button>
+        </div> -->
+
+    </div>
+
+    <div class="d-flex"
+        style="flex-direction: row; color: white; vertical-align: middle;align-items: center; background-color:#FFFFFF;">
+
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xxl-4"
+            style="margin-top: 20px; display:flex;align-items: center; justify-content: center;">
+            <div class="d-flex" style="border-radius: 10px; flex-direction: row; background-color: #363381;">
+                <i class="fa fa-clock-o" style="color: white;font-size: 40px;padding:10px;"></i>
+                <div class="d-flex" style="flex-direction: column;padding:8px;padding-top:5px;">
+                    <div>Last Refreshed at &nbsp;: {{curr_ref}}</div>
+
+                    <div>Next Refresh at &nbsp;&nbsp;&nbsp;&nbsp;: {{next_ref}}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+
+        </div>
+
+        <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xxl-3" style="margin-top: 20px;font-size: 14px;">
+            <div class="d-flex"
+                style="border-radius: 5px; flex-direction: row; background-color: #363381;padding:8px;padding-top:5px;">
+
+                <div style="background-color: #FFBDBD;width: 50px;border-radius: 20px;margin-right: 8px;"></div> Warning
+                <div
+                    style="background-color: #DBFEDA;width: 50px;border-radius: 20px;margin-left:13px ;margin-right: 8px;">
+                </div> No Warning
+
+
+            </div>
+
+
+        </div>
+        <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1"></div>
+
+        <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1" >
+            <button class='start' id='start_pow' [style.background-color]="atv_clr" (click)="pow_init()">Start</button>
+        </div>
+    
+        <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+            <button class='stop' id='stop_pow' [style.background-color]="deatv_clr" (click)="Stop()" disabled>Stop</button>
+        </div>
+    </div>
+
+
+    <div class="d-flex" style="flex-direction: column; height:71.6vh;overflow-y: auto;background-color: #FFFFFF;">
+
+
+        <div class="d-flex"
+            style="margin-top: 10px;margin-left: 35px; flex-direction: row;vertical-align: middle;align-items: center; background-color:#FFFFFF;">
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;"
+                [style.backgroundColor]="mc_1_col">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title" [style.borderColor]="mc_1_bord"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid;border-radius: 10px;padding: 10px;">
+                        PS_ELEC</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        {{mc_1_act}} Time : {{mc_1_time}}</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : {{mc_1_pred}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : {{mc_1_conf}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : {{mc_1_act}}</p>
+
+
+                </div>
+            </div>
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;"
+                [style.backgroundColor]="mc_2_col">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title" [style.borderColor]="mc_2_bord"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid;border-radius: 10px;padding: 10px;">
+                        PS_ELEC_CA</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        {{mc_2_act}} Time : {{mc_2_time}}</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : {{mc_2_pred}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : {{mc_2_conf}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : {{mc_2_act}}</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;"
+                [style.backgroundColor]="mc_3_col">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title" [style.borderColor]="mc_3_bord"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid;border-radius: 10px;padding: 10px;">
+                        PS_NG</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        {{mc_3_act}} Time : {{mc_3_time}}</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : {{mc_3_pred}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : {{mc_3_conf}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : {{mc_3_act}}</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;"
+                [style.backgroundColor]="mc_4_col">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title" [style.borderColor]="mc_4_bord"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid;border-radius: 10px;padding: 10px;">
+                        PS_HEAT</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        {{mc_4_act}} Time : {{mc_4_time}}</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : {{mc_4_pred}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : {{mc_4_conf}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : {{mc_4_act}}</p>
+
+
+                </div>
+            </div>
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;"
+                [style.backgroundColor]="mc_5_col">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title" [style.borderColor]="mc_5_bord"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid;border-radius: 10px;padding: 10px;">
+                        PS_HEAT_CF</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        {{mc_5_act}} Time : {{mc_5_time}}</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : {{mc_5_pred}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : {{mc_5_conf}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : {{mc_5_act}}</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;"
+                [style.backgroundColor]="mc_6_col">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title" [style.borderColor]="mc_6_bord"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid;border-radius: 10px;padding: 10px;">
+                        PS_HEAT_PC</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        {{mc_6_act}} Time : {{mc_6_time}}</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : {{mc_6_pred}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : {{mc_6_conf}}</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : {{mc_6_act}}</p>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="d-flex"
+            style="opacity: 0.3; margin-top: 10px;margin-left: 35px; flex-direction: row;vertical-align: middle;align-items: center; background-color:#FFFFFF;">
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #7</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #8</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #9</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #10</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #11</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #12</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="d-flex"
+            style="opacity: 0.3; margin-top: 10px;margin-left: 35px; flex-direction: row;vertical-align: middle;align-items: center; background-color:#FFFFFF;">
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #13</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #14</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #15</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #16</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #17</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+
+            <div class="card text-center"
+                style="margin:10px;width: 12rem;font-weight: bold;font-size: 13px;border-radius: 10px;background-color: #DBFEDA;">
+                <div class="card-body" style="padding: 5px;margin-bottom: 5px;">
+                    <h3 class="card-title"
+                        style="padding: 0px;margin-bottom: 6px; border: 1px solid #009F10;border-radius: 10px;padding: 10px;">
+                        Machine #18</h3>
+                    <p class="card-text" style="padding: 0px;margin-top: 10px;"> <i class="fa fa-clock-o"></i>&nbsp;Last
+                        OFF Time : --:--:--</p>
+
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Predicted : OFF</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Confidence : 100.00%</p>
+                    <p class="card-text" style="padding: 0px;margin-top: 6px;">Actual : OFF</p>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,421 @@
+<div>
+  <!-- Status Bar for Acoustic Feed Inspection -->
+  <div class="d-flex" style="background-color: white; align-items: center">
+    <div class="stopbtnvision">
+      <button
+        (click)="goback()"
+        title="Click to go back"
+        style="
+          border-color: transparent;
+          background-color: transparent;
+          color: #0f0c3d;
+        "
+      >
+        <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+      </button>
+    </div>
+
+    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xxl-6">
+      <b>
+        <div style="font-size: 1.25rem">
+          Acoustics Based Predictive Maintenance​ &nbsp;
+          <span style="font-size: 1.25rem; cursor: pointer"
+            ><i
+              class="fa fa-info-circle"
+              aria-hidden="true"
+              (click)="info_pop()"
+            ></i
+          ></span>
+        </div>
+      </b>
+    </div>
+
+    <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xxl-3"></div>
+
+    <!-- Buttons -->
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+      <button class="start" (click)="start_acoustics()" id="start_acou">
+        Start
+      </button>
+    </div>
+    <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1">
+      <button class="stop" (click)="stop_acoustics()" id="stop_acou">
+        Stop
+      </button>
+    </div>
+
+    <!-- <div class="col-0 col-md-0 col-sm-0 col-lg-0 col-xl-0 col-xxl-0" style="padding-top: 3px; padding-left: 4%;">
+            <button (click)="goback()" title="Click to go back" style=" font-size: 18px; background-color:#0f0c3d; border-radius:4px;
+              border:1px solid white;color:white; float: right;">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </button>
+        </div> -->
+  </div>
+
+  <!-- Headings for subparts -->
+  <div class="d-flex">
+    <!--Select Setup Area-->
+    <!-- <div class="col-0 col-md-0 col-sm-0 col-lg-0 col-xl-0 col-xxl-0"></div> -->
+    <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xxl-3">
+      <div
+        style="
+          background-color: #ffffff;
+          border-top-left-radius: 10px;
+          height: 30px;
+          border-top-right-radius: 10px;
+          box-shadow: 4px 4px 4px #888888;
+          margin-top: 10px;
+        "
+      >
+        <span style="font-size: 1.25rem; margin-left: 10px; margin-bottom: 0px"
+          >Setup</span
+        >
+      </div>
+    </div>
+
+    <!--Input Stream-->
+    <!-- <div class="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1 col-xxl-1"></div> -->
+    <div
+      class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 col-xxl-9"
+      style="
+        white-space: nowrap;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 4px 4px 4px #888888;
+        background-color: #16125a;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: white;
+        margin-top: 10px;
+        margin-right: 10px;
+        font-weight: 600;
+        text-align: center;
+      "
+    >
+      <span style="margin-right: 20px"> Serial # {{ audio_proc_num }} </span>
+      <span style="margin-left: 20px">
+        Observation : <a id="obvcolor">{{ obv }}</a></span
+      >
+    </div>
+  </div>
+
+  <!-- Content of sub parts -->
+  <div class="d-flex">
+    <!--Select Setup Area-->
+    <!-- <div class="col-0 col-md-0 col-sm-0 col-lg-0 col-xl-0 col-xxl-0"></div> -->
+    <div
+      class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xxl-3"
+      style="border-radius: 10px"
+    >
+      <div
+        style="
+          width: 100%;
+          margin-top: 0px;
+          background-color: #ffffff;
+          display: flex;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          box-shadow: 4px 4px 4px #888888;
+        "
+      >
+        <img
+          src=".\assets\wavplot\setup.png"
+          width="80%"
+          style="margin: auto"
+        />
+        <!-- <img  src=".\assets\img\acsetup.PNG" style="width: 100%; margin:10px auto; border-radius: 5px;"> -->
+      </div>
+
+      <!-- Timeline Barchart -->
+
+      <div
+        class="d-flex"
+        style="
+          background-color: #ffffff;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          box-shadow: 4px 4px 4px #888888;
+          margin-top: 20px;
+        "
+      >
+        <span style="font-size: 1.25rem; margin-left: 10px; margin-bottom: 10px"
+          >Frequency</span
+        >
+      </div>
+
+      <div
+        style="
+          height: 200px;
+          width: 100%;
+          margin: 0px auto;
+          background-color: #ffffff;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          box-shadow: 4px 4px 4px #888888;
+        "
+      >
+        <canvas id="AccouBarDial">{{ accou_bar_dial }}</canvas>
+      </div>
+
+      <!-- Modal Graph point onclick POPUP -->
+
+      <div
+        class="modal fade"
+        id="popupSearch2"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+        style="margin-bottom: 20%"
+      >
+        <div
+          class="modal-dialog"
+          id="popupSearchdlg2"
+          style="max-width: 1100px; margin-bottom: 15%; margin-top: 23%"
+        >
+          <div class="modal-content">
+            <div
+              class="modal-header"
+              style="
+                background-color: #212445;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                color: #ffffff;
+              "
+            >
+              <h3
+                class="modal-title"
+                id="popupTitle2"
+                style="text-align: center"
+              >
+                <div class="d-md-flex">
+                  <div class="col-md-6">Serial # <a id="acou_serial2"></a></div>
+                  <div class="col-md-6">
+                    Observation :
+                    <a style="font-weight: 600" id="sch_obvs2"></a>
+                  </div>
+                  <div class="col-md-7">
+                    Confidence Level : <a id="acou_time_accuracy"></a>
+                  </div>
+                </div>
+              </h3>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                style="color: red"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="modal-body" id="sch_body2">
+              <div
+                class="d-md-flex"
+                style="flex-direction: row; background-color: #ffffff"
+              >
+                <figure style="margin: auto; width: 70%">
+                  <img src="" alt="" width="100%" id="amp_p2" />
+                </figure>
+                <figure style="margin: auto; width: 30%">
+                  <img src="" alt="" width="100%" id="mel_p2" />
+                </figure>
+              </div>
+              <div style="margin: auto; width: 60%">
+                <audio
+                  controls
+                  src=""
+                  id="audio_p2"
+                  style="height: 40px; width: 100%"
+                ></audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Input Stream-->
+    <!-- When Live Feed is Incoming -->
+    <div
+      class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 col-xxl-9"
+      style="
+        background-color: whitesmoke;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bolder;
+        text-align: center;
+        margin-right: 10px;
+        box-shadow: 4px 4px 4px #888888;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      "
+    >
+      <div class="d-flex" style="flex-direction: column; width: 100%">
+        <!-- Round Lights -->
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            margin: 10px auto;
+            width: 100%;
+            color: #000;
+            align-items: center;
+            vertical-align: bottom;
+            justify-content: center;
+          "
+        >
+          <div
+            class="d-flex"
+            style="display: flex; flex-direction: row; margin: auto; width: 20%"
+          >
+            <button class="midbtn valve" id="valve">
+              <!-- (click) = "set_image_ref('Valve fault')" title="click to view valve fault features" -->
+              <img
+                src=".\assets\wavplot\valve.png"
+                height="50%"
+                style="margin: auto"
+              />
+              Valve
+              <img
+                src=".\assets\wavplot\valve.png"
+                height="50%"
+                style="margin: auto"
+              />
+            </button>
+            <!-- <button class='samplebtn' (click)="set_image_ref('Valve fault')">R</button> -->
+          </div>
+          <div
+            class="d-flex"
+            style="
+              display: flex;
+              flex-direction: column;
+              margin: auto;
+              width: 20%;
+            "
+          >
+            <button class="midbtn pump" id="pump">
+              <img
+                src=".\assets\wavplot\pump.png"
+                height="50%"
+                style="margin: auto"
+              />
+              Pump
+              <img
+                src=".\assets\wavplot\pump.png"
+                height="50%"
+                style="margin: auto"
+              />
+            </button>
+            <!-- <button class='samplebtn' (click)="set_image_ref('Pump fault')">R</button> -->
+          </div>
+          <div
+            class="d-flex"
+            style="
+              display: flex;
+              flex-direction: column;
+              margin: auto;
+              width: 20%;
+            "
+          >
+            <button class="midbtn fan" id="fan">
+              <img
+                src=".\assets\wavplot\fan.png"
+                height="50%"
+                style="margin: auto"
+              />
+              Fan
+              <img
+                src=".\assets\wavplot\fan.png"
+                height="50%"
+                style="margin: auto"
+              />
+            </button>
+            <!-- <button class='samplebtn' (click)="set_image_ref('Fan fault')">R</button> -->
+          </div>
+          <div
+            class="d-flex"
+            style="
+              display: flex;
+              flex-direction: column;
+              margin: auto;
+              width: 20%;
+            "
+          >
+            <button class="midbtn slider" id="slider">
+              <img
+                src=".\assets\wavplot\slider.png"
+                height="70%"
+                style="margin: auto"
+              />
+              Slider
+              <img
+                src=".\assets\wavplot\slider.png"
+                height="70%"
+                style="margin: auto; transform: rotate(180deg)"
+              />
+            </button>
+            <!-- <button class='samplebtn' (click)="set_image_ref('Slider fault')">R</button> -->
+          </div>
+        </div>
+
+        <!-- 2D X-Y axis Graphs -->
+        <div
+          class="d-flex"
+          style="
+            display: flex;
+            flex-direction: row;
+            margin: 0px auto;
+            width: 100%;
+            font-size: medium;
+            color: #000000;
+            align-items: center;
+            vertical-align: bottom;
+          "
+        >
+          <div id="fv">
+            <canvas id="FaultDialValve" data-target="#popupSearch2">{{
+              fault_dial_valve
+            }}</canvas>
+          </div>
+
+          <div id="fp">
+            <canvas id="FaultDialPump" data-target="#popupSearch2">{{
+              fault_dial_pump
+            }}</canvas>
+          </div>
+        </div>
+
+        <div
+          class="d-flex"
+          style="
+            display: flex;
+            flex-direction: row;
+            margin: 0px auto;
+            width: 100%;
+            font-size: medium;
+            color: #000000;
+            align-items: center;
+            vertical-align: bottom;
+          "
+        >
+          <div id="ff">
+            <canvas id="FaultDialFan" data-target="#popupSearch2">{{
+              fault_dial_fan
+            }}</canvas>
+          </div>
+
+          <div id="fs">
+            <canvas id="FaultDialSlider" data-target="#popupSearch2">{{
+              fault_dial_slider
+            }}</canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

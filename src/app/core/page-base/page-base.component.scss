@@ -1,0 +1,149 @@
+/* CSS */
+
+.routerlink {
+  color: black;
+  text-decoration: none;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 500px) {
+  .mat-card-title {
+    font-size: small;
+  }
+  #tcs-logo-img {
+    display: none;
+  }
+}
+
+.matToolTip {
+  font-size: small;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: space-between;
+}
+
+.example-container {
+  // width: 100%;
+  // height: 87vh;
+  border: none;
+  background-color: rgb(226, 226, 226);
+  // position: fixed;
+  height: calc(100% - 70px);
+  min-height: 80%;
+  width: 100%;
+  min-width: 100%;
+}
+
+#matdividerid {
+  border: none;
+  margin: 15px;
+}
+
+#sidenavbtnid {
+  color: #dfdbdb;
+  width: 100%;
+  display: flex;
+  height: 10%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.mat-card-title {
+  // background: white;
+  color: #f5f5f5;
+  border-radius: 2px;
+  margin: 10px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  font-weight: 200;
+  text-shadow: 1px -1px #dbdbdb;
+}
+
+#tcs-logo-img {
+  display: flex;
+    justify-content: center;
+    height: 129px;
+    /* width: 44px; */
+    margin: 10px;
+    margin-left: 30px;
+    margin-top: -70px;
+    line-height: 18px;
+    filter: invert(1);
+    margin-bottom: -66px;
+}
+
+// #006279
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 4px 4px 4px #888888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2e315f;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #171a31;
+  border-radius: 5px;
+}
+
+#pwd_res {
+  width: 90%;
+  padding: 50px 0;
+  border-radius: 5px;
+  border: none;
+  margin: auto;
+  padding-left: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  // background-image: linear-gradient(to right,#e9e6f0, #887aa7);
+  background-color: white;
+  color: black;
+}
+
+#currshow_user_input_error,
+#newshow_user_input_error,
+#cnfmshow_user_input_error {
+  text-align: left;
+  margin-left: 1px;
+  margin-bottom: 0px;
+  vertical-align: bottom;
+  align-self: flex-end;
+  display: none;
+  color: rgb(191 5 5);
+  font-size: small;
+  font-style: italic;
+}
+
+.language-dropdown {
+  float: right;
+  margin-right: 10px;
+
+  #gtx-trans {
+    display: none;
+  }
+}

@@ -1,0 +1,225 @@
+<div class="firstdiv">
+  <div class="leftdiv">
+    <div class="mat-table-box">
+      <div
+        style="
+          color: #6b6b6b;
+          text-align: center;
+          font-size: 15px;
+          font-weight: bold;
+          margin-top: 5px;
+        "
+      >
+        Worklist
+      </div>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        style="width: 95%; background-color: whitesmoke; margin: 15px"
+      >
+        <ng-container matColumnDef="tasks">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            style="text-align: center; color: black"
+          >
+            Tasks
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            style="color: black; text-align: left"
+          >
+            {{ element.tasks }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="machineid">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            style="text-align: center; color: black"
+          >
+            Machine ID
+          </th>
+          <td mat-cell *matCellDef="let element" style="color: black">
+            {{ element.machineid }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="parts">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            style="text-align: center; color: black"
+          >
+            Parts/Tools #
+          </th>
+          <td mat-cell *matCellDef="let element" style="color: black">
+            {{ element.parts }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="color: black; padding-left: 1%"
+          >
+            Action
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="element.action == 'Replace'" style="color: red">
+              {{ element.action }}
+            </div>
+            <div *ngIf="element.action == 'Observe'" style="color: green">
+              {{ element.action }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="datetime">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="color: black; padding-left: 10%"
+          >
+            Time
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            style="color: black; text-align: right"
+          >
+            {{ element.datetime }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <div class="mat-table-paginator">
+        <mat-paginator
+          [pageSizeOptions]="[4, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+    <div class="freqgraph" style="color: black; width: 100%">
+      <canvas
+        id="BarDial"
+        style="
+          margin-top: 12px;
+          width: 100%;
+          height: 150px;
+          border-radius: 5px;
+          background-color: whitesmoke;
+        "
+        >{{ bar_dial }}</canvas
+      >
+    </div>
+  </div>
+  <div class="rightdiv">
+    <div class="smart-fac-apps">
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          text-align: center;
+          margin-top: 2px;
+        "
+      >
+        <div
+          style="
+            text-align: left;
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 15px;
+            margin-bottom:-12px
+          "
+        >
+        Industry Copilots for Manufacturing Transformation
+        </div>
+      </div>
+      <div
+        style="
+          margin-top: 10%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          flex-direction: row;
+        "
+      >
+        <ng-container *ngFor="let item of intSolutions">
+          <a
+            routerLink="/{{ item.SolutionUrl }}"
+            class="routerlink"
+            style="text-decoration: none"
+          >
+            <button class="button-33Home" role="button">
+              <!-- <mat-icon style="color: black;">{{item.solutionIcon}}</mat-icon> -->
+              <img src="{{ item.solutionIcon }}" height="35" />
+              <div style="color: black; font-weight:100">
+              {{ item.SolutionName }}
+            </div>
+            </button>
+          </a>
+          <br />
+        </ng-container>
+        <br />
+      </div>
+    </div>
+    <div
+      style="
+        margin-top: 2px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      "
+    >
+      <div class="notif-q22" style="width: 95%">
+        <div class="notif-q22-num">30</div>
+        <div class="notif-q22-text">Total machines under operations​</div>
+      </div>
+      <div class="notif-q22">
+        <div class="notif-q22-num">0</div>
+        <div class="notif-q22-text">Safety incidents recorded</div>
+        <div class="chart-container">
+          <canvas id="piecanvas1"></canvas>
+        </div>
+      </div>
+      <div class="notif-q22">
+        <div class="notif-q22-num">3</div>
+        <div class="notif-q22-text">Machines need replacement</div>
+        <div class="chart-container">
+          <canvas id="piecanvas2"></canvas>
+        </div>
+      </div>
+      <div class="notif-q22">
+        <div class="notif-q22-num">11</div>
+        <div class="notif-q22-text">Machines need observation</div>
+        <div class="chart-container">
+          <canvas id="piecanvas3"></canvas>
+        </div>
+      </div>
+      <div class="notif-q22">
+        <div class="notif-q22-num">16</div>
+        <div class="notif-q22-text">Machines working normally</div>
+        <div class="chart-container">
+          <canvas id="piecanvas4"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

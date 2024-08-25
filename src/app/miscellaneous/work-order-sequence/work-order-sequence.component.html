@@ -1,0 +1,305 @@
+<div class="">
+  <div class="headerMain">
+    <div class="headerLeftContent">
+      <div style="display: flex; gap: 12px">
+        <button
+        (click)="goback()"
+        title="Click to go back"
+        style="
+          border-color: transparent;
+          background-color: transparent;
+          color: #0f0c3d;
+        "
+      >
+        <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+      </button>
+        <div class="heading">Maintenance  Workorder Analyzer</div>
+      </div>
+
+    </div>
+    <div class="headerRightContent">
+      <button class="upload_analysebtn" (click)="Onclear()">Clear</button>
+
+    </div>
+
+  </div>
+
+  <div class="bodyMain">
+    <div class="sectionBody">
+      <div class="sectionBody1">
+        <div class="box1sh">
+          <div class="pdfContainer">
+            <img [src]="fileUrl" class="imgStyle" />
+          </div>
+
+        </div>
+
+      </div>
+      <div class="sectionBody2">
+        <div class="secoundflexContainer">
+          <div class="Selectbox">
+            <div
+              class="upload_border"
+              (click)="triggerFileInput()"
+              *ngIf="flaseselectfile"
+            >
+              <div style="padding: 15px">
+                <div>
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 46 46"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="3"
+                      y="3"
+                      width="40"
+                      height="40"
+                      rx="20"
+                      fill="#F2F4F7"
+                    />
+                    <rect
+                      x="3"
+                      y="3"
+                      width="40"
+                      height="40"
+                      rx="20"
+                      stroke="#F9FAFB"
+                      stroke-width="6"
+                    />
+                    <g clip-path="url(#clip0_1194_2829)">
+                      <path
+                        d="M26.3333 26.3333L23 23M23 23L19.6666 26.3333M23 23V30.5M29.9916 28.325C30.8044 27.8819 31.4465 27.1807 31.8165 26.3322C32.1866 25.4836 32.2635 24.536 32.0351 23.6389C31.8068 22.7418 31.2862 21.9463 30.5555 21.3779C29.8248 20.8095 28.9257 20.5006 28 20.5H26.95C26.6977 19.5244 26.2276 18.6186 25.5749 17.8508C24.9222 17.083 24.104 16.4732 23.1817 16.0672C22.2594 15.6611 21.2571 15.4695 20.2501 15.5066C19.243 15.5437 18.2575 15.8086 17.3676 16.2814C16.4777 16.7542 15.7066 17.4226 15.1122 18.2363C14.5177 19.05 14.1155 19.9879 13.9358 20.9795C13.756 21.971 13.8034 22.9904 14.0743 23.961C14.3452 24.9317 14.8327 25.8282 15.5 26.5833"
+                        stroke="#475467"
+                        stroke-width="1.66667"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1194_2829">
+                        <rect
+                          width="20"
+                          height="20"
+                          fill="white"
+                          transform="translate(13 13)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="browserfile">Click here to browse files</div>
+                <div>or drag and drop files</div>
+              </div>
+              <input
+                type="file"
+                #fileInput
+                (change)="onFilesSelected($event)"
+                multiple
+                hidden
+              />
+            </div>
+          </div>
+
+          <div class="fileSelectedContainer" *ngIf="selectedFile">
+            <div class="file_container">
+              <div style="display: flex; align-items: center; gap: 20px">
+                <svg
+                  width="45"
+                  height="45"
+                  viewBox="0 0 37 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="2.35547"
+                    y="2"
+                    width="32"
+                    height="32"
+                    rx="16"
+                    fill="#B2DDFF"
+                  />
+  
+                  <rect
+                    x="2.35547"
+                    y="2"
+                    width="32"
+                    height="32"
+                    rx="16"
+                    stroke="#D1E9FF"
+                    stroke-width="4"
+                  />
+  
+                  <path
+                    d="M19.0215 11.3333H14.3548C14.0012 11.3333 13.6621 11.4738 13.412 11.7239C13.162 11.9739 13.0215 12.3131 13.0215 12.6667V23.3333C13.0215 23.687 13.162 24.0261 13.412 24.2762C13.6621 24.5262 14.0012 24.6667 14.3548 24.6667H22.3548C22.7084 24.6667 23.0476 24.5262 23.2976 24.2762C23.5477 24.0261 23.6882 23.687 23.6882 23.3333V16M19.0215 11.3333L23.6882 16M19.0215 11.3333V16H23.6882"
+                    stroke="#1570EF"
+                    stroke-width="1.33333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    word-break: break-word;
+                  "
+                >
+                  <div>{{ selectedFile.name }}</div>
+  
+                  <div>{{ selectedFile.size }} bytes</div>
+                </div>
+              </div>
+  
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 5px;
+                  cursor: pointer;
+                "
+                (click)="deleteFile()"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="25px"
+                  viewBox="0 -960 960 960"
+                  width="25px"
+                  fill="#EA3323"
+                >
+                  <path
+                    d="M300.62-128q-38.85 0-64.74-25.88Q210-179.77 210-218.62V-724h-40v-66h188v-38.77h246V-790h188v66h-40v505.38q0 38.35-26.14 64.48Q699.73-128 661.38-128H300.62ZM686-724H276v505.38q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92h360.76q9.24 0 16.93-7.69 7.69-7.69 7.69-16.93V-724ZM371.31-275h66v-368h-66v368Zm153.38 0h66v-368h-66v368ZM276-724v530-530Z"
+                  />
+                </svg>
+              </div>
+            </div>
+  
+            <div class="btnFlex1">
+              <div>
+                <button class="upload_analysebtn" (click)="onUpload()">
+                  Upload
+                </button>
+              </div>
+              <div>
+                <button class="upload_analysebtn" (click)="sendTextareaValue()">
+                  Analyse
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tableContainer">
+            <div class="table">
+              <table
+                mat-table
+                class="mat-elevation-z8 "
+                [dataSource]="dataSource2"
+              >
+                <!-- Pdfname Column -->
+                <ng-container matColumnDef="pdfname">
+                  <th mat-header-cell *matHeaderCellDef class="pdf_name">
+                    PDF Name
+                  </th>
+                  <td mat-cell *matCellDef="let element" class="pdf_name">
+                    {{ element.pdfname }}
+                  </td>
+                </ng-container>
+  
+                <!-- Score Column -->
+                <ng-container matColumnDef="score">
+                  <th mat-header-cell *matHeaderCellDef class="score">Score</th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    [ngClass]="getScoreClass(element.score)"
+                  >
+                    {{ element.score }}
+                  </td>
+                </ng-container>
+  
+                <!-- Remarks Column -->
+                <ng-container matColumnDef="remarks">
+                  <th mat-header-cell *matHeaderCellDef class="Remark">
+                    Remarks
+                  </th>
+                  <td mat-cell *matCellDef="let element" class="Remark" style="white-space: break-spaces">
+                    {{ element.remarks !== "" ? element.remarks : "-" }}
+                  </td>
+                </ng-container>
+  
+                <!-- Date Column -->
+                <!-- <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef>Date</th>
+                  <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+                </ng-container> -->
+  
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef>Action</th>
+                  <td mat-cell *matCellDef="let element">              
+  
+                    <ng-container *ngIf="element.score > 90">
+                      <button [ngClass]="getButtonClass(element.score, 'pass')" style="padding: 5px 10px; border-radius: 5px; border: none;">
+                        Pass
+                      </button>
+                    </ng-container>
+               
+                    <ng-container *ngIf="element.score > 80 && element.score <= 90">
+                      <div style="display: flex; gap: 12px" *ngIf="element.AcceptandReject">
+                        <button [ngClass]="getButtonClass(element.score, 'accept')" (click)="acceptFun(element)">
+                          Accept
+                        </button>
+                        <button [ngClass]="getButtonClass(element.score, 'reject')" (click)="rejectFun(element)">
+                          Reject
+                        </button>
+                      </div>
+                      <div *ngIf="element.AcceptBtn">
+                        <button class="btn-green">
+                          Pass
+                        </button>
+                      </div>
+                      <div *ngIf="element.rejectBtn">
+                        <button class="btn-red">Rejected</button>
+                      </div>
+                    </ng-container>
+               
+                    <ng-container *ngIf="element.score <= 80">
+                      <button class="btn-red">Reject</button>
+                    </ng-container>
+                  </td>
+                </ng-container>
+                
+  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              </table>
+            </div>
+            <div class="ErrorNode" *ngIf="errorMesg">
+              Error While Analysing Please Reupload or Check Document is Empty!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    
+
+  </div>
+  
+  <div class="spinnercontent" *ngIf="loader">
+    <div class="spinnerclass">
+     <div class="loader">
+
+     </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,734 @@
+<div>
+    <div class="headerMain">
+      <div class="headerLeftContent">
+        <div style="display: flex; gap: 12px">
+          <button
+          (click)="goback()"
+          title="Click to go back"
+          style="
+            border-color: transparent;
+            background-color: transparent;
+            color: #0f0c3d;
+          "
+        >
+          <mat-icon style="font-size: 30px">keyboard_arrow_left</mat-icon>
+        </button>
+          <div class="heading">Overall KPI'S</div>
+        </div>
+  
+      </div>
+    
+  
+    </div>
+  
+  
+    <div class="bodyMain">
+  
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <section class="MainSection">
+    <div class="container-fluid">
+      <div class="bodySection">
+        <div class="backClass" (click)="goback()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-arrow-left"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+            />
+          </svg>
+          <div>back</div>
+          <div>
+            <P class="KpiTitle">Overall KPI’s</P>
+          </div>
+        </div>
+    <div style="margin-bottom: -20px ;margin-top: -12px;">
+          <!-- button.component.html -->
+          <button
+            class="custom-button"
+            (click)="setActiveButton(1)"
+            [ngClass]="{ 'active-button': activeButton === 1 }"
+          >
+            KPIs
+          </button>
+          <button
+            class="custom-button"
+            (click)="setActiveButton(2)"
+            [ngClass]="{ 'active-button': activeButton === 2 }"
+          >
+            First yield pass
+          </button>
+        </div>
+      
+        <hr style="height: 0.5px; color: gray; margin-bottom: 10px" />
+  
+        <div *ngIf="activeButton === 1">
+          <section>
+            <div class="mainHeader">
+              <div class="mainHeader1">
+                <div style="display: flex; margin-left: 12px">
+                  <div class="" style="margin-top: 10px; margin-right:10px">Filters</div>
+                  <div class="datclass">
+                    <div class="datacomponents">
+                      <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="picker"
+                        class="dateIcon"
+                      ></mat-datepicker-toggle>
+                      <mat-date-range-input
+                        [rangePicker]="picker"
+                        class="startdateEnd"
+                        
+                      >
+                        <input
+                          matStartDate
+                          placeholder="Start date"
+                          (dateChange)="onDateChange($event, 'start')"
+                         
+                         
+                         
+                        />
+                        <input
+                          matEndDate
+                          placeholder="End date"
+                          (dateChange)="onDateChange($event, 'end')"
+                         
+                        
+                        />
+                      </mat-date-range-input>
+                    </div>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </div>
+                  <select class="selectFields">
+                    <option>Select Plant</option>
+                  </select>
+                  <select class="selectFields" (change)="onSelectChange($event)" [(ngModel)]="selectedTraino">
+                    
+                    <option
+                      *ngFor="let traino of uniqueTrainoValues"
+                      [value]="traino"
+                    >
+                      {{ traino }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="mainHeader2"></div>
+              <div class="mainHeader3">
+                <button class="buttonReset">Reset</button>
+                <a href="/.pdf" download>
+                <button class="buttonExport" >
+                  <div style="display: flex; gap: 8px" >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12.5535 16.5061C12.4114 16.6615 12.2106 16.75 12 16.75C11.7894 16.75 11.5886 16.6615 11.4465 16.5061L7.44648 12.1311C7.16698 11.8254 7.18822 11.351 7.49392 11.0715C7.79963 10.792 8.27402 10.8132 8.55352 11.1189L11.25 14.0682V3C11.25 2.58579 11.5858 2.25 12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V14.0682L15.4465 11.1189C15.726 10.8132 16.2004 10.792 16.5061 11.0715C16.8118 11.351 16.833 11.8254 16.5535 12.1311L12.5535 16.5061Z"
+                        fill="#1C274C"
+                      />
+                      <path
+                        d="M3.75 15C3.75 14.5858 3.41422 14.25 3 14.25C2.58579 14.25 2.25 14.5858 2.25 15V15.0549C2.24998 16.4225 2.24996 17.5248 2.36652 18.3918C2.48754 19.2919 2.74643 20.0497 3.34835 20.6516C3.95027 21.2536 4.70814 21.5125 5.60825 21.6335C6.47522 21.75 7.57754 21.75 8.94513 21.75H15.0549C16.4225 21.75 17.5248 21.75 18.3918 21.6335C19.2919 21.5125 20.0497 21.2536 20.6517 20.6516C21.2536 20.0497 21.5125 19.2919 21.6335 18.3918C21.75 17.5248 21.75 16.4225 21.75 15.0549V15C21.75 14.5858 21.4142 14.25 21 14.25C20.5858 14.25 20.25 14.5858 20.25 15C20.25 16.4354 20.2484 17.4365 20.1469 18.1919C20.0482 18.9257 19.8678 19.3142 19.591 19.591C19.3142 19.8678 18.9257 20.0482 18.1919 20.1469C17.4365 20.2484 16.4354 20.25 15 20.25H9C7.56459 20.25 6.56347 20.2484 5.80812 20.1469C5.07435 20.0482 4.68577 19.8678 4.40901 19.591C4.13225 19.3142 3.9518 18.9257 3.85315 18.1919C3.75159 17.4365 3.75 16.4354 3.75 15Z"
+                        fill="#1C274C"
+                      />
+                    </svg>
+                    <div>Export</div>
+                  </div>
+                </button>
+              </a>
+              </div>
+            </div>
+  
+            <div class="containerMain">
+              <div class="containerMain1">
+                <div class="card1" [style.border]="getBorderColorForValue(OEE)">
+                  <div class="card1Body">
+                    <div class="cardLabel">OEE</div>
+                  
+                    <div>
+                      <div *ngIf="blinker">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper">
+                            <div
+                              class="outerred"
+                              [style.background]="getColorouterForValue(OEE)"
+                            ></div>
+                            <div
+                              class="middleRed"
+                              [style.background]="getColorouterForValue(OEE)"
+                            ></div>
+                            <div
+                              class="innerred"
+                              [style.background]="getColorouterForValue(OEE)"
+                            ></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(OEE)"
+                          >
+                            {{ OEE ? OEE : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="blinkgray">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper1">
+                            <div class="outerred1"></div>
+                            <div class="middleRed1"></div>
+                            <div class="innerred1"></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(OEE)"
+                          >
+                            {{ OEE ? OEE : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="slideerflex">
+                        <div class="slidervalu">{{ 0 }}</div>
+                        <mat-slider thumbLabel tickInterval="1" min="0" max="100" [(ngModel)]="sliderValue" (input)="updateSliderColor()"
+                        [style.--thumb-color]="thumbColor" [style.--track-fill-color]="trackFillColor" [style.backgroundcolor]="backgroundcolor" >
+                        </mat-slider>
+  
+                        <div class="slidervalu">{{ 100 }}</div>
+                      </div> -->
+                      <p class="status">Status</p>
+                      <div class="dayvalues">
+                        <div class="valbo1">
+                          <div class="dayvalesall">
+                            <div class="textmr">Mrng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(OEEMORNING)"
+                                [style.background]="
+                                  getBGColorForValue(OEEMORNING)
+                                "
+                              >
+                                <div>{{ OEEMORNING ? OEEMORNING : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="valbo2">
+                          <div class="dayvalesall">
+                            <div class="textmr">Noon.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(OEEAFTERNOON)"
+                                [style.background]="
+                                  getBGColorForValue(OEEAFTERNOON)
+                                "
+                              >
+                                <div>{{ OEEAFTERNOON ? OEEAFTERNOON : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="valbo3">
+                          <div class="dayvalesall">
+                            <div class="textmr">Evng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(OEEEVENING)"
+                                [style.background]="
+                                  getBGColorForValue(OEEEVENING)
+                                "
+                              >
+                                <div>{{ OEEEVENING ? OEEEVENING : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="containerMain2">
+                <div
+                  class="card1"
+                  [style.border]="getBorderColorForValue(AVALABILITY)"
+                >
+                  <div class="card1Body">
+                    <div class="cardLabel">Availability</div>
+                    <div>
+                      <div *ngIf="blinker">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper">
+                            <div
+                              class="outerred"
+                              [style.background]="
+                                getColorouterForValue(AVALABILITY)
+                              "
+                            ></div>
+                            <div
+                              class="middleRed"
+                              [style.background]="
+                                getColorouterForValue(AVALABILITY)
+                              "
+                            ></div>
+                            <div
+                              class="innerred"
+                              [style.background]="
+                                getColorouterForValue(AVALABILITY)
+                              "
+                            ></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(AVALABILITY)"
+                          >
+                            {{ AVALABILITY ? AVALABILITY : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="blinkgray">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper1">
+                            <div class="outerred1"></div>
+                            <div class="middleRed1"></div>
+                            <div class="innerred1"></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(AVALABILITY)"
+                          >
+                            {{ AVALABILITY ? AVALABILITY : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <p class="status">Status</p>
+                      <div class="dayvalues">
+                        <div class="valbo1">
+                          <div class="dayvalesall">
+                            <div class="textmr">Mrng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(AvalMrng)"
+                                [style.background]="getBGColorForValue(AvalMrng)"
+                              >
+                                <div>{{ AvalMrng ? AvalMrng : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="valbo2">
+                          <div class="dayvalesall">
+                            <div class="textmr">Noon.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(AvalAft)"
+                                [style.background]="getBGColorForValue(AvalAft)"
+                              >
+                                <div>{{ AvalAft ? AvalAft : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="valbo3">
+                          <div class="dayvalesall">
+                            <div class="textmr">Evng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(AvalEnv)"
+                                [style.background]="getBGColorForValue(AvalEnv)"
+                              >
+                                <div>{{ AvalEnv ? AvalEnv : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="containerMain3">
+                <div
+                  class="card1"
+                  [style.border]="getBorderColorForValue(PERFORMANCE)"
+                >
+                  <div class="card1Body">
+                    <div class="cardLabel">Performance</div>
+                    <div>
+                      <div *ngIf="blinker">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper">
+                            <div
+                              class="outerred"
+                              [style.background]="
+                                getColorouterForValue(PERFORMANCE)
+                              "
+                            ></div>
+                            <div
+                              class="middleRed"
+                              [style.background]="
+                                getColorouterForValue(PERFORMANCE)
+                              "
+                            ></div>
+                            <div
+                              class="innerred"
+                              [style.background]="
+                                getColorouterForValue(PERFORMANCE)
+                              "
+                            ></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(PERFORMANCE)"
+                          >
+                            {{ PERFORMANCE ? PERFORMANCE : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="blinkgray">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper1">
+                            <div class="outerred1"></div>
+                            <div class="middleRed1"></div>
+                            <div class="innerred1"></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(PERFORMANCE)"
+                          >
+                            {{ PERFORMANCE ? PERFORMANCE : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <p class="status">Status</p>
+                      <div class="dayvalues">
+                        <div class="valbo1">
+                          <div class="dayvalesall">
+                            <div class="textmr">Mrng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(PerMrng)"
+                                [style.background]="getBGColorForValue(PerMrng)"
+                              >
+                                <div>{{ PerMrng ? PerMrng : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="valbo2">
+                          <div class="dayvalesall">
+                            <div class="textmr">Noon.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(PerAft)"
+                                [style.background]="getBGColorForValue(PerAft)"
+                              >
+                                <div>{{ PerAft ? PerAft : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="valbo3">
+                          <div class="dayvalesall">
+                            <div class="textmr">Evng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(PerEvn)"
+                                [style.background]="getBGColorForValue(PerEvn)"
+                              >
+                                <div>{{ PerEvn ? PerEvn : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="containerMain4">
+                <div
+                  class="card1"
+                  [style.border]="getBorderColorForValue(QUALITY)"
+                >
+                  <div class="card1Body">
+                    <div class="cardLabel">Quality</div>
+                    <div>
+                      <div *ngIf="blinker">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper">
+                            <div
+                              class="outerred"
+                              [style.background]="getColorouterForValue(QUALITY)"
+                            ></div>
+                            <div
+                              class="middleRed"
+                              [style.background]="getColorouterForValue(QUALITY)"
+                            ></div>
+                            <div
+                              class="innerred"
+                              [style.background]="getColorouterForValue(QUALITY)"
+                            ></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(QUALITY)"
+                          >
+                            {{ QUALITY ? QUALITY : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="blinkgray">
+                        <div class="GuageValuesFlex">
+                          <div class="parendMapper1">
+                            <div class="outerred1"></div>
+                            <div class="middleRed1"></div>
+                            <div class="innerred1"></div>
+                          </div>
+                          <div
+                            class="Gaugevalue"
+                            [style.color]="getColorForValue(QUALITY)"
+                          >
+                            {{ QUALITY ? QUALITY : "0" }}
+                          </div>
+                        </div>
+                      </div>
+                      <p class="status">Status</p>
+                      <div class="dayvalues">
+                        <div class="valbo1">
+                          <div class="dayvalesall">
+                            <div class="textmr">Mrng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(QalMrng)"
+                                [style.background]="getBGColorForValue(QalMrng)"
+                              >
+                                <div>{{ QalMrng ? QalMrng : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="valbo2">
+                          <div class="dayvalesall">
+                            <div class="textmr">Noon.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(QalAft)"
+                                [style.background]="getBGColorForValue(QalAft)"
+                              >
+                                <div>{{ QalAft ? QalAft : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="valbo3">
+                          <div class="dayvalesall">
+                            <div class="textmr">Evng.</div>
+                            <div>
+                              <div
+                                class="colordiv"
+                                [style.color]="getColorForValue(QalEvn)"
+                                [style.background]="getBGColorForValue(QalEvn)"
+                              >
+                                <div>{{ QalEvn ? QalEvn : "0" }}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="containerr">
+              <div class="box box-1">
+                <div class="tppl">
+                  <div class="titleTLP">Total length produced</div>
+                  <div class="TLPNUM"  [style.color]="getColorFormeters(TotalProductLength)">
+                    {{ TotalProductLength ? TotalProductLength : "0"
+                    }}<span class="sub" [style.color]="getColorFormeters(TotalProductLength)">(meters)</span>
+                  </div>
+                </div>
+                <div class="tppl">
+                  <div class="titleTLP">Total pieces produced</div>
+                  <div class="TLPNUM"  [style.color]="getColorFormeters(TotalPieceProduced)">
+                    {{ TotalPieceProduced ? TotalPieceProduced : "0"
+                    }}<span class="sub" [style.color]="getColorFormeters(TotalProductLength)">(pieces)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="box box-2">
+                <div class="GrapsBOx">
+                  <div class="titleTLP">
+                    Total downtime (in minutes)
+                    <hr style="height: 1px; color: rgba(234, 236, 240, 1)" />
+                  </div>
+                  <div class="graphArea">
+                    <div class="radiusblock">
+                      <div class="boxradiusblue">
+                      </div>
+                      <div class="textadjust" style="margin-right: 10px;">
+                        DownTime
+                      </div>
+                    
+                    </div>
+                    <!-- <canvas id="downtimechart" class="graphlineChart"> </canvas> -->
+                    <div id="timeChart" class="chart"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="box box-3">
+                <div class="GrapsBOx">
+                  <div class="titleTLP1">
+                    Good parts vs Defective parts
+                    <hr style="height: 1px; color: rgba(234, 236, 240, 1)" />
+                  </div>
+                  <div class="graphArea">
+                    <div class="radiusblock">
+                    <div class="boxradius">
+                    </div>
+                    <div class="textadjust" style="margin-right: 10px;">
+                      Good parts
+                    </div>
+                    <div class="boxradiusGreen">
+                    </div>
+                    <div class="textadjust">
+                      Defective parts
+                    </div>
+                  </div>
+                   
+  
+                    <div id="barstackedchart" style="height: 80%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div *ngIf="activeButton === 2">
+          <section>
+            <div class="FYPmainDiv">
+              <div class="FYPmainDiv1">
+                <select
+                  class="selectFields"
+                  [(ngModel)]="selectedCaseid"
+                  (ngModelChange)="filterDataFYP()"
+                >
+                  <option>Select ID</option>
+                  <option *ngFor="let case of uniqueCase">
+                    {{ case }}
+                  </option>
+                </select>
+                <select
+                  class="selectFields"
+                  [(ngModel)]="selectedActivityid"
+                  (ngModelChange)="filterDataFYP()"
+                >
+                  <option>Select Activity</option>
+                  <option *ngFor="let Activity of activities">
+                    {{ Activity }}
+                  </option>
+                </select>
+                <select
+                  class="selectFields"
+                  [(ngModel)]="selectedProcessid"
+                  (ngModelChange)="filterDataFYP()"
+                >
+                  <option>Select Process</option>
+                  <option *ngFor="let proces of process">
+                    {{ proces }}
+                  </option>
+                </select>
+                <input
+                  class="selectFields"
+                  type="date"
+                  [(ngModel)]="selectedDateid"
+                  (ngModelChange)="filterDataFYP()"
+                />
+              </div>
+              <div class="FYPmainDiv2">
+                <div class="mainHeader3">
+                  <button class="buttonReset">Reset</button>
+                  <a href="/.pdf" download>
+                  <button class="buttonExport">
+                    <div style="display: flex; gap: 8px">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12.5535 16.5061C12.4114 16.6615 12.2106 16.75 12 16.75C11.7894 16.75 11.5886 16.6615 11.4465 16.5061L7.44648 12.1311C7.16698 11.8254 7.18822 11.351 7.49392 11.0715C7.79963 10.792 8.27402 10.8132 8.55352 11.1189L11.25 14.0682V3C11.25 2.58579 11.5858 2.25 12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V14.0682L15.4465 11.1189C15.726 10.8132 16.2004 10.792 16.5061 11.0715C16.8118 11.351 16.833 11.8254 16.5535 12.1311L12.5535 16.5061Z"
+                          fill="#1C274C"
+                        />
+                        <path
+                          d="M3.75 15C3.75 14.5858 3.41422 14.25 3 14.25C2.58579 14.25 2.25 14.5858 2.25 15V15.0549C2.24998 16.4225 2.24996 17.5248 2.36652 18.3918C2.48754 19.2919 2.74643 20.0497 3.34835 20.6516C3.95027 21.2536 4.70814 21.5125 5.60825 21.6335C6.47522 21.75 7.57754 21.75 8.94513 21.75H15.0549C16.4225 21.75 17.5248 21.75 18.3918 21.6335C19.2919 21.5125 20.0497 21.2536 20.6517 20.6516C21.2536 20.0497 21.5125 19.2919 21.6335 18.3918C21.75 17.5248 21.75 16.4225 21.75 15.0549V15C21.75 14.5858 21.4142 14.25 21 14.25C20.5858 14.25 20.25 14.5858 20.25 15C20.25 16.4354 20.2484 17.4365 20.1469 18.1919C20.0482 18.9257 19.8678 19.3142 19.591 19.591C19.3142 19.8678 18.9257 20.0482 18.1919 20.1469C17.4365 20.2484 16.4354 20.25 15 20.25H9C7.56459 20.25 6.56347 20.2484 5.80812 20.1469C5.07435 20.0482 4.68577 19.8678 4.40901 19.591C4.13225 19.3142 3.9518 18.9257 3.85315 18.1919C3.75159 17.4365 3.75 16.4354 3.75 15Z"
+                          fill="#1C274C"
+                        />
+                      </svg>
+                      <div>Export</div>
+                    </div>
+                  </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="fypmainbox">
+                <div class="fypbox1">
+                  <label class="FYPtitlelabel">First yield pass</label>
+                  <p class="FYPnumValue">{{ FYP }}</p>
+                </div>
+                <div class="fypbox2">
+                  <label class="FYPtitlelabel">Quantity complete</label>
+                  <p class="FYPnumValue">{{ QTYC }}</p>
+                </div>
+                <div class="fypbox3">
+                  <label class="FYPtitlelabel">Quantity rejected</label>
+                  <p class="FYPnumValue">{{ QTYR }}</p>
+                </div>
+                <div class="fypbox4">
+                  <label class="FYPtitlelabel">Quantity for MRB</label>
+                  <p class="FYPnumValue">{{ QTYM }}</p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="Fypgraph">
+              <div id="barchartFYP" style="height: 100%;"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+  

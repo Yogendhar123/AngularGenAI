@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: sandbox-ui-config
+data:
+  API_URL: "http://4.156.153.155:8080/"
+  whitelistedDomains: "4.156.153.155:8080"
+  
